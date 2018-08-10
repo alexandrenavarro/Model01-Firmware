@@ -75,6 +75,9 @@
 // Support for USB quirks, like changing the key state report protocol
 #include "Kaleidoscope-USB-Quirks.h"
 
+// Support for One Shot plugins
+#include <Kaleidoscope-OneShot.h>
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -89,7 +92,42 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_ANY
+       MACRO_ANY,
+       MACRO_ALT_F4,
+       MACRO_ALT_LEFT,
+       MACRO_ALT_RIGHT,
+       MACRO_ALT_SPACE,
+       MACRO_ALT_TAB,
+       MACRO_CTRL_A,
+       MACRO_CTRL_C,
+       MACRO_CTRL_END,
+       MACRO_CTRL_F,
+       MACRO_CTRL_F4,
+       MACRO_CTRL_G,
+       MACRO_CTRL_HOME,
+       MACRO_CTRL_LEFT,
+       MACRO_CTRL_N,
+       MACRO_CTRL_O,
+       MACRO_CTRL_PAGE_DOWN,
+       MACRO_CTRL_PAGE_UP,
+       MACRO_CTRL_R,
+       MACRO_CTRL_RIGHT,
+       MACRO_CTRL_S,
+       MACRO_CTRL_SHIFT_Z,
+       MACRO_CTRL_T,
+       MACRO_CTRL_TAB,
+       MACRO_CTRL_V,
+       MACRO_CTRL_W,
+       MACRO_CTRL_X,
+       MACRO_CTRL_Y,
+       MACRO_CTRL_Z,
+       MACRO_ENTER_SEMI_COLON,
+       MACRO_LEFT_CURLY_BRACKET,
+       MACRO_SPACE_EQUALS_SPACE,
+       MACRO_SPACE_SHIFT,
+       MACRO_SUPER_DOWN,
+       MACRO_SUPER_UP,
+       MACRO_VI
      };
 
 
@@ -161,6 +199,7 @@ enum { PRIMARY, NUMPAD, FUNCTION }; // layers
 //#define PRIMARY_KEYMAP_QWERTY
 // #define PRIMARY_KEYMAP_COLEMAK
 // #define PRIMARY_KEYMAP_DVORAK
+// #define PRIMARY_KEYMAP_BEPO
 #define PRIMARY_KEYMAP_CUSTOM
 
 
@@ -222,21 +261,41 @@ KEYMAPS(
    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
    ShiftToLayer(FUNCTION)),
 
+#elif defined (PRIMARY_KEYMAP_BEPO)
+// All keys are located standard bépo layout
+// Nevertheless some adaptations from standard 105 azerty keyboard / keyboardio model 01 because some keys do not exist on keyboardio model 01 and bépo layout needs RightAlt on right thumb.
+// The changes are % on `, w on pgup, ê on pgdown, ç on |, = on num, LeftGui on bksp, LeftAlt on cmd, RightLeft on alt key, NumPad on any.
+  [PRIMARY] = KEYMAP_STACKED
+  (Key_Backtick,              Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+   Key_Equals,                Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
+   Key_RightBracket,          Key_A, Key_S, Key_D, Key_F, Key_G,
+   Key_NonUsBackslashAndPipe, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+   Key_LeftControl, Key_LeftGui, Key_LeftAlt, Key_LeftShift,
+   ShiftToLayer(FUNCTION),
+
+   LockLayer(NUMPAD), Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
+   Key_Enter,         Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
+                      Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   Key_Backspace,     Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   Key_RightShift, Key_RightAlt, Key_Spacebar, Key_RightControl,
+   ShiftToLayer(FUNCTION)),
+
+
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (Key_Backtick,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_Equals,
-   Key_X,                 Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_RightBracket,      Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_RightCurlyBracket, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftShift, Key_LeftGui, Key_LeftAlt, Key_LeftControl,
+  (Key_Equals,                 Key_1, Key_2, Key_3, Key_4, Key_5, M(MACRO_LEFT_CURLY_BRACKET),
+   Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
+   Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
+   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+   OSM(LeftControl), Key_F, OSM(LeftAlt), OSM(LeftGui),
    ShiftToLayer(FUNCTION),
 
-   Key_Backspace, Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_RightControl, Key_RightAlt, Key_Spacebar, Key_RightShift,
+   Key_Backspace,      Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
+   Key_Enter,          Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
+                       Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   M(MACRO_ALT_SPACE), Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   M(MACRO_SPACE_EQUALS_SPACE), OSM(RightAlt), Key_Spacebar, OSM(RightShift),
    ShiftToLayer(FUNCTION)),
 
 #else
@@ -263,18 +322,18 @@ KEYMAPS(
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
-   Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
-   Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
-   Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
-   ___, Key_Delete, ___, ___,
+  (Key_PrintScreen,           Key_F1,                Key_F2,                  Key_F3,                Key_F4,              Key_F5,            M(MACRO_ALT_F4),
+   M(MACRO_CTRL_N),           M(MACRO_CTRL_T),       M(MACRO_CTRL_O),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_CTRL_TAB), M(MACRO_ALT_TAB),
+   M(MACRO_CTRL_Y),           M(MACRO_CTRL_Z),       M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
+   M(MACRO_CTRL_R),           M(MACRO_CTRL_F),       Key_mouseBtnL,           Key_mouseBtnM,         Key_mouseBtnR,       M(MACRO_CTRL_G),   ___,
+   ___, ___, ___, ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
-   ___, ___, Key_Enter, ___,
+   Key_Delete,                Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
+   M(MACRO_ENTER_SEMI_COLON), M(MACRO_CTRL_HOME),    M(MACRO_CTRL_LEFT),   Key_UpArrow,        M(MACRO_CTRL_RIGHT), Key_F8,              Key_F12,
+                              Key_Home,              Key_LeftArrow,        Key_DownArrow,      Key_RightArrow,      Key_End,             Key_PcApplication,
+   ___,                       Key_Insert,            M(MACRO_ALT_LEFT),    Key_PageDown,       M(MACRO_ALT_RIGHT),  M(MACRO_CTRL_END),   LockLayer(NUMPAD),
+   M(MACRO_ENTER_SEMI_COLON), ___, Key_Enter, ___,
    ___)
 ) // KEYMAPS(
 
@@ -336,10 +395,151 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     anyKeyMacro(keyState);
     break;
+
+  case MACRO_ALT_F4:
+    return MACRODOWN(D(LeftAlt), T(F4), U(LeftAlt));
+    break;
+
+  case MACRO_ALT_LEFT:
+    return MACRODOWN(D(LeftAlt), T(LeftArrow), U(LeftAlt));
+    break;
+
+  case MACRO_ALT_RIGHT:
+    return MACRODOWN(D(LeftAlt), T(RightArrow), U(LeftAlt));
+    break;
+
+  case MACRO_ALT_SPACE:
+    return MACRODOWN(D(LeftAlt), T(Space), U(LeftAlt));
+    break;
+
+  case MACRO_ALT_TAB:
+    return MACRODOWN(D(LeftAlt), T(Tab), U(LeftAlt));
+    break;
+
+  case MACRO_CTRL_A:
+    return MACRODOWN(D(LeftControl), T(A), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_C:
+    return MACRODOWN(D(LeftControl), T(H), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_END:
+    return MACRODOWN(D(LeftControl), T(End), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_F:
+    return MACRODOWN(D(LeftControl), T(Slash), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_F4:
+    return MACRODOWN(D(LeftControl), T(F4), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_G:
+    return MACRODOWN(D(LeftControl), T(Comma), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_HOME:
+    return MACRODOWN(D(LeftControl), T(Home), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_LEFT:
+    return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_N:
+    return MACRODOWN(D(LeftControl), T(Semicolon), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_O:
+    return MACRODOWN(D(LeftControl), T(R), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_PAGE_DOWN:
+    return MACRODOWN(D(LeftControl), T(PageDown), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_PAGE_UP:
+    return MACRODOWN(D(LeftControl), T(PageUp), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_R:
+    return MACRODOWN(D(LeftControl), T(L), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_RIGHT:
+    return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_S:
+    return MACRODOWN(D(LeftControl), T(K), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_SHIFT_Z:
+    return MACRODOWN(D(LeftControl), D(LeftShift), T(LeftBracket), U(LeftShift), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_T:
+    return MACRODOWN(D(LeftControl), T(J), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_TAB:
+    return MACRODOWN(D(LeftControl), T(Tab), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_V:
+    return MACRODOWN(D(LeftControl), T(U), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_W:
+    return MACRODOWN(D(LeftControl), T(RightBracket), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_X:
+    return MACRODOWN(D(LeftControl), T(C), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_Y:
+    return MACRODOWN(D(LeftControl), T(X), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_Z:
+    return MACRODOWN(D(LeftControl), T(LeftBracket), U(LeftControl));
+    break;
+
+  case MACRO_ENTER_SEMI_COLON:
+    return MACRODOWN(D(LeftShift), T(G), U(LeftShift), T(Enter));
+    break;
+
+  case MACRO_LEFT_CURLY_BRACKET:
+    return MACRODOWN(D(RightAlt), T(X), U(RightAlt));
+    break;
+
+  case MACRO_SPACE_EQUALS_SPACE:
+    return MACRODOWN(T(Spacebar), T(Minus), T(Spacebar));
+    break;
+
+  case MACRO_SPACE_SHIFT:
+    return MACRODOWN(T(Spacebar), D(LeftShift), U(LeftShift));
+    break;
+
+
+  case MACRO_SUPER_DOWN:
+    return MACRODOWN(D(LeftGui), T(DownArrow), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_UP:
+    return MACRODOWN(D(LeftGui), T(UpArrow), U(LeftGui));
+    break;
+
+  case MACRO_VI:
+    // TODOTODO
+    break;
+
   }
   return MACRO_NONE;
 }
-
 
 
 // These 'solid' color effect definitions define a rainbow of
@@ -515,7 +715,9 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // comfortable - or able - to do automatically, but can be useful
   // nevertheless. Such as toggling the key report protocol between Boot (used
   // by BIOSes) and Report (NKRO).
-  USBQuirks
+  USBQuirks,
+
+  OneShot
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
