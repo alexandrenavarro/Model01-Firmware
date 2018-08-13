@@ -288,13 +288,13 @@ KEYMAPS(
    Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   OSM(LeftShift), Key_LeftGui, OSM(LeftAlt), OSM(LeftControl),
+   OSM(LeftShift), Key_F, OSM(LeftAlt), OSM(LeftControl),
    ShiftToLayer(FUNCTION),
 
    Key_Backspace,      Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
    Key_Enter,          Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                        Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   M(MACRO_ALT_SPACE), Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   Key_LeftGui,        Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
    OSM(RightControl), OSM(RightAlt), Key_Spacebar, OSM(RightShift),
    ShiftToLayer(FUNCTION)),
 
@@ -326,14 +326,14 @@ KEYMAPS(
    M(MACRO_CTRL_N),           M(MACRO_CTRL_T),       M(MACRO_CTRL_O),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_CTRL_TAB), M(MACRO_ALT_TAB),
    M(MACRO_CTRL_Y),           M(MACRO_CTRL_Z),       M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
    M(MACRO_CTRL_R),           M(MACRO_CTRL_F),       Key_mouseBtnL,           Key_mouseBtnM,         Key_mouseBtnR,       M(MACRO_CTRL_G),   ___,
-   ___, ___, ___, ___,
+   ___, Key_LeftGui, ___, ___,
    ___,
 
    Key_Delete,                Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
    M(MACRO_ENTER_SEMI_COLON), M(MACRO_CTRL_HOME),    M(MACRO_CTRL_LEFT),   Key_UpArrow,        M(MACRO_CTRL_RIGHT), Key_F8,              Key_F12,
                               Key_Home,              Key_LeftArrow,        Key_DownArrow,      Key_RightArrow,      Key_End,             Key_PcApplication,
    ___,                       Key_Insert,            M(MACRO_ALT_LEFT),    Key_PageDown,       M(MACRO_ALT_RIGHT),  M(MACRO_CTRL_END),   LockLayer(NUMPAD),
-   M(MACRO_ENTER_SEMI_COLON), ___, Key_Enter, ___,
+   ___, ___, Key_Enter, ___,
    ___)
 ) // KEYMAPS(
 
@@ -425,7 +425,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_END:
-    return MACRODOWN(D(LeftControl), T(End), U(LeftControl));
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+      return MACRODOWN(D(LeftShift), D(LeftControl), T(End), U(LeftControl));
+    } else {
+      return MACRODOWN(D(LeftControl), T(End), U(LeftControl));
+    }
     break;
 
   case MACRO_CTRL_F:
@@ -441,11 +445,19 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_HOME:
-    return MACRODOWN(D(LeftControl), T(Home), U(LeftControl));
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+      return MACRODOWN(D(LeftShift), D(LeftControl), T(Home), U(LeftControl));
+    } else {
+      return MACRODOWN(D(LeftControl), T(Home), U(LeftControl));
+    }
     break;
 
   case MACRO_CTRL_LEFT:
-    return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+      return MACRODOWN(D(LeftShift), D(LeftControl), T(LeftArrow), U(LeftControl));
+    } else {
+      return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
+    }
     break;
 
   case MACRO_CTRL_N:
@@ -469,6 +481,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_RIGHT:
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+      return MACRODOWN(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl));
+    } else {
+      return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
+    }
     return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
     break;
 
