@@ -78,6 +78,9 @@
 // Support for One Shot plugins
 #include <Kaleidoscope-OneShot.h>
 
+// Support for QuKeys
+#include <Kaleidoscope-Qukeys.h>
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -127,6 +130,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_SPACE_SHIFT,
        MACRO_SUPER_DOWN,
        MACRO_SUPER_UP,
+       MACRO_TOGGLE_QUKEYS,
        MACRO_VI
      };
 
@@ -288,14 +292,16 @@ KEYMAPS(
    Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   OSM(LeftShift), Key_F, OSM(LeftAlt), OSM(LeftControl),
+   //OSM(LeftShift), Key_F, OSM(LeftAlt), OSM(LeftControl),
+   Key_Backspace, Key_F, Key_Escape, Key_LeftGui,
    ShiftToLayer(FUNCTION),
 
    Key_Backspace,      Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
    Key_Enter,          Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                        Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_LeftGui,        Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   OSM(RightControl), OSM(RightAlt), Key_Spacebar, OSM(RightShift),
+   //OSM(RightControl), OSM(RightAlt), Key_Spacebar, OSM(RightShift),
+   LockLayer(NUMPAD), Key_Tab, Key_Spacebar, Key_Enter,
    ShiftToLayer(FUNCTION)),
 
 #else
@@ -314,26 +320,26 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___,
 
-   M(MACRO_VERSION_INFO),  ___, Key_7, Key_8,      Key_9,              Key_KeypadSubtract, ___,
-   ___,                    ___, Key_4, Key_5,      Key_6,              Key_KeypadAdd,      ___,
-                           ___, Key_1, Key_2,      Key_3,              Key_Equals,         ___,
-   ___,                    ___, Key_0, Key_Period, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
+   ___,            Key_Keypad6, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_Keypad0, ___,
+   ___,                    ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadAdd,      Key_KeypadSubtract,
+                           ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         ___,
+   ___,                    ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
    ___, ___, ___, ___,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,           Key_F1,                Key_F2,                  Key_F3,                Key_F4,              Key_F5,            M(MACRO_ALT_F4),
-   M(MACRO_CTRL_N),           M(MACRO_CTRL_T),       M(MACRO_CTRL_O),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_CTRL_TAB), M(MACRO_ALT_TAB),
+   M(MACRO_CTRL_N),           M(MACRO_CTRL_T),       M(MACRO_CTRL_O),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_CTRL_TAB), Key_Enter,
    M(MACRO_CTRL_Y),           M(MACRO_CTRL_Z),       M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
    M(MACRO_CTRL_R),           M(MACRO_CTRL_F),       Key_mouseBtnL,           Key_mouseBtnM,         Key_mouseBtnR,       M(MACRO_CTRL_G),   ___,
-   ___, Key_LeftGui, ___, ___,
+   Key_Delete, Key_Spacebar, ___, ___,
    ___,
 
    Key_Delete,                Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
    M(MACRO_ENTER_SEMI_COLON), M(MACRO_CTRL_HOME),    M(MACRO_CTRL_LEFT),   Key_UpArrow,        M(MACRO_CTRL_RIGHT), Key_F8,              Key_F12,
                               Key_Home,              Key_LeftArrow,        Key_DownArrow,      Key_RightArrow,      Key_End,             Key_PcApplication,
-   ___,                       Key_Insert,            M(MACRO_ALT_LEFT),    Key_PageDown,       M(MACRO_ALT_RIGHT),  M(MACRO_CTRL_END),   LockLayer(NUMPAD),
-   ___, ___, Key_Enter, ___,
+   M(MACRO_TOGGLE_QUKEYS),    Key_Insert,            M(MACRO_ALT_LEFT),    Key_PageDown,       M(MACRO_ALT_RIGHT),  M(MACRO_CTRL_END),   LockLayer(NUMPAD),
+   Key_RightShift, ___, M(MACRO_SPACE_EQUALS_SPACE), M(MACRO_ENTER_SEMI_COLON),
    ___)
 ) // KEYMAPS(
 
@@ -550,6 +556,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftGui), T(UpArrow), U(LeftGui));
     break;
 
+  case MACRO_TOGGLE_QUKEYS:
+    if (keyToggledOn(keyState))
+      Qukeys.toggle();
+    break;
+
   case MACRO_VI:
     // TODOTODO
     break;
@@ -645,6 +656,8 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
 KALEIDOSCOPE_INIT_PLUGINS(
+  Qukeys,
+
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
   // editable keymap in EEPROM.
   EEPROMSettings,
@@ -713,6 +726,9 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // with a custom LED effect
   NumPad,
 
+
+  //OneShot,
+
   // The macros plugin adds support for macros
   Macros,
 
@@ -742,8 +758,28 @@ KALEIDOSCOPE_INIT_PLUGINS(
  * Kaleidoscope and any plugins.
  */
 void setup() {
+
+  QUKEYS(
+    //kaleidoscope::Qukey(0, 2, 1,  Key_LeftShift),
+    kaleidoscope::Qukey(0, 2, 2,  Key_LeftAlt),
+    kaleidoscope::Qukey(0, 2, 3,  Key_LeftControl),
+    kaleidoscope::Qukey(0, 2, 4,  Key_LeftShift),
+//    kaleidoscope::Qukey(0, 2, 5,  Key_LeftShift),
+//    kaleidoscope::Qukey(0, 2, 10, Key_RightShift),
+    kaleidoscope::Qukey(0, 2, 11, Key_LeftShift),
+    kaleidoscope::Qukey(0, 2, 12, Key_RightControl),
+    kaleidoscope::Qukey(0, 2, 13, Key_RightAlt),
+//    kaleidoscope::Qukey(0, 2, 14, Key_LeftShift),
+  )
+  Qukeys.setTimeout(500);
+  //OneShot.time_out = 300;
+  //OneShot.hold_time_out = 500;
+//  OneShot.double_tap_sticky = false;
+
+
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
+
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
