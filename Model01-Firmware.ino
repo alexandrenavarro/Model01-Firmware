@@ -96,6 +96,16 @@
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
+       MACRO_0,
+       MACRO_1,
+       MACRO_2,
+       MACRO_3,
+       MACRO_4,
+       MACRO_5,
+       MACRO_6,
+       MACRO_7,
+       MACRO_8,
+       MACRO_9,
        MACRO_ALT_F4,
        MACRO_ALT_LEFT,
        MACRO_ALT_RIGHT,
@@ -116,6 +126,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_R,
        MACRO_CTRL_RIGHT,
        MACRO_CTRL_S,
+       MACRO_CTRL_SHIFT_ENTER,
        MACRO_CTRL_SHIFT_Z,
        MACRO_CTRL_T,
        MACRO_CTRL_TAB,
@@ -124,13 +135,8 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_X,
        MACRO_CTRL_Y,
        MACRO_CTRL_Z,
-       MACRO_ENTER_SEMI_COLON,
        MACRO_LEFT_CURLY_BRACKET,
        MACRO_SPACE_EQUALS_SPACE,
-       MACRO_SPACE_SHIFT,
-       MACRO_SUPER_DOWN,
-       MACRO_SUPER_UP,
-       MACRO_TOGGLE_QUKEYS,
        MACRO_VI
      };
 
@@ -289,20 +295,18 @@ KEYMAPS(
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
   (Key_Equals,                 Key_1, Key_2, Key_3, Key_4, Key_5, M(MACRO_LEFT_CURLY_BRACKET),
-   Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
+   Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Minus,
    Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   //OSM(LeftShift), Key_F, OSM(LeftAlt), OSM(LeftControl),
-   Key_Backspace, Key_F, Key_Escape, Key_LeftGui,
-   ShiftToLayer(FUNCTION),
+   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_V,
+   Key_Tab, Key_F, Key_Backspace, Key_Escape,
+   LT(FUNCTION, LeftArrow),
 
-   Key_Backspace,      Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
-   Key_Enter,          Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
-                       Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_LeftGui,        Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   //OSM(RightControl), OSM(RightAlt), Key_Spacebar, OSM(RightShift),
-   LockLayer(NUMPAD), Key_Tab, Key_Spacebar, Key_Enter,
-   ShiftToLayer(FUNCTION)),
+   Key_UpArrow,                 Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
+   Key_DownArrow,               Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
+                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   ___,                         Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   Key_Enter, Key_Enter, Key_Spacebar, Key_Spacebar,
+   LT(FUNCTION, RightArrow)),
 
 #else
 
@@ -314,32 +318,32 @@ KEYMAPS(
 
   [NUMPAD] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
+   ___,                       ___,                         Key_mouseUpL,         Key_mouseUp,       Key_mouseUpR,     Key_mouseBtnM, ___,
+   ___,                       ___/*click released */,      Key_mouseL,           Key_mouseBtnL,     Key_mouseR,       ___,
+   ___,                       ___/*click pressed */,       Key_mouseDnL,         Key_mouseDn,       Key_mouseDnR,     Key_mouseBtnR, ___,
    ___, ___, ___, ___,
    ___,
 
-   ___,            Key_Keypad6, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_Keypad0, ___,
-   ___,                    ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadAdd,      Key_KeypadSubtract,
-                           ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         ___,
-   ___,                    ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
+   ___,             M(MACRO_6), M(MACRO_7), M(MACRO_8),    M(MACRO_9), M(MACRO_0),         ___,
+   ___,                    ___, M(MACRO_4), M(MACRO_5),    M(MACRO_6), Key_KeypadAdd,      Key_KeypadMultiply,
+                           ___, M(MACRO_1), M(MACRO_2),    M(MACRO_3), Key_KeypadSubtract, Key_KeypadDivide,
+   ___,                    ___, M(MACRO_0), Key_KeypadDot, Key_Minus,  Key_Minus,          ___,
    ___, ___, ___, ___,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (Key_PrintScreen,           Key_F1,                Key_F2,                  Key_F3,                Key_F4,              Key_F5,            M(MACRO_ALT_F4),
-   M(MACRO_CTRL_N),           M(MACRO_CTRL_T),       M(MACRO_CTRL_O),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_CTRL_TAB), Key_Enter,
-   M(MACRO_CTRL_Y),           M(MACRO_CTRL_Z),       M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
-   M(MACRO_CTRL_R),           M(MACRO_CTRL_F),       Key_mouseBtnL,           Key_mouseBtnM,         Key_mouseBtnR,       M(MACRO_CTRL_G),   ___,
-   Key_Delete, Key_Spacebar, ___, ___,
+  (Key_PrintScreen,           Key_F1,                      Key_F2,                  Key_F3,                Key_F4,              Key_F5,          ___,
+   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),             M(MACRO_CTRL_T),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_ALT_F4), M(MACRO_SPACE_EQUALS_SPACE),
+   Key_Insert,                M(MACRO_CTRL_Z),             M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
+   ___,                       ___/* click pressed */,      ___/* click released */, Key_mouseBtnM,         Key_mouseBtnL,       Key_mouseBtnR,   ___/*double click*/,
+   M(MACRO_ALT_TAB), Key_Spacebar, Key_Enter, M(MACRO_ALT_SPACE),
    ___,
 
-   Key_Delete,                Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
-   M(MACRO_ENTER_SEMI_COLON), M(MACRO_CTRL_HOME),    M(MACRO_CTRL_LEFT),   Key_UpArrow,        M(MACRO_CTRL_RIGHT), Key_F8,              Key_F12,
+   ___,                       Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
+   ___,                       M(MACRO_CTRL_HOME),    M(MACRO_CTRL_LEFT),   Key_UpArrow,        M(MACRO_CTRL_RIGHT), Key_F8,              Key_F12,
                               Key_Home,              Key_LeftArrow,        Key_DownArrow,      Key_RightArrow,      Key_End,             Key_PcApplication,
-   M(MACRO_TOGGLE_QUKEYS),    Key_Insert,            M(MACRO_ALT_LEFT),    Key_PageDown,       M(MACRO_ALT_RIGHT),  M(MACRO_CTRL_END),   LockLayer(NUMPAD),
-   Key_RightShift, ___, M(MACRO_SPACE_EQUALS_SPACE), M(MACRO_ENTER_SEMI_COLON),
+   ___,                       M(MACRO_CTRL_F),       M(MACRO_CTRL_R),      Key_PageDown,       M(MACRO_CTRL_G),     M(MACRO_CTRL_END),   ___,
+   Key_CapsLock, M(MACRO_CTRL_SHIFT_ENTER), ___, Key_LeftShift,
    ___)
 ) // KEYMAPS(
 
@@ -391,6 +395,7 @@ static void anyKeyMacro(uint8_t keyState) {
 
  */
 
+
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
 
@@ -400,6 +405,46 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_ANY:
     anyKeyMacro(keyState);
+    break;
+
+  case MACRO_0:
+    return MACRODOWN(D(LeftShift), T(0), U(LeftShift));
+    break;
+
+  case MACRO_1:
+    return MACRODOWN(D(LeftShift), T(1), U(LeftShift));
+    break;
+
+  case MACRO_2:
+    return MACRODOWN(D(LeftShift), T(2), U(LeftShift));
+    break;
+
+  case MACRO_3:
+    return MACRODOWN(D(LeftShift), T(3), U(LeftShift));
+    break;
+
+  case MACRO_4:
+    return MACRODOWN(D(LeftShift), T(4), U(LeftShift));
+    break;
+
+  case MACRO_5:
+    return MACRODOWN(D(LeftShift), T(5), U(LeftShift));
+    break;
+
+  case MACRO_6:
+    return MACRODOWN(D(LeftShift), T(6), U(LeftShift));
+    break;
+
+  case MACRO_7:
+    return MACRODOWN(D(LeftShift), T(7), U(LeftShift));
+    break;
+
+  case MACRO_8:
+    return MACRODOWN(D(LeftShift), T(8), U(LeftShift));
+    break;
+
+  case MACRO_9:
+    return MACRODOWN(D(LeftShift), T(9), U(LeftShift));
     break;
 
   case MACRO_ALT_F4:
@@ -432,10 +477,18 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_END:
     if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
-      return MACRODOWN(D(LeftShift), D(LeftControl), T(End), U(LeftControl));
-    } else {
-      return MACRODOWN(D(LeftControl), T(End), U(LeftControl));
+        Macros.play(MACRODOWN(D(LeftShift)));
     }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+        Macros.play(MACRODOWN(D(LeftAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+        Macros.play(MACRODOWN(D(RightAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+        Macros.play(MACRODOWN(D(LeftGui)));
+    }
+    return MACRODOWN(D(LeftControl), T(End), U(LeftControl));
     break;
 
   case MACRO_CTRL_F:
@@ -452,18 +505,34 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_HOME:
     if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
-      return MACRODOWN(D(LeftShift), D(LeftControl), T(Home), U(LeftControl));
-    } else {
-      return MACRODOWN(D(LeftControl), T(Home), U(LeftControl));
+        Macros.play(MACRODOWN(D(LeftShift)));
     }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+        Macros.play(MACRODOWN(D(LeftAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+        Macros.play(MACRODOWN(D(RightAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+        Macros.play(MACRODOWN(D(LeftGui)));
+    }
+    return MACRODOWN(D(LeftControl), T(Home), U(LeftControl));
     break;
 
   case MACRO_CTRL_LEFT:
     if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
-      return MACRODOWN(D(LeftShift), D(LeftControl), T(LeftArrow), U(LeftControl));
-    } else {
-      return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
+        Macros.play(MACRODOWN(D(LeftShift)));
     }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+        Macros.play(MACRODOWN(D(LeftAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+        Macros.play(MACRODOWN(D(RightAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+        Macros.play(MACRODOWN(D(LeftGui)));
+    }
+    return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
     break;
 
   case MACRO_CTRL_N:
@@ -488,15 +557,26 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_RIGHT:
     if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
-      return MACRODOWN(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl));
-    } else {
-      return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
+        Macros.play(MACRODOWN(D(LeftShift)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+        Macros.play(MACRODOWN(D(LeftAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+        Macros.play(MACRODOWN(D(RightAlt)));
+    }
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+        Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
     break;
 
   case MACRO_CTRL_S:
     return MACRODOWN(D(LeftControl), T(K), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_SHIFT_ENTER:
+    return MACRODOWN(D(LeftControl), D(LeftShift), T(Enter), U(LeftShift), U(LeftControl));
     break;
 
   case MACRO_CTRL_SHIFT_Z:
@@ -531,10 +611,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(LeftBracket), U(LeftControl));
     break;
 
-  case MACRO_ENTER_SEMI_COLON:
-    return MACRODOWN(D(LeftShift), T(G), U(LeftShift), T(Enter));
-    break;
-
   case MACRO_LEFT_CURLY_BRACKET:
     return MACRODOWN(D(RightAlt), T(X), U(RightAlt));
     break;
@@ -543,26 +619,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(T(Spacebar), T(Minus), T(Spacebar));
     break;
 
-  case MACRO_SPACE_SHIFT:
-    return MACRODOWN(T(Spacebar), D(LeftShift), U(LeftShift));
-    break;
-
-
-  case MACRO_SUPER_DOWN:
-    return MACRODOWN(D(LeftGui), T(DownArrow), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_UP:
-    return MACRODOWN(D(LeftGui), T(UpArrow), U(LeftGui));
-    break;
-
-  case MACRO_TOGGLE_QUKEYS:
-    if (keyToggledOn(keyState))
-      Qukeys.toggle();
-    break;
-
   case MACRO_VI:
-    // TODOTODO
+    // TODO
     break;
 
   }
@@ -656,6 +714,7 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
 KALEIDOSCOPE_INIT_PLUGINS(
+  // Qukeys
   Qukeys,
 
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
@@ -726,8 +785,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // with a custom LED effect
   NumPad,
 
-
   //OneShot,
+  OneShot,
 
   // The macros plugin adds support for macros
   Macros,
@@ -760,22 +819,21 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
 
   QUKEYS(
-    //kaleidoscope::Qukey(0, 2, 1,  Key_LeftShift),
+    kaleidoscope::Qukey(0, 0, 8,  Key_LeftShift),
+    kaleidoscope::Qukey(0, 2, 1,  Key_LeftGui),
     kaleidoscope::Qukey(0, 2, 2,  Key_LeftAlt),
     kaleidoscope::Qukey(0, 2, 3,  Key_LeftControl),
     kaleidoscope::Qukey(0, 2, 4,  Key_LeftShift),
-//    kaleidoscope::Qukey(0, 2, 5,  Key_LeftShift),
-//    kaleidoscope::Qukey(0, 2, 10, Key_RightShift),
+    kaleidoscope::Qukey(0, 2, 5,  ShiftToLayer(NUMPAD)),
+    kaleidoscope::Qukey(0, 2, 10, ShiftToLayer(NUMPAD)),
     kaleidoscope::Qukey(0, 2, 11, Key_LeftShift),
     kaleidoscope::Qukey(0, 2, 12, Key_RightControl),
     kaleidoscope::Qukey(0, 2, 13, Key_RightAlt),
-//    kaleidoscope::Qukey(0, 2, 14, Key_LeftShift),
+    kaleidoscope::Qukey(0, 2, 14, Key_RightGui),
+    kaleidoscope::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
+    kaleidoscope::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION)),
   )
-  Qukeys.setTimeout(500);
-  //OneShot.time_out = 300;
-  //OneShot.hold_time_out = 500;
-//  OneShot.double_tap_sticky = false;
-
+  Qukeys.setTimeout(250);
 
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
