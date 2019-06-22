@@ -326,10 +326,10 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___,
 
-   ___,             M(MACRO_6), M(MACRO_7), M(MACRO_8),    M(MACRO_9), M(MACRO_0),         ___,
-   ___,                    ___, M(MACRO_4), M(MACRO_5),    M(MACRO_6), Key_KeypadAdd,      Key_KeypadMultiply,
-                           ___, M(MACRO_1), M(MACRO_2),    M(MACRO_3), Key_KeypadSubtract, Key_KeypadDivide,
-   ___,                    ___, M(MACRO_0), Key_KeypadDot, Key_Minus,  Key_Minus,          ___,
+   ___,                    ___, Key_KeypadAdd, Key_KeypadSubtract, Key_KeypadDivide, Key_KeypadMultiply, ___,
+   ___,                    ___, M(MACRO_7),    M(MACRO_8),         M(MACRO_9),       M(MACRO_0),         ___,
+                           ___, M(MACRO_4),    M(MACRO_5),         M(MACRO_6),       Key_KeypadEnter,    ___,
+   ___,                    ___, M(MACRO_1),    M(MACRO_2),         M(MACRO_3),       Key_KeypadDot,      ___,
    ___, ___, ___, ___,
    ___),
 
