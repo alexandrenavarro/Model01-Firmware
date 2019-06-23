@@ -81,6 +81,7 @@
 // Support for QuKeys
 #include <Kaleidoscope-Qukeys.h>
 
+// Support for Leader
 #include <Kaleidoscope-Leader.h>
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
@@ -299,15 +300,15 @@ KEYMAPS(
   (Key_Equals,                 Key_1, Key_2, Key_3, Key_4, Key_5, M(MACRO_LEFT_CURLY_BRACKET),
    Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Minus,
    Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, LEAD(1),
-   Key_Tab, Key_F, Key_Backspace, Key_Escape,
+   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, ___,
+   Key_Tab, Key_Backspace, Key_LeftArrow, Key_RightArrow,
    LT(FUNCTION, LeftArrow),
 
-   Key_UpArrow,                 Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
-   Key_DownArrow,               Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
-                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   ___,                         Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   LEAD(2), Key_Enter, Key_Spacebar, LEAD(0),
+   ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
+   ___,                        Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
+                               Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   ___,                        Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   Key_Escape, Key_Enter, Key_Spacebar, Key_LeftShift,
    LT(FUNCTION, RightArrow)),
 
 #else
@@ -348,6 +349,7 @@ KEYMAPS(
    Key_CapsLock, M(MACRO_CTRL_SHIFT_ENTER), ___, Key_LeftShift,
    ___)
 ) // KEYMAPS(
+
 
 /* Re-enable astyle's indent enforcement */
 // *INDENT-ON*
@@ -629,6 +631,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   return MACRO_NONE;
 }
 
+/*
 
 static void leaderSA(uint8_t seq_index) {
     Macros.type(PSTR(" A"));
@@ -884,7 +887,7 @@ static void leader(uint8_t seq_index) {
     Macros.type(PSTR(""));
 }
 
-static const kaleidoscope::Leader::dictionary_t leader_dictionary[] PROGMEM =
+static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
 LEADER_DICT(
 {LEADER_SEQ(LEAD(0), Key_A), leaderSA},
 {LEADER_SEQ(LEAD(0), Key_B), leaderSB},
@@ -974,6 +977,8 @@ LEADER_DICT(
 {LEADER_SEQ(LEAD(2), Key_Escape), leader}
 
 );
+
+*/
 
 // These 'solid' color effect definitions define a rainbow of
 // LED color modes calibrated to draw 500mA or less on the
@@ -1065,7 +1070,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Qukeys,
 
   // Leader
-  Leader,
+  //Leader,
 
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
   // editable keymap in EEPROM.
@@ -1101,7 +1106,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The rainbow effect changes the color of all of the keyboard's keys at the same time
   // running through all the colors of the rainbow.
-  //LEDRainbowEffect,
+//  LEDRainbowEffect,
 
   // The rainbow wave effect lights up your keyboard with all the colors of a rainbow
   // and slowly moves the rainbow across your keyboard
@@ -1157,9 +1162,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // comfortable - or able - to do automatically, but can be useful
   // nevertheless. Such as toggling the key report protocol between Boot (used
   // by BIOSes) and Report (NKRO).
-  USBQuirks,
-
-  OneShot
+  USBQuirks
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
@@ -1168,29 +1171,32 @@ KALEIDOSCOPE_INIT_PLUGINS(
  */
 void setup() {
 
+
   QUKEYS(
-    kaleidoscope::Qukey(0, 0, 8,  Key_LeftShift),
-    kaleidoscope::Qukey(0, 2, 1,  Key_LeftGui),
-    kaleidoscope::Qukey(0, 2, 2,  Key_LeftAlt),
-    kaleidoscope::Qukey(0, 2, 3,  Key_LeftControl),
-    kaleidoscope::Qukey(0, 2, 4,  Key_LeftShift),
-    kaleidoscope::Qukey(0, 2, 5,  ShiftToLayer(NUMPAD)),
-    kaleidoscope::Qukey(0, 2, 10, ShiftToLayer(NUMPAD)),
-    kaleidoscope::Qukey(0, 2, 11, Key_LeftShift),
-    kaleidoscope::Qukey(0, 2, 12, Key_RightControl),
-    kaleidoscope::Qukey(0, 2, 13, Key_RightAlt),
-    kaleidoscope::Qukey(0, 2, 14, Key_RightGui),
-    kaleidoscope::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
-    kaleidoscope::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION)),
+    kaleidoscope::plugin::Qukey(0, 0, 8,  Key_LeftShift),
+    kaleidoscope::plugin::Qukey(0, 2, 1,  Key_LeftGui),
+    kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftShift),
+    kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftAlt),
+    kaleidoscope::plugin::Qukey(0, 2, 4,  Key_LeftControl),
+    kaleidoscope::plugin::Qukey(0, 2, 5,  ShiftToLayer(NUMPAD)),
+    kaleidoscope::plugin::Qukey(0, 2, 10, ShiftToLayer(NUMPAD)),
+    kaleidoscope::plugin::Qukey(0, 2, 11, Key_RightControl),
+    kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightAlt),
+    kaleidoscope::plugin::Qukey(0, 2, 13, Key_LeftShift),
+    kaleidoscope::plugin::Qukey(0, 2, 14, Key_RightGui),
+    kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
+    kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
   )
+
   Qukeys.setTimeout(250);
+
 
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
   // Leader
-  Leader.dictionary = leader_dictionary;
-  Leader.time_out = 3000;
+  //Leader.dictionary = leader_dictionary;
+  //Leader.time_out = 3000;
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
