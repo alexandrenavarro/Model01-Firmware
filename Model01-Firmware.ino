@@ -302,7 +302,7 @@ KEYMAPS(
    Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, M(MACRO_SEMICOLON),
    Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Minus,
-   Key_Tab, Key_Backspace, Key_LeftArrow, Key_RightArrow,
+   Key_Tab, Key_Backspace, Key_LeftGui, Key_Escape,
    ShiftToLayer(FUNCTION),
 
    ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_CapsLock,
@@ -340,7 +340,7 @@ KEYMAPS(
    M(MACRO_CTRL_O),           M(MACRO_CTRL_N),             M(MACRO_CTRL_T),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_ALT_F4), ___,
    Key_Insert,                M(MACRO_CTRL_Z),             M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
    ___,                       ___/* click pressed */,      ___/* click released */, Key_mouseBtnM,         Key_mouseBtnL,       Key_mouseBtnR,   ___/*double click*/,
-   M(MACRO_ALT_TAB), Key_Spacebar, Key_Enter, Key_Escape,
+   ___, Key_Spacebar, ___, ___,
    ___,
 
    ___,                       Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
@@ -1178,7 +1178,7 @@ void setup() {
 
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, 2, 1,  Key_LeftGui),
+    //kaleidoscope::plugin::Qukey(0, 2, 1,  Key_LeftGui),
     kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftAlt),
     kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftControl),
     kaleidoscope::plugin::Qukey(0, 2, 4,  OSM(LeftShift)),
@@ -1187,7 +1187,7 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, 2, 11, OSM(LeftShift)),
     kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightControl),
     kaleidoscope::plugin::Qukey(0, 2, 13, Key_RightAlt),
-    kaleidoscope::plugin::Qukey(0, 2, 14, Key_RightGui),
+    //kaleidoscope::plugin::Qukey(0, 2, 14, Key_RightGui),
     kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
     kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
   )
