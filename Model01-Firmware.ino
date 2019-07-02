@@ -139,6 +139,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_Y,
        MACRO_CTRL_Z,
        MACRO_LEFT_CURLY_BRACKET,
+       MACRO_SEMICOLON,
        MACRO_SPACE_EQUALS_SPACE,
        MACRO_VI
      };
@@ -298,18 +299,18 @@ KEYMAPS(
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
   (Key_Equals,                 Key_1, Key_2, Key_3, Key_4, Key_5, M(MACRO_LEFT_CURLY_BRACKET),
-   Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Minus,
+   Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, M(MACRO_SEMICOLON),
    Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, ___,
+   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Minus,
    Key_Tab, Key_Backspace, Key_LeftArrow, Key_RightArrow,
-   LT(FUNCTION, LeftArrow),
+   ShiftToLayer(FUNCTION),
 
-   ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Minus,
+   ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_CapsLock,
    ___,                        Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    ___,                        Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_Escape, Key_Enter, Key_Spacebar, Key_LeftShift,
-   LT(FUNCTION, RightArrow)),
+   ___, ___, Key_Spacebar, Key_Enter,
+   ShiftToLayer(FUNCTION)),
 
 #else
 
@@ -336,17 +337,17 @@ KEYMAPS(
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,           Key_F1,                      Key_F2,                  Key_F3,                Key_F4,              Key_F5,          ___,
-   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),             M(MACRO_CTRL_T),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_ALT_F4), M(MACRO_SPACE_EQUALS_SPACE),
+   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),             M(MACRO_CTRL_T),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_ALT_F4), ___,
    Key_Insert,                M(MACRO_CTRL_Z),             M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
    ___,                       ___/* click pressed */,      ___/* click released */, Key_mouseBtnM,         Key_mouseBtnL,       Key_mouseBtnR,   ___/*double click*/,
-   M(MACRO_ALT_TAB), Key_Spacebar, Key_Enter, M(MACRO_ALT_SPACE),
+   M(MACRO_ALT_TAB), Key_Spacebar, Key_Enter, Key_Escape,
    ___,
 
    ___,                       Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
    ___,                       M(MACRO_CTRL_HOME),    M(MACRO_CTRL_LEFT),   Key_UpArrow,        M(MACRO_CTRL_RIGHT), Key_F8,              Key_F12,
                               Key_Home,              Key_LeftArrow,        Key_DownArrow,      Key_RightArrow,      Key_End,             Key_PcApplication,
    ___,                       M(MACRO_CTRL_F),       M(MACRO_CTRL_R),      Key_PageDown,       M(MACRO_CTRL_G),     M(MACRO_CTRL_END),   ___,
-   Key_CapsLock, M(MACRO_CTRL_SHIFT_ENTER), ___, Key_LeftShift,
+   ___, ___, M(MACRO_SPACE_EQUALS_SPACE), M(MACRO_CTRL_SHIFT_ENTER),
    ___)
 ) // KEYMAPS(
 
@@ -617,6 +618,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_LEFT_CURLY_BRACKET:
     return MACRODOWN(D(RightAlt), T(X), U(RightAlt));
+    break;
+
+  case MACRO_SEMICOLON:
+    return MACRODOWN(D(LeftShift), T(G), U(LeftShift));
     break;
 
   case MACRO_SPACE_EQUALS_SPACE:
@@ -1102,7 +1107,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   LEDControl,
 
   // We start with the LED effect that turns off all the LEDs.
-  //LEDOff,
+  LEDOff,
 
   // The rainbow effect changes the color of all of the keyboard's keys at the same time
   // running through all the colors of the rainbow.
@@ -1156,7 +1161,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The MagicCombo plugin lets you use key combinations to trigger custom
   // actions - a bit like Macros, but triggered by pressing multiple keys at the
   // same time.
-  MagicCombo,
+  //MagicCombo,
 
   // The USBQuirks plugin lets you do some things with USB that we aren't
   // comfortable - or able - to do automatically, but can be useful
@@ -1173,22 +1178,22 @@ void setup() {
 
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, 0, 8,  Key_LeftShift),
     kaleidoscope::plugin::Qukey(0, 2, 1,  Key_LeftGui),
-    kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftShift),
-    kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftAlt),
-    kaleidoscope::plugin::Qukey(0, 2, 4,  Key_LeftControl),
+    kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftAlt),
+    kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftControl),
+    kaleidoscope::plugin::Qukey(0, 2, 4,  OSM(LeftShift)),
     kaleidoscope::plugin::Qukey(0, 2, 5,  ShiftToLayer(NUMPAD)),
     kaleidoscope::plugin::Qukey(0, 2, 10, ShiftToLayer(NUMPAD)),
-    kaleidoscope::plugin::Qukey(0, 2, 11, Key_RightControl),
-    kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightAlt),
-    kaleidoscope::plugin::Qukey(0, 2, 13, Key_LeftShift),
+    kaleidoscope::plugin::Qukey(0, 2, 11, OSM(LeftShift)),
+    kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightControl),
+    kaleidoscope::plugin::Qukey(0, 2, 13, Key_RightAlt),
     kaleidoscope::plugin::Qukey(0, 2, 14, Key_RightGui),
     kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
     kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
   )
 
-  Qukeys.setTimeout(250);
+  Qukeys.setTimeout(200);
+  OneShot.time_out = 500;
 
 
   // First, call Kaleidoscope's internal setup function
