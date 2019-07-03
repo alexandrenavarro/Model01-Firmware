@@ -139,6 +139,10 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_Y,
        MACRO_CTRL_Z,
        MACRO_LEFT_CURLY_BRACKET,
+       MACRO_MOUSE_NW_NW_NW,
+       MACRO_MOUSE_SW_SW_SW,
+       MACRO_MOUSE_NE_NE_NE,
+       MACRO_MOUSE_SE_SE_SE,
        MACRO_SEMICOLON,
        MACRO_SPACE_EQUALS_SPACE,
        MACRO_VI
@@ -322,16 +326,16 @@ KEYMAPS(
 
   [NUMPAD] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
-   ___,                       ___,                         Key_mouseUpL,         Key_mouseUp,       Key_mouseUpR,     Key_mouseBtnM, ___,
-   ___,                       ___/*click released */,      Key_mouseL,           Key_mouseBtnL,     Key_mouseR,       ___,
-   ___,                       ___/*click pressed */,       Key_mouseDnL,         Key_mouseDn,       Key_mouseDnR,     Key_mouseBtnR, ___,
+   ___,                    M(MACRO_MOUSE_NW_NW_NW),     Key_mouseWarpNW,         Key_mouseWarpN,       Key_mouseWarpNE,     M(MACRO_MOUSE_NE_NE_NE), ___,
+   ___,                    Key_mouseWarpEnd,            Key_mouseWarpW,          Key_mouseWarpIn,      Key_mouseWarpE,      ___,
+   ___,                    M(MACRO_MOUSE_SW_SW_SW),     Key_mouseWarpSW,         Key_mouseWarpS,       Key_mouseWarpSE,     M(MACRO_MOUSE_SE_SE_SE), ___,
    ___, ___, ___, ___,
    ___,
 
-   ___,                    ___, Key_KeypadAdd, Key_KeypadSubtract, Key_KeypadDivide, Key_KeypadMultiply, ___,
-   ___,                    ___, M(MACRO_7),    M(MACRO_8),         M(MACRO_9),       M(MACRO_0),         ___,
-                           ___, M(MACRO_4),    M(MACRO_5),         M(MACRO_6),       Key_KeypadEnter,    ___,
-   ___,                    ___, M(MACRO_1),    M(MACRO_2),         M(MACRO_3),       Key_KeypadDot,      ___,
+   ___,                    ___,        Key_KeypadAdd, Key_KeypadSubtract, Key_KeypadDivide, Key_KeypadMultiply, ___,
+   ___,                    M(MACRO_6), M(MACRO_7),    M(MACRO_8),         M(MACRO_9),       M(MACRO_0),         ___,
+                           ___,        M(MACRO_4),    M(MACRO_5),         M(MACRO_6),       Key_KeypadEnter,    ___,
+   ___,                    M(MACRO_0), M(MACRO_1),    M(MACRO_2),         M(MACRO_3),       Key_KeypadDot,      ___,
    ___, ___, ___, ___,
    ___),
 
@@ -339,8 +343,8 @@ KEYMAPS(
   (Key_PrintScreen,           Key_F1,                      Key_F2,                  Key_F3,                Key_F4,              Key_F5,          ___,
    M(MACRO_CTRL_O),           M(MACRO_CTRL_N),             M(MACRO_CTRL_T),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_ALT_F4), ___,
    Key_Insert,                M(MACRO_CTRL_Z),             M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
-   ___,                       ___/* click pressed */,      ___/* click released */, Key_mouseBtnM,         Key_mouseBtnL,       Key_mouseBtnR,   ___/*double click*/,
-   ___, Key_Spacebar, ___, ___,
+   ___/* click pressed */,    ___/* click released */,     Key_mouseBtnM,           Key_mouseBtnL,         Key_mouseBtnR,       Key_PcApplication, ___/*double click*/,
+   Key_LeftShift, Key_Spacebar, ___, ___,
    ___,
 
    ___,                       Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
@@ -618,6 +622,22 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_LEFT_CURLY_BRACKET:
     return MACRODOWN(D(RightAlt), T(X), U(RightAlt));
+    break;
+
+  case MACRO_MOUSE_NW_NW_NW:
+    return MACRODOWN(T(mouseWarpNW), T(mouseWarpNW), T(mouseWarpNW), T(mouseWarpEnd));
+    break;
+
+  case MACRO_MOUSE_SW_SW_SW:
+    return MACRODOWN(T(mouseWarpSW), T(mouseWarpSW), T(mouseWarpSW), T(mouseWarpEnd));
+    break;
+
+  case MACRO_MOUSE_NE_NE_NE:
+    return MACRODOWN(T(mouseWarpNE), T(mouseWarpNE), T(mouseWarpNE), T(mouseWarpEnd));
+    break;
+
+  case MACRO_MOUSE_SE_SE_SE:
+    return MACRODOWN(T(mouseWarpSE), T(mouseWarpSE), T(mouseWarpSE), T(mouseWarpEnd));
     break;
 
   case MACRO_SEMICOLON:
@@ -1075,7 +1095,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Qukeys,
 
   // Leader
-  //Leader,
+  Leader,
 
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
   // editable keymap in EEPROM.
@@ -1178,7 +1198,6 @@ void setup() {
 
 
   QUKEYS(
-    //kaleidoscope::plugin::Qukey(0, 2, 1,  Key_LeftGui),
     kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftAlt),
     kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftControl),
     kaleidoscope::plugin::Qukey(0, 2, 4,  OSM(LeftShift)),
@@ -1187,7 +1206,6 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, 2, 11, OSM(LeftShift)),
     kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightControl),
     kaleidoscope::plugin::Qukey(0, 2, 13, Key_RightAlt),
-    //kaleidoscope::plugin::Qukey(0, 2, 14, Key_RightGui),
     kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
     kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
   )
@@ -1198,6 +1216,8 @@ void setup() {
 
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
+
+  MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
 
   // Leader
   //Leader.dictionary = leader_dictionary;
