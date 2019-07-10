@@ -110,11 +110,38 @@ enum { MACRO_VERSION_INFO,
        MACRO_8,
        MACRO_9,
        MACRO_ALT_F4,
+       MACRO_ALT_GR_1,
+       MACRO_ALT_GR_2,
+       MACRO_ALT_GR_3,
+       MACRO_ALT_GR_4,
+       MACRO_ALT_GR_5,
+       MACRO_ALT_GR_A,
+       MACRO_ALT_GR_A_AIGU,
+       MACRO_ALT_GR_B,
+       MACRO_ALT_GR_COMMA,
+       MACRO_ALT_GR_DOLLAR,
+       MACRO_ALT_GR_DOT,
+       MACRO_ALT_GR_E,
+       MACRO_ALT_GR_EQUALS,
+       MACRO_ALT_GR_E_AIGU,
+       MACRO_ALT_GR_E_GRAVE,
+       MACRO_ALT_GR_E_CIRC,
+       MACRO_ALT_GR_I,
+       MACRO_ALT_GR_K,
+       MACRO_ALT_GR_O,
+       MACRO_ALT_GR_P,
+       MACRO_ALT_GR_U,
+       MACRO_ALT_GR_W,
+       MACRO_ALT_GR_X,
+       MACRO_ALT_GR_Y,
        MACRO_ALT_LEFT,
        MACRO_ALT_RIGHT,
+       MACRO_ALT_SHIFT_TAB,
        MACRO_ALT_SPACE,
        MACRO_ALT_TAB,
        MACRO_CTRL_A,
+       MACRO_CTRL_ALT_GR_3,
+       MACRO_CTRL_ALT_GR_4,
        MACRO_CTRL_C,
        MACRO_CTRL_END,
        MACRO_CTRL_F,
@@ -302,19 +329,19 @@ KEYMAPS(
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (Key_Equals,                 Key_1, Key_2, Key_3, Key_4, Key_5, M(MACRO_LEFT_CURLY_BRACKET),
-   Key_Backtick,               Key_Q, Key_W, Key_E, Key_R, Key_T, M(MACRO_SEMICOLON),
-   Key_RightBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_NonUsBackslashAndPipe,  Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Minus,
-   Key_Tab, Key_Backspace, Key_LeftGui, Key_Escape,
-   ShiftToLayer(FUNCTION),
+  (Key_Backtick,               Key_1,     M(MACRO_ALT_GR_2), M(MACRO_ALT_GR_3), Key_4, Key_5, ___,
+   Key_RightBracket,           Key_Q,     Key_W,             Key_E,             Key_R, Key_T, ___,
+   Key_Minus,                  Key_A,     Key_S,             Key_D,             Key_F, Key_G,
+   Key_NonUsBackslashAndPipe,  Key_Z,     Key_X,             Key_C,             Key_V, Key_B, OSM(LeftGui),
+   OSM(LeftShift), Key_Backspace, OSM(LeftAlt), OSM(LeftControl),
+   OSL(FUNCTION),
 
-   ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_CapsLock,
+   ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Equals,
    ___,                        Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    ___,                        Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   ___, ___, Key_Spacebar, Key_Enter,
-   ShiftToLayer(FUNCTION)),
+   OSM(RightAlt), Key_Tab, Key_Spacebar, Key_Enter,
+   OSL(NUMPAD)),
 
 #else
 
@@ -325,10 +352,10 @@ KEYMAPS(
 
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___, ___, ___, ___, ___, ___, ___,
-   ___,                    M(MACRO_MOUSE_NW_NW_NW),     Key_mouseWarpNW,         Key_mouseWarpN,       Key_mouseWarpNE,     M(MACRO_MOUSE_NE_NE_NE), ___,
-   ___,                    Key_mouseWarpEnd,            Key_mouseWarpW,          Key_mouseWarpIn,      Key_mouseWarpE,      ___,
-   ___,                    M(MACRO_MOUSE_SW_SW_SW),     Key_mouseWarpSW,         Key_mouseWarpS,       Key_mouseWarpSE,     M(MACRO_MOUSE_SE_SE_SE), ___,
+  (M(MACRO_ALT_GR_DOLLAR), M(MACRO_ALT_GR_1),      Key_2,                  Key_3,             M(MACRO_ALT_GR_4),   M(MACRO_ALT_GR_5), ___,
+   M(MACRO_ALT_GR_W),      M(MACRO_ALT_GR_B),      M(MACRO_ALT_GR_E_AIGU), M(MACRO_ALT_GR_P), M(MACRO_ALT_GR_O),   M(MACRO_ALT_GR_E_GRAVE), ___,
+   M(MACRO_ALT_GR_EQUALS), M(MACRO_ALT_GR_A),      M(MACRO_ALT_GR_U),      M(MACRO_ALT_GR_I), M(MACRO_ALT_GR_E),   M(MACRO_ALT_GR_COMMA),
+   M(MACRO_ALT_GR_E_CIRC), M(MACRO_ALT_GR_A_AIGU), M(MACRO_ALT_GR_Y),      M(MACRO_ALT_GR_X), M(MACRO_ALT_GR_DOT), M(MACRO_ALT_GR_K), ___,
    ___, ___, ___, ___,
    ___,
 
@@ -336,22 +363,22 @@ KEYMAPS(
    ___,                    M(MACRO_6), M(MACRO_7),    M(MACRO_8),         M(MACRO_9),       M(MACRO_0),         ___,
                            ___,        M(MACRO_4),    M(MACRO_5),         M(MACRO_6),       Key_KeypadEnter,    ___,
    ___,                    M(MACRO_0), M(MACRO_1),    M(MACRO_2),         M(MACRO_3),       Key_KeypadDot,      ___,
-   ___, ___, ___, ___,
+   Key_Esc, M(MACRO_ALT_SHIFT_TAB), M(MACRO_SPACE_EQUALS_SPACE), M(MACRO_CTRL_SHIFT_ENTER),
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (Key_PrintScreen,           Key_F1,                      Key_F2,                  Key_F3,                Key_F4,              Key_F5,          ___,
-   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),             M(MACRO_CTRL_T),         M(MACRO_CTRL_S),       M(MACRO_CTRL_F4),    M(MACRO_ALT_F4), ___,
-   Key_Insert,                M(MACRO_CTRL_Z),             M(MACRO_CTRL_X),         M(MACRO_CTRL_C),       M(MACRO_CTRL_V),     Key_Delete,
-   ___/* click pressed */,    ___/* click released */,     Key_mouseBtnM,           Key_mouseBtnL,         Key_mouseBtnR,       Key_PcApplication, ___/*double click*/,
-   Key_LeftShift, Key_Spacebar, ___, ___,
+  (Key_PrintScreen,           Key_F1,                Key_F2,               Key_F3,             Key_F4,              Key_F5,              ___,
+   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),       M(MACRO_CTRL_T),      M(MACRO_CTRL_S),    M(MACRO_CTRL_F4),    M(MACRO_ALT_F4),     ___,
+   Key_Insert,                M(MACRO_CTRL_Z),       M(MACRO_CTRL_X),      M(MACRO_CTRL_C),    M(MACRO_CTRL_V),     Key_Delete,
+   ___,                       ___,                   Key_mouseBtnL,        Key_mouseBtnM,      Key_mouseBtnR,       Key_PcApplication,   ___,
+   ___, Key_Delete, OSM(LeftGui), ___,
    ___,
 
    ___,                       Key_F6,                Key_F7,               Key_PageUp,         Key_F9,              Key_F10,             Key_F11,
    ___,                       M(MACRO_CTRL_HOME),    M(MACRO_CTRL_LEFT),   Key_UpArrow,        M(MACRO_CTRL_RIGHT), Key_F8,              Key_F12,
                               Key_Home,              Key_LeftArrow,        Key_DownArrow,      Key_RightArrow,      Key_End,             Key_PcApplication,
-   ___,                       M(MACRO_CTRL_F),       M(MACRO_CTRL_R),      Key_PageDown,       M(MACRO_CTRL_G),     M(MACRO_CTRL_END),   ___,
-   ___, ___, M(MACRO_SPACE_EQUALS_SPACE), M(MACRO_CTRL_SHIFT_ENTER),
+   ___,                       M(MACRO_CTRL_F),       M(MACRO_ALT_LEFT),    Key_PageDown,       M(MACRO_ALT_RIGHT),  M(MACRO_CTRL_END),   ___,
+   ___, ___, ___, ___,
    ___)
 ) // KEYMAPS(
 
@@ -460,6 +487,102 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftAlt), T(F4), U(LeftAlt));
     break;
 
+  case MACRO_ALT_GR_1:
+    return MACRODOWN(D(RightAlt), T(1), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_2:
+    return MACRODOWN(D(RightAlt), T(2), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_3:
+    return MACRODOWN(D(RightAlt), T(3), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_4:
+    return MACRODOWN(D(RightAlt), T(4), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_5:
+    return MACRODOWN(D(RightAlt), T(5), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_A:
+     return MACRODOWN(D(RightAlt), T(A), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_A_AIGU:
+     return MACRODOWN(D(RightAlt), T(Z), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_B:
+    return MACRODOWN(D(RightAlt), T(Q), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_COMMA:
+     return MACRODOWN(D(RightAlt), T(G), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_DOLLAR:
+    return MACRODOWN(D(RightAlt), T(Backtick), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_DOT:
+     return MACRODOWN(D(RightAlt), T(V), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_E:
+     return MACRODOWN(D(RightAlt), T(F), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_E_AIGU:
+     return MACRODOWN(D(RightAlt), T(W), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_E_CIRC:
+     return MACRODOWN(D(RightAlt), T(NonUsBackslashAndPipe), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_E_GRAVE:
+     return MACRODOWN(D(RightAlt), T(T), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_I:
+     return MACRODOWN(D(RightAlt), T(D), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_EQUALS:
+     return MACRODOWN(D(RightAlt), T(Minus), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_K:
+     return MACRODOWN(D(RightAlt), T(B), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_O:
+     return MACRODOWN(D(RightAlt), T(R), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_P:
+     return MACRODOWN(D(RightAlt), T(E), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_U:
+     return MACRODOWN(D(RightAlt), T(S), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_W:
+    return MACRODOWN(D(RightAlt), T(Backtick), U(RightAlt));
+    break;
+
+  case MACRO_ALT_GR_X:
+     return MACRODOWN(D(RightAlt), T(C), U(RightAlt));
+     break;
+
+  case MACRO_ALT_GR_Y:
+     return MACRODOWN(D(RightAlt), T(X), U(RightAlt));
+     break;
+
   case MACRO_ALT_LEFT:
     return MACRODOWN(D(LeftAlt), T(LeftArrow), U(LeftAlt));
     break;
@@ -467,6 +590,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ALT_RIGHT:
     return MACRODOWN(D(LeftAlt), T(RightArrow), U(LeftAlt));
     break;
+
+  case MACRO_ALT_SHIFT_TAB:
+        return MACRODOWN(D(LeftAlt), D(LeftShift), T(Tab), U(LeftShift), U(LeftAlt));
+        break;
 
   case MACRO_ALT_SPACE:
     return MACRODOWN(D(LeftAlt), T(Space), U(LeftAlt));
@@ -478,6 +605,14 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_A:
     return MACRODOWN(D(LeftControl), T(A), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_ALT_GR_3:
+    return MACRODOWN(D(LeftControl), D(RightAlt), T(3), U(RightAlt), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_ALT_GR_4:
+    return MACRODOWN(D(LeftControl), D(RightAlt), T(4), U(RightAlt), U(LeftControl));
     break;
 
   case MACRO_CTRL_C:
@@ -1092,7 +1227,7 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
 // added in the order they're listed here.
 KALEIDOSCOPE_INIT_PLUGINS(
   // Qukeys
-  Qukeys,
+  //Qukeys,
 
   // Leader
   Leader,
@@ -1197,21 +1332,22 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
 
 
-  QUKEYS(
-    kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftAlt),
-    kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftControl),
-    kaleidoscope::plugin::Qukey(0, 2, 4,  OSM(LeftShift)),
-    kaleidoscope::plugin::Qukey(0, 2, 5,  ShiftToLayer(NUMPAD)),
-    kaleidoscope::plugin::Qukey(0, 2, 10, ShiftToLayer(NUMPAD)),
-    kaleidoscope::plugin::Qukey(0, 2, 11, OSM(LeftShift)),
-    kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightControl),
-    kaleidoscope::plugin::Qukey(0, 2, 13, Key_RightAlt),
-    kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
-    kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
-  )
+//   QUKEYS(
+//     kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftAlt),
+//     kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftControl),
+//     kaleidoscope::plugin::Qukey(0, 2, 4,  OSM(LeftShift)),
+//     kaleidoscope::plugin::Qukey(0, 2, 5,  ShiftToLayer(NUMPAD)),
+//     kaleidoscope::plugin::Qukey(0, 2, 10, ShiftToLayer(NUMPAD)),
+//     kaleidoscope::plugin::Qukey(0, 2, 11, OSM(LeftShift)),
+//     kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightControl),
+//     kaleidoscope::plugin::Qukey(0, 2, 13, Key_RightAlt),
+//     kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
+//     kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
+//   )
+//  Qukeys.setTimeout(200);
 
-  Qukeys.setTimeout(200);
-  OneShot.time_out = 500;
+  //OneShot
+  //OneShot.time_out = 1000;
 
 
   // First, call Kaleidoscope's internal setup function
