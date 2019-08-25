@@ -345,15 +345,15 @@ KEYMAPS(
   (___,                        Key_1,     M(MACRO_ALT_GR_2), M(MACRO_ALT_GR_3), Key_4, Key_5, M(MACRO_LEFT_CURLY_BRACKET),
    Key_Backtick,               Key_Q,     Key_W,             Key_E,             Key_R, Key_T, M(MACRO_SEMICOLON),
    Key_RightBracket,           Key_A,     Key_S,             Key_D,             Key_F, Key_G,
-   Key_Minus,                  Key_Z,     Key_X,             Key_C,             Key_V, Key_B, Key_Escape,
-   OSM(LeftShift), Key_Backspace, OSM(LeftAlt), OSM(LeftControl),
-   ShiftToLayer(FUNCTION),
+   Key_Minus,                  Key_Z,     Key_X,             Key_C,             Key_V, Key_B, M(MACRO_ALT_TAB),
+   OSM(LeftControl), Key_Backspace, OSM(LeftShift), OSM(LeftAlt),
+   M(MACRO_ALT_SPACE),
 
    ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Equals,
    ___,                        Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   M(MACRO_SPACE_EQUALS_SPACE),Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_LeftGui, Key_Tab, Key_Spacebar, Key_Enter,
+   Key_Escape,                 Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   Key_LeftGui, Key_Enter, Key_Spacebar, Key_Tab,
    ShiftToLayer(NUMPAD)),
 
 #else
@@ -375,23 +375,23 @@ KEYMAPS(
    ___,                    ___,             Key_KeypadAdd,        Key_KeypadSubtract,  Key_KeypadDivide,  Key_KeypadMultiply,   ___,
    ___,                    M(MACRO_6),      M(MACRO_7),           M(MACRO_8),          M(MACRO_9),        M(MACRO_0),           Key_KeypadEnter,
                            Key_KeypadDot,   M(MACRO_1),           M(MACRO_2),          M(MACRO_3),        M(MACRO_4),           M(MACRO_5),
-   ___,                    ___,             M(MACRO_SUPER_LEFT),  M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP), M(MACRO_SUPER_RIGHT), ___,
+   ___,                    M(MACRO_ALT_F4), M(MACRO_SUPER_LEFT),  M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP), M(MACRO_SUPER_RIGHT), ___,
    OSM(RightAlt), M(MACRO_SHIFT_TAB), M(MACRO_ALT_GR_SPACE),   M(MACRO_CTRL_SHIFT_ENTER),
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,           Key_F1,                  Key_F2,               Key_F3,                 Key_F4,                Key_F5,              M(MACRO_CTRL_L),
-   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),         M(MACRO_CTRL_T),      M(MACRO_CTRL_S),        M(MACRO_CTRL_F4),      M(MACRO_ALT_F4),     Key_Spacebar,
+   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),         M(MACRO_CTRL_T),      M(MACRO_CTRL_S),        M(MACRO_CTRL_F4),      M(MACRO_ALT_F4),     M(MACRO_CTRL_F),
    Key_Insert,                M(MACRO_CTRL_Z),         M(MACRO_CTRL_X),      M(MACRO_CTRL_C),        M(MACRO_CTRL_V),       Key_Delete,
-   ___,                       Key_mouseBtnL,           M(MACRO_SUPER_TAB),   M(MACRO_CTRL_TAB),      M(MACRO_ALT_TAB),      Key_PcApplication,   ___,
-   ___, ___, ___, ___,
+   Key_Escape,                Key_LeftArrow,           Key_DownArrow,        Key_UpArrow,            Key_RightArrow,        Key_Enter,           ___,
+   ___, Key_Spacebar, ___, ___,
    ___,
 
    ___,                       Key_F6,                  Key_F7,               Key_F8,                 Key_F9,                Key_F10,             Key_F11,
    ___,                       M(MACRO_CTRL_HOME),      M(MACRO_CTRL_LEFT),   Key_PageDown,           Key_PageUp,            M(MACRO_CTRL_RIGHT), M(MACRO_CTRL_END),
                               Key_Home,                Key_LeftArrow,        Key_DownArrow,          Key_UpArrow,           Key_RightArrow,      Key_End,
-   ___,                       M(MACRO_CTRL_F),         M(MACRO_ALT_LEFT),    M(MACRO_ALT_DOWN),      M(MACRO_ALT_UP),       M(MACRO_ALT_RIGHT),  Key_F12,
-   ___, M(MACRO_ALT_TAB), M(MACRO_ALT_SPACE), M(MACRO_ALT_ENTER), 
+   ___,                       Key_PcApplication,       M(MACRO_ALT_LEFT),    M(MACRO_ALT_DOWN),      M(MACRO_ALT_UP),       M(MACRO_ALT_RIGHT),  Key_F12,
+   ___, ___, M(MACRO_SPACE_EQUALS_SPACE), M(MACRO_ALT_ENTER),
    ___)
 ) // KEYMAPS(
 
@@ -862,7 +862,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   return MACRO_NONE;
 }
 
-
+/*
 
 static void leaderSA(uint8_t seq_index) {
     Macros.type(PSTR(" A"));
@@ -1210,7 +1210,7 @@ LEADER_DICT(
 
 );
 
-
+*/
 
 // These 'solid' color effect definitions define a rainbow of
 // LED color modes calibrated to draw 500mA or less on the
@@ -1299,10 +1299,10 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
 // added in the order they're listed here.
 KALEIDOSCOPE_INIT_PLUGINS(
   // Qukeys
-  //Qukeys,
+  Qukeys,
 
   // Leader
-  Leader,
+  //Leader,
 
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
   // editable keymap in EEPROM.
@@ -1417,7 +1417,12 @@ void setup() {
 //     kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
 //     kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
 //   )
-//  Qukeys.setTimeout(200);
+
+  QUKEYS(
+       kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION))
+  )
+
+  Qukeys.setTimeout(200);
 
   //OneShot
   OneShot.time_out = 1000;
@@ -1429,8 +1434,8 @@ void setup() {
   MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
 
   // Leader
-  Leader.dictionary = leader_dictionary;
-  Leader.time_out = 3000;
+  //Leader.dictionary = leader_dictionary;
+  //Leader.time_out = 3000;
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
