@@ -346,14 +346,14 @@ KEYMAPS(
    Key_Backtick,               Key_Q,     Key_W,             Key_E,             Key_R, Key_T, M(MACRO_SEMICOLON),
    Key_RightBracket,           Key_A,     Key_S,             Key_D,             Key_F, Key_G,
    Key_Minus,                  Key_Z,     Key_X,             Key_C,             Key_V, Key_B, M(MACRO_ALT_TAB),
-   OSM(LeftControl), Key_Backspace, OSM(LeftShift), OSM(LeftAlt),
+   OSM(LeftShift), Key_Backspace, OSM(LeftControl), OSM(LeftAlt),
    M(MACRO_ALT_SPACE),
 
    ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Equals,
-   ___,                        Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
+   Key_Tab,                    Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_Escape,                 Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_LeftGui, Key_Enter, Key_Spacebar, Key_Tab,
+   Key_LeftGui, Key_Enter, Key_Spacebar, OSM(RightShift),
    ShiftToLayer(NUMPAD)),
 
 #else
@@ -373,18 +373,18 @@ KEYMAPS(
    ___,
 
    ___,                    ___,             Key_KeypadAdd,        Key_KeypadSubtract,  Key_KeypadDivide,  Key_KeypadMultiply,   ___,
-   ___,                    M(MACRO_6),      M(MACRO_7),           M(MACRO_8),          M(MACRO_9),        M(MACRO_0),           Key_KeypadEnter,
+   M(MACRO_SHIFT_TAB),     M(MACRO_6),      M(MACRO_7),           M(MACRO_8),          M(MACRO_9),        M(MACRO_0),           Key_KeypadEnter,
                            Key_KeypadDot,   M(MACRO_1),           M(MACRO_2),          M(MACRO_3),        M(MACRO_4),           M(MACRO_5),
-   ___,                    M(MACRO_ALT_F4), M(MACRO_SUPER_LEFT),  M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP), M(MACRO_SUPER_RIGHT), ___,
-   OSM(RightAlt), M(MACRO_SHIFT_TAB), M(MACRO_ALT_GR_SPACE),   M(MACRO_CTRL_SHIFT_ENTER),
+   ___,                    M(MACRO_ALT_F4), M(MACRO_SUPER_LEFT),  M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP), M(MACRO_SUPER_RIGHT), Key_Tab,
+   OSM(RightAlt), M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_ALT_GR_SPACE),  Key_RightShift,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,           Key_F1,                  Key_F2,               Key_F3,                 Key_F4,                Key_F5,              M(MACRO_CTRL_L),
-   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),         M(MACRO_CTRL_T),      M(MACRO_CTRL_S),        M(MACRO_CTRL_F4),      M(MACRO_ALT_F4),     M(MACRO_CTRL_F),
+   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),         M(MACRO_CTRL_S),      M(MACRO_CTRL_T),        M(MACRO_CTRL_F4),      M(MACRO_ALT_F4),     M(MACRO_CTRL_F),
    Key_Insert,                M(MACRO_CTRL_Z),         M(MACRO_CTRL_X),      M(MACRO_CTRL_C),        M(MACRO_CTRL_V),       Key_Delete,
    Key_Escape,                Key_LeftArrow,           Key_DownArrow,        Key_UpArrow,            Key_RightArrow,        Key_Enter,           ___,
-   ___, Key_Spacebar, ___, ___,
+   Key_LeftShift, Key_Spacebar, Key_LeftControl, Key_LeftAlt,
    ___,
 
    ___,                       Key_F6,                  Key_F7,               Key_F8,                 Key_F9,                Key_F10,             Key_F11,
