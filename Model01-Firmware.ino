@@ -343,9 +343,9 @@ KEYMAPS(
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
   (___,                        Key_1,     M(MACRO_ALT_GR_2), M(MACRO_ALT_GR_3), Key_4, Key_5, M(MACRO_LEFT_CURLY_BRACKET),
-   Key_Backtick,               Key_Q,     Key_W,             Key_E,             Key_R, Key_T, M(MACRO_SEMICOLON),
+   Key_Backtick,               Key_Q,     Key_W,             Key_E,             Key_R, Key_T, Key_Tab,
    Key_RightBracket,           Key_A,     Key_S,             Key_D,             Key_F, Key_G,
-   Key_Minus,                  Key_Z,     Key_X,             Key_C,             Key_V, Key_B, M(MACRO_ALT_TAB),
+   Key_Minus,                  Key_Z,     Key_X,             Key_C,             Key_V, Key_B, Key_Escape,
    OSM(LeftShift), Key_Backspace, OSM(LeftControl), OSM(LeftAlt),
    M(MACRO_ALT_SPACE),
 
@@ -353,8 +353,8 @@ KEYMAPS(
    Key_Tab,                    Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_Escape,                 Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_LeftGui, Key_Enter, Key_Spacebar, OSM(RightShift),
-   ShiftToLayer(NUMPAD)),
+   Key_LeftGui, Key_Enter, Key_Spacebar, OSM(LeftShift),
+   Key_LeftGui),
 
 #else
 
@@ -376,7 +376,7 @@ KEYMAPS(
    M(MACRO_SHIFT_TAB),     M(MACRO_6),      M(MACRO_7),           M(MACRO_8),          M(MACRO_9),        M(MACRO_0),           Key_KeypadEnter,
                            Key_KeypadDot,   M(MACRO_1),           M(MACRO_2),          M(MACRO_3),        M(MACRO_4),           M(MACRO_5),
    ___,                    M(MACRO_ALT_F4), M(MACRO_SUPER_LEFT),  M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP), M(MACRO_SUPER_RIGHT), Key_Tab,
-   OSM(RightAlt), M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_ALT_GR_SPACE),  Key_RightShift,
+   OSM(RightAlt), M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_ALT_GR_SPACE),  Key_LeftShift,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
@@ -391,7 +391,7 @@ KEYMAPS(
    ___,                       M(MACRO_CTRL_HOME),      M(MACRO_CTRL_LEFT),   Key_PageDown,           Key_PageUp,            M(MACRO_CTRL_RIGHT), M(MACRO_CTRL_END),
                               Key_Home,                Key_LeftArrow,        Key_DownArrow,          Key_UpArrow,           Key_RightArrow,      Key_End,
    ___,                       Key_PcApplication,       M(MACRO_ALT_LEFT),    M(MACRO_ALT_DOWN),      M(MACRO_ALT_UP),       M(MACRO_ALT_RIGHT),  Key_F12,
-   ___, ___, M(MACRO_SPACE_EQUALS_SPACE), M(MACRO_ALT_ENTER),
+   ___, M(MACRO_ALT_ENTER), M(MACRO_SPACE_EQUALS_SPACE), ___,
    ___)
 ) // KEYMAPS(
 
@@ -835,15 +835,15 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_SUPER_DOWN:
-    return MACRODOWN(D(LeftGui), T(DownArrow), U(LeftGui));
+    return MACRODOWN(D(LeftGui), D(DownArrow), U(DownArrow), U(LeftGui));
     break;
 
   case MACRO_SUPER_LEFT:
-    return MACRODOWN(D(LeftGui), T(LeftArrow), U(LeftGui));
+    return MACRODOWN(D(LeftGui), D(LeftArrow), U(LeftArrow), U(LeftGui));
     break;
 
   case MACRO_SUPER_RIGHT:
-    return MACRODOWN(D(LeftGui), T(RightArrow), U(LeftGui));
+    return MACRODOWN(D(LeftGui), D(RightArrow), U(RightArrow), U(LeftGui));
     break;
 
   case MACRO_SUPER_TAB:
@@ -851,7 +851,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_SUPER_UP:
-    return MACRODOWN(D(LeftGui), T(UpArrow), U(LeftGui));
+    return MACRODOWN(D(LeftGui), D(UpArrow), U(UpArrow), U(LeftGui));
     break;
 
   case MACRO_VI:
@@ -1371,7 +1371,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
-  NumPad,
+  //NumPad,
 
   //OneShot,
   OneShot,
@@ -1419,7 +1419,8 @@ void setup() {
 //   )
 
   QUKEYS(
-       kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION))
+       kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION)),
+       kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(NUMPAD))
   )
 
   Qukeys.setTimeout(200);
