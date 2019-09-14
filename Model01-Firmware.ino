@@ -32,6 +32,8 @@
 // Support for controlling the keyboard's LEDs
 #include "Kaleidoscope-LEDControl.h"
 
+#include "Kaleidoscope-LED-ActiveModColor.h"
+
 // Support for "Numpad" mode, which is mostly just the Numpad specific LED mode
 #include "Kaleidoscope-NumPad.h"
 
@@ -350,11 +352,11 @@ KEYMAPS(
    M(MACRO_ALT_SPACE),
 
    ___,                        Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Equals,
-   Key_Tab,                    Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
+   ___,                        Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                                Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_Escape,                 Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_LeftGui, Key_Enter, Key_Spacebar, OSM(LeftShift),
-   Key_LeftGui),
+   ___,                        Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   OSM(RightAlt), Key_Enter, Key_Spacebar, OSM(LeftShift),
+   M(MACRO_ALT_SPACE)),
 
 #else
 
@@ -373,18 +375,18 @@ KEYMAPS(
    ___,
 
    ___,                    ___,             Key_KeypadAdd,        Key_KeypadSubtract,  Key_KeypadDivide,  Key_KeypadMultiply,   ___,
-   M(MACRO_SHIFT_TAB),     M(MACRO_6),      M(MACRO_7),           M(MACRO_8),          M(MACRO_9),        M(MACRO_0),           Key_KeypadEnter,
-                           Key_KeypadDot,   M(MACRO_1),           M(MACRO_2),          M(MACRO_3),        M(MACRO_4),           M(MACRO_5),
-   ___,                    M(MACRO_ALT_F4), M(MACRO_SUPER_LEFT),  M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP), M(MACRO_SUPER_RIGHT), Key_Tab,
-   OSM(RightAlt), M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_ALT_GR_SPACE),  Key_LeftShift,
+   ___,                    M(MACRO_6),      M(MACRO_7),           M(MACRO_8),          M(MACRO_9),        M(MACRO_0),           Key_KeypadEnter,
+                           Key_V,           M(MACRO_1),           M(MACRO_2),          M(MACRO_3),        M(MACRO_4),           M(MACRO_5),
+   ___,                    ___,             ___,                  ___,                 ___,               ___,                  ___,
+   ___, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_ALT_GR_SPACE),  Key_LeftShift,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,           Key_F1,                  Key_F2,               Key_F3,                 Key_F4,                Key_F5,              M(MACRO_CTRL_L),
-   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),         M(MACRO_CTRL_S),      M(MACRO_CTRL_T),        M(MACRO_CTRL_F4),      M(MACRO_ALT_F4),     M(MACRO_CTRL_F),
-   Key_Insert,                M(MACRO_CTRL_Z),         M(MACRO_CTRL_X),      M(MACRO_CTRL_C),        M(MACRO_CTRL_V),       Key_Delete,
-   Key_Escape,                Key_LeftArrow,           Key_DownArrow,        Key_UpArrow,            Key_RightArrow,        Key_Enter,           ___,
-   Key_LeftShift, Key_Spacebar, Key_LeftControl, Key_LeftAlt,
+   M(MACRO_CTRL_O),           M(MACRO_CTRL_N),         M(MACRO_CTRL_S),      M(MACRO_CTRL_T),        M(MACRO_CTRL_F4),      M(MACRO_ALT_F4),     M(MACRO_SHIFT_TAB),
+   M(MACRO_CTRL_Z),           Key_Delete,              M(MACRO_CTRL_X),      M(MACRO_CTRL_C),        M(MACRO_CTRL_V),       M(MACRO_CTRL_F),
+   Key_Insert,                Key_PcApplication,       Key_Enter,            Key_Spacebar,           M(MACRO_ALT_TAB),      M(MACRO_CTRL_R),     ___,
+   Key_LeftShift, Key_LeftGui, Key_LeftControl, Key_LeftAlt,
    ___,
 
    ___,                       Key_F6,                  Key_F7,               Key_F8,                 Key_F9,                Key_F10,             Key_F11,
@@ -1333,6 +1335,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // LEDControl provides support for other LED modes
   LEDControl,
 
+  ActiveModColorEffect,
+
   // We start with the LED effect that turns off all the LEDs.
   LEDOff,
 
@@ -1380,7 +1384,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Macros,
 
   // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
-  MouseKeys,
+  //MouseKeys,
 
   // The HostPowerManagement plugin allows us to turn LEDs off when then host
   // goes to sleep, and resume them when it wakes up.
