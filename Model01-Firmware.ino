@@ -156,6 +156,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_DOWN,
        MACRO_CTRL_END,
        MACRO_CTRL_F,
+       MACRO_CTRL_F3,
        MACRO_CTRL_F4,
        MACRO_CTRL_G,
        MACRO_CTRL_HOME,
@@ -393,9 +394,9 @@ KEYMAPS(
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,            Key_F1,                 Key_F2,                 Key_F3,              Key_F4,               Key_F5,                  M(MACRO_ALT_TAB),
-   M(MACRO_CTRL_O),            M(MACRO_CTRL_N),        M(MACRO_CTRL_S),        M(MACRO_CTRL_T),     M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_SHIFT_TAB),
-   Key_Delete,                 M(MACRO_CTRL_Z),        M(MACRO_CTRL_X),        M(MACRO_CTRL_C),     M(MACRO_CTRL_V),      Key_F4,
-   Key_Spacebar,               M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),        M(MACRO_CTRL_ALT_B), M(MACRO_ALT_RIGHT),   M(MACRO_CTRL_F),         M(MACRO_ALT_F6),
+   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_T),        M(MACRO_CTRL_F3),    M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_SHIFT_TAB),
+   Key_Delete,                 M(MACRO_CTRL_Z),        M(MACRO_CTRL_X),        M(MACRO_CTRL_C),     M(MACRO_CTRL_V),      M(MACRO_CTRL_F),
+   Key_Spacebar,               M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),        M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),         M(MACRO_ALT_RIGHT),
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
    ___,
 
@@ -716,6 +717,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_F:
     return MACRODOWN(D(LeftControl), T(Slash), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_F3:
+    return MACRODOWN(D(LeftControl), T(F3), U(LeftControl));
     break;
 
   case MACRO_CTRL_F4:
