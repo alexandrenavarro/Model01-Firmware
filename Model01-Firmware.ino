@@ -172,6 +172,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_RIGHT,
        MACRO_CTRL_S,
        MACRO_CTRL_SHIFT_ENTER,
+       MACRO_CTRL_SHIFT_SPACE,
        MACRO_CTRL_SHIFT_W,
        MACRO_CTRL_SHIFT_Z,
        MACRO_CTRL_T,
@@ -182,6 +183,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_X,
        MACRO_CTRL_Y,
        MACRO_CTRL_Z,
+       MACRO_END_SEMICOLON,
        MACRO_END_SEMICOLON_ENTER,
        MACRO_EXCLAMATION_POINT,
        MACRO_LEFT_CURLY_BRACKET,
@@ -365,7 +367,7 @@ KEYMAPS(
    ___,                        Key_6,                 Key_7,                   Key_8,               Key_9,                Key_0,                   Key_Equals,
    ___,                        Key_Y,                 Key_U,                   Key_I,               Key_O,                Key_P,                   Key_LeftBracket,
                                Key_H,                 Key_J,                   Key_K,               Key_L,                Key_Semicolon,           Key_Quote,
-   M(MACRO_END_SEMICOLON_ENTER),Key_N,                Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
+   M(MACRO_END_SEMICOLON),     Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
    OSM(LeftGui), Key_Enter, Key_Spacebar, OSM(LeftShift),
    M(MACRO_SHIFT_SUPER_Z)),
 
@@ -380,7 +382,7 @@ KEYMAPS(
   [NUMPAD] =  KEYMAP_STACKED
   (___,                        M(MACRO_ALT_GR_1),      Key_2,                  Key_3,               M(MACRO_ALT_GR_4),    M(MACRO_ALT_GR_5),       ___,
    M(MACRO_ALT_GR_DOLLAR),     M(MACRO_ALT_GR_B),      M(MACRO_ALT_GR_E_AIGU), M(MACRO_ALT_GR_P),   M(MACRO_ALT_GR_O),    M(MACRO_ALT_GR_E_GRAVE), ___,
-   M(MACRO_EXCLAMATION_POINT), M(MACRO_ALT_GR_A),      M(MACRO_ALT_GR_U),      M(MACRO_ALT_GR_I),   M(MACRO_ALT_GR_E),    M(MACRO_SEMICOLON),
+   M(MACRO_EXCLAMATION_POINT), M(MACRO_ALT_GR_A),      M(MACRO_ALT_GR_U),      M(MACRO_ALT_GR_I),   M(MACRO_SEMICOLON),   M(MACRO_ALT_GR_E),
    M(MACRO_ALT_GR_EQUALS),     M(MACRO_ALT_GR_A_AIGU), M(MACRO_ALT_GR_Y),      M(MACRO_ALT_GR_X),   M(MACRO_COLON),       M(MACRO_ALT_GR_K),       ___,
    ___, ___, ___, ___,
    ___,
@@ -389,7 +391,7 @@ KEYMAPS(
    ___,                        M(MACRO_6),             M(MACRO_7),             M(MACRO_8),          M(MACRO_9),           M(MACRO_0),              ___,
                                Key_V,                  M(MACRO_1),             M(MACRO_2),          M(MACRO_3),           M(MACRO_4),              M(MACRO_5),
    ___,                        Key_PcApplication,      M(MACRO_SUPER_LEFT),    M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP),    M(MACRO_SUPER_RIGHT),    ___,
-   Key_LeftGui, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_ALT_GR_SPACE), Key_LeftShift,
+   Key_LeftGui, M(MACRO_ALT_ENTER), M(MACRO_ALT_GR_SPACE), Key_LeftShift,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
@@ -404,7 +406,7 @@ KEYMAPS(
    ___,                        M(MACRO_CTRL_HOME),     M(MACRO_CTRL_LEFT),     M(MACRO_CTRL_DOWN),  M(MACRO_CTRL_UP),     M(MACRO_CTRL_RIGHT),     M(MACRO_CTRL_END),
                                Key_Home,               Key_LeftArrow,          Key_DownArrow,       Key_UpArrow,          Key_RightArrow,          Key_End,
    ___,                        Key_PcApplication,      M(MACRO_CTRL_SHIFT_W),  Key_PageDown,        Key_PageUp,           M(MACRO_CTRL_W),         Key_F12,
-   ___, M(MACRO_ALT_ENTER), M(MACRO_SPACE_EQUALS_SPACE), ___,
+   ___, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_CTRL_SHIFT_SPACE), ___,
    ___)
 ) // KEYMAPS(
 
@@ -831,6 +833,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), D(LeftShift), T(Enter), U(LeftShift), U(LeftControl));
     break;
 
+  case MACRO_CTRL_SHIFT_SPACE:
+    return MACRODOWN(D(LeftControl), D(LeftShift), T(Space), U(LeftShift), U(LeftControl));
+    break;
+
   case MACRO_CTRL_SHIFT_W:
     return MACRODOWN(D(LeftControl), D(LeftShift), T(RightBracket), U(LeftShift), U(LeftControl));
     break;
@@ -869,6 +875,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_Z:
     return MACRODOWN(D(LeftControl), T(LeftBracket), U(LeftControl));
+    break;
+
+  case MACRO_END_SEMICOLON:
+    return MACRODOWN(T(End), D(LeftShift), T(G), D(LeftShift));
     break;
 
   case MACRO_END_SEMICOLON_ENTER:

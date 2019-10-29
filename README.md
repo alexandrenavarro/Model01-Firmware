@@ -1,3 +1,6 @@
+# My personal layout
+See on http://www.keyboard-layout-editor.com/#/gists/831524ae41aec20a65ff519557db7f50
+
 # Keyboardio Model 01 Firmware
 
 _The default firmware for the Keyboardio Model 01_
