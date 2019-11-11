@@ -357,7 +357,7 @@ KEYMAPS(
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (___,                        Key_1,                 M(MACRO_ALT_GR_2),       M(MACRO_ALT_GR_3),   Key_4,                Key_5,                   M(MACRO_SEMICOLON),
+  (___,                        Key_1,                 M(MACRO_ALT_GR_2),       M(MACRO_ALT_GR_3),   Key_4,                Key_5,                   ___,
    Key_Backtick,               Key_Q,                 Key_W,                   Key_E,               Key_R,                Key_T,                   Key_Tab,
    Key_RightBracket,           Key_A,                 Key_S,                   Key_D,               Key_F,                Key_G,
    Key_Minus,                  Key_Z,                 Key_X,                   Key_C,               Key_V,                Key_B,                   Key_Escape,
@@ -382,14 +382,14 @@ KEYMAPS(
   [NUMPAD] =  KEYMAP_STACKED
   (___,                        M(MACRO_ALT_GR_1),      Key_2,                  Key_3,               M(MACRO_ALT_GR_4),    M(MACRO_ALT_GR_5),       ___,
    M(MACRO_ALT_GR_DOLLAR),     M(MACRO_ALT_GR_B),      M(MACRO_ALT_GR_E_AIGU), M(MACRO_ALT_GR_P),   M(MACRO_ALT_GR_O),    M(MACRO_ALT_GR_E_GRAVE), ___,
-   M(MACRO_EXCLAMATION_POINT), M(MACRO_ALT_GR_A),      M(MACRO_ALT_GR_U),      M(MACRO_ALT_GR_I),   M(MACRO_SEMICOLON),   M(MACRO_ALT_GR_E),
-   M(MACRO_ALT_GR_EQUALS),     M(MACRO_ALT_GR_A_AIGU), M(MACRO_ALT_GR_Y),      M(MACRO_ALT_GR_X),   M(MACRO_COLON),       M(MACRO_ALT_GR_K),       ___,
+   M(MACRO_EXCLAMATION_POINT), M(MACRO_ALT_GR_A),      M(MACRO_ALT_GR_U),      M(MACRO_COLON),      M(MACRO_SEMICOLON),   M(MACRO_ALT_GR_E),
+   M(MACRO_ALT_GR_EQUALS),     M(MACRO_ALT_GR_A_AIGU), M(MACRO_ALT_GR_Y),      M(MACRO_ALT_GR_X),   M(MACRO_ALT_GR_I),    M(MACRO_ALT_GR_K),       ___,
    ___, ___, ___, ___,
    ___,
 
    ___,                        ___,                    ___,                    ___,                 ___,                  ___,                     ___,
-   ___,                        M(MACRO_6),             M(MACRO_7),             M(MACRO_8),          M(MACRO_9),           M(MACRO_0),              ___,
-                               Key_V,                  M(MACRO_1),             M(MACRO_2),          M(MACRO_3),           M(MACRO_4),              M(MACRO_5),
+   ___,                        M(MACRO_5),             M(MACRO_6),             M(MACRO_7),          M(MACRO_8),           M(MACRO_9),              ___,
+                               M(MACRO_0),             M(MACRO_1),             M(MACRO_2),          M(MACRO_3),           M(MACRO_4),              Key_V,
    ___,                        Key_PcApplication,      M(MACRO_SUPER_LEFT),    M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP),    M(MACRO_SUPER_RIGHT),    ___,
    Key_LeftGui, M(MACRO_ALT_ENTER), M(MACRO_ALT_GR_SPACE), Key_LeftShift,
    ___),
