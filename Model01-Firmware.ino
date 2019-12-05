@@ -111,6 +111,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_7,
        MACRO_8,
        MACRO_9,
+       MACRO_ALT_1,
        MACRO_ALT_ENTER,
        MACRO_ALT_F4,
        MACRO_ALT_F6,
@@ -153,6 +154,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_ALT_GR_3,
        MACRO_CTRL_ALT_GR_4,
        MACRO_CTRL_C,
+       MACRO_CTRL_DIVIDE,
        MACRO_CTRL_DOWN,
        MACRO_CTRL_END,
        MACRO_CTRL_F,
@@ -365,7 +367,7 @@ KEYMAPS(
    M(MACRO_ALT_SPACE),
 
    ___,                        Key_6,                 Key_7,                   Key_8,               Key_9,                Key_0,                   Key_Equals,
-   ___,                        Key_Y,                 Key_U,                   Key_I,               Key_O,                Key_P,                   Key_LeftBracket,
+   M(MACRO_ALT_SPACE),         Key_Y,                 Key_U,                   Key_I,               Key_O,                Key_P,                   Key_LeftBracket,
                                Key_H,                 Key_J,                   Key_K,               Key_L,                Key_Semicolon,           Key_Quote,
    M(MACRO_SPACE_EQUALS_SPACE),Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
    OSM(LeftGui), Key_Enter, Key_Spacebar, OSM(LeftShift),
@@ -388,22 +390,22 @@ KEYMAPS(
    ___,
 
    ___,                        ___,                    ___,                    ___,                 ___,                  ___,                     ___,
-   ___,                        M(MACRO_5),             M(MACRO_6),             M(MACRO_7),          M(MACRO_8),           M(MACRO_9),              ___,
+   M(MACRO_ALT_ENTER),         M(MACRO_5),             M(MACRO_6),             M(MACRO_7),          M(MACRO_8),           M(MACRO_9),              ___,
                                M(MACRO_0),             M(MACRO_1),             M(MACRO_2),          M(MACRO_3),           M(MACRO_4),              Key_V,
    ___,                        Key_PcApplication,      M(MACRO_SUPER_LEFT),    M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP),    M(MACRO_SUPER_RIGHT),    ___,
    Key_LeftGui, M(MACRO_ALT_ENTER), M(MACRO_ALT_GR_SPACE), Key_LeftShift,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (Key_PrintScreen,            Key_F1,                 Key_F2,                 Key_F3,              Key_F4,               Key_F5,                  M(MACRO_ALT_TAB),
+  (Key_PrintScreen,            Key_F1,                 Key_F2,                 Key_F3,              Key_F4,               Key_F5,                  Key_Insert,
    M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_T),        M(MACRO_CTRL_F3),    M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_SHIFT_TAB),
    Key_Delete,                 M(MACRO_CTRL_Z),        M(MACRO_CTRL_X),        M(MACRO_CTRL_C),     M(MACRO_CTRL_V),      M(MACRO_CTRL_F),
-   Key_Spacebar,               M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),        M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),         M(MACRO_ALT_RIGHT),
+   M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),        M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),         M(MACRO_ALT_1),
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
    ___,
 
-   Key_Insert,                 Key_F6,                 Key_F7,                 Key_F8,              Key_F9,               Key_F10,                 Key_F11,
-   ___,                        M(MACRO_CTRL_HOME),     M(MACRO_CTRL_LEFT),     M(MACRO_CTRL_DOWN),  M(MACRO_CTRL_UP),     M(MACRO_CTRL_RIGHT),     M(MACRO_CTRL_END),
+   Key_F12,                    Key_F10,                Key_F6,                 Key_F7,              Key_F8,               Key_F9,                  Key_F11,
+   M(MACRO_SHIFT_SUPER_Z),     M(MACRO_CTRL_HOME),     M(MACRO_CTRL_LEFT),     M(MACRO_CTRL_DOWN),  M(MACRO_CTRL_UP),     M(MACRO_CTRL_RIGHT),     M(MACRO_CTRL_END),
                                Key_Home,               Key_LeftArrow,          Key_DownArrow,       Key_UpArrow,          Key_RightArrow,          Key_End,
    ___,                        Key_PcApplication,      M(MACRO_CTRL_SHIFT_W),  Key_PageDown,        Key_PageUp,           M(MACRO_CTRL_W),         Key_F12,
    ___, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_CTRL_SHIFT_SPACE), ___,
@@ -510,6 +512,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_9:
     return MACRODOWN(D(LeftShift), T(9), U(LeftShift));
+    break;
+
+  case MACRO_ALT_1:
+    return MACRODOWN(D(LeftAlt), D(LeftShift), T(1), U(LeftShift), U(LeftAlt));
     break;
 
   case MACRO_ALT_ENTER:
@@ -683,6 +689,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_C:
     return MACRODOWN(D(LeftControl), T(H), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_DIVIDE:
+    return MACRODOWN(D(LeftControl), T(9), U(LeftControl));
     break;
 
   case MACRO_CTRL_DOWN:
@@ -954,90 +964,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 }
 
 
-
-static void leaderSA(uint8_t seq_index) {
-    Macros.type(PSTR(" A"));
+static void leader_dd(uint8_t seq_index) {
+    //Macro.play(MACRODOWN(D(LeftControl), T(H), U(LeftControl)));
+    Macros.type(PSTR("aaaa"));
 }
-static void leaderSB(uint8_t seq_index) {
-    Macros.type(PSTR(" B"));
-}
-static void leaderSC(uint8_t seq_index) {
-    Macros.type(PSTR(" C"));
-}
-static void leaderSD(uint8_t seq_index) {
-    Macros.type(PSTR(" D"));
-}
-static void leaderSE(uint8_t seq_index) {
-    Macros.type(PSTR(" E"));
-}
-static void leaderSF(uint8_t seq_index) {
-    Macros.type(PSTR(" F"));
-}
-static void leaderSG(uint8_t seq_index) {
-    Macros.type(PSTR(" G"));
-}
-static void leaderSH(uint8_t seq_index) {
-    Macros.type(PSTR(" H"));
-}
-static void leaderSI(uint8_t seq_index) {
-    Macros.type(PSTR(" I"));
-}
-static void leaderSJ(uint8_t seq_index) {
-    Macros.type(PSTR(" J"));
-}
-static void leaderSK(uint8_t seq_index) {
-    Macros.type(PSTR(" K"));
-}
-static void leaderSL(uint8_t seq_index) {
-    Macros.type(PSTR(" L"));
-}
-static void leaderSM(uint8_t seq_index) {
-    Macros.type(PSTR(" M"));
-}
-static void leaderSN(uint8_t seq_index) {
-    Macros.type(PSTR(" N"));
-}
-static void leaderSO(uint8_t seq_index) {
-    Macros.type(PSTR(" O"));
-}
-static void leaderSP(uint8_t seq_index) {
-    Macros.type(PSTR(" P"));
-}
-static void leaderSQ(uint8_t seq_index) {
-    Macros.type(PSTR(" Q"));
-}
-static void leaderSR(uint8_t seq_index) {
-    Macros.type(PSTR(" R"));
-}
-static void leaderSS(uint8_t seq_index) {
-    Macros.type(PSTR(" S"));
-}
-static void leaderST(uint8_t seq_index) {
-    Macros.type(PSTR(" T"));
-}
-static void leaderSU(uint8_t seq_index) {
-    Macros.type(PSTR(" U"));
-}
-static void leaderSV(uint8_t seq_index) {
-    Macros.type(PSTR(" V"));
-}
-static void leaderSW(uint8_t seq_index) {
-    Macros.type(PSTR(" W"));
-}
-static void leaderSX(uint8_t seq_index) {
-    Macros.type(PSTR(" X"));
-}
-static void leaderSY(uint8_t seq_index) {
-    Macros.type(PSTR(" Y"));
-}
-static void leaderSZ(uint8_t seq_index) {
-    Macros.type(PSTR(" Z"));
-}
-static void leaderS(uint8_t seq_index) {
-    Macros.type(PSTR(" "));
-}
-
-
 
 static void leaderPSA(uint8_t seq_index) {
     Macros.type(PSTR(". A"));
@@ -1209,36 +1139,96 @@ static void leader(uint8_t seq_index) {
     Macros.type(PSTR(""));
 }
 
+
+static void leaderSA(uint8_t seq_index) {
+    Macros.type(PSTR(" A"));
+}
+static void leaderSB(uint8_t seq_index) {
+    Macros.type(PSTR(" B"));
+}
+static void leaderSC(uint8_t seq_index) {
+    Macros.type(PSTR(" C"));
+}
+static void leaderSD(uint8_t seq_index) {
+    Macros.type(PSTR(" D"));
+}
+static void leaderSE(uint8_t seq_index) {
+    Macros.type(PSTR(" E"));
+}
+static void leaderSF(uint8_t seq_index) {
+    Macros.type(PSTR(" F"));
+}
+static void leaderSG(uint8_t seq_index) {
+    Macros.type(PSTR(" G"));
+}
+static void leaderSH(uint8_t seq_index) {
+    Macros.type(PSTR(" H"));
+}
+static void leaderSI(uint8_t seq_index) {
+    Macros.type(PSTR(" I"));
+}
+static void leaderSJ(uint8_t seq_index) {
+    Macros.type(PSTR(" J"));
+}
+static void leaderSK(uint8_t seq_index) {
+    Macros.type(PSTR(" K"));
+}
+static void leaderSL(uint8_t seq_index) {
+    Macros.type(PSTR(" L"));
+}
+static void leaderSM(uint8_t seq_index) {
+    Macros.type(PSTR(" M"));
+}
+static void leaderSN(uint8_t seq_index) {
+    Macros.type(PSTR(" N"));
+}
+static void leaderSO(uint8_t seq_index) {
+    Macros.type(PSTR(" O"));
+}
+static void leaderSP(uint8_t seq_index) {
+    Macros.type(PSTR(" P"));
+}
+static void leaderSQ(uint8_t seq_index) {
+    Macros.type(PSTR(" Q"));
+}
+static void leaderSR(uint8_t seq_index) {
+    Macros.type(PSTR(" R"));
+}
+static void leaderSS(uint8_t seq_index) {
+    Macros.type(PSTR(" S"));
+}
+static void leaderST(uint8_t seq_index) {
+    Macros.type(PSTR(" T"));
+}
+static void leaderSU(uint8_t seq_index) {
+    Macros.type(PSTR(" U"));
+}
+static void leaderSV(uint8_t seq_index) {
+    Macros.type(PSTR(" V"));
+}
+static void leaderSW(uint8_t seq_index) {
+    Macros.type(PSTR(" W"));
+}
+static void leaderSX(uint8_t seq_index) {
+    Macros.type(PSTR(" X"));
+}
+static void leaderSY(uint8_t seq_index) {
+    Macros.type(PSTR(" Y"));
+}
+static void leaderSZ(uint8_t seq_index) {
+    Macros.type(PSTR(" Z"));
+}
+static void leaderS(uint8_t seq_index) {
+    Macros.type(PSTR(" "));
+}
+
+
+
 static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
 LEADER_DICT(
-{LEADER_SEQ(LEAD(0), Key_A), leaderSA},
-{LEADER_SEQ(LEAD(0), Key_B), leaderSB},
-{LEADER_SEQ(LEAD(0), Key_C), leaderSC},
-{LEADER_SEQ(LEAD(0), Key_D), leaderSD},
-{LEADER_SEQ(LEAD(0), Key_E), leaderSE},
-{LEADER_SEQ(LEAD(0), Key_F), leaderSF},
-{LEADER_SEQ(LEAD(0), Key_G), leaderSG},
-{LEADER_SEQ(LEAD(0), Key_H), leaderSH},
-{LEADER_SEQ(LEAD(0), Key_I), leaderSI},
-{LEADER_SEQ(LEAD(0), Key_J), leaderSJ},
-{LEADER_SEQ(LEAD(0), Key_K), leaderSK},
-{LEADER_SEQ(LEAD(0), Key_L), leaderSL},
-{LEADER_SEQ(LEAD(0), Key_M), leaderSM},
-{LEADER_SEQ(LEAD(0), Key_N), leaderSN},
-{LEADER_SEQ(LEAD(0), Key_O), leaderSO},
-{LEADER_SEQ(LEAD(0), Key_P), leaderSP},
-{LEADER_SEQ(LEAD(0), Key_Q), leaderSQ},
-{LEADER_SEQ(LEAD(0), Key_R), leaderSR},
-{LEADER_SEQ(LEAD(0), Key_S), leaderSS},
-{LEADER_SEQ(LEAD(0), Key_T), leaderST},
-{LEADER_SEQ(LEAD(0), Key_U), leaderSU},
-{LEADER_SEQ(LEAD(0), Key_V), leaderSV},
-{LEADER_SEQ(LEAD(0), Key_W), leaderSW},
-{LEADER_SEQ(LEAD(0), Key_X), leaderSX},
-{LEADER_SEQ(LEAD(0), Key_Y), leaderSY},
-{LEADER_SEQ(LEAD(0), Key_Z), leaderSZ},
-{LEADER_SEQ(LEAD(0), Key_Spacebar), leaderS},
-{LEADER_SEQ(LEAD(0), Key_Escape), leader},
+//{LEADER_SEQ(LEAD(0), Key_LeftControl, Key_C), leaderCopy},
+{LEADER_SEQ(LEAD(0), Key_D, Key_D), leader_dd},
+
 {LEADER_SEQ(LEAD(1), Key_A), leaderPSA},
 {LEADER_SEQ(LEAD(1), Key_B), leaderPSB},
 {LEADER_SEQ(LEAD(1), Key_C), leaderPSC},
@@ -1297,7 +1287,36 @@ LEADER_DICT(
 {LEADER_SEQ(LEAD(2), Key_Y), leaderEY},
 {LEADER_SEQ(LEAD(2), Key_Z), leaderEZ},
 {LEADER_SEQ(LEAD(2), Key_Enter), leaderE},
-{LEADER_SEQ(LEAD(2), Key_Escape), leader}
+{LEADER_SEQ(LEAD(2), Key_Escape), leader},
+
+{LEADER_SEQ(LEAD(3), Key_A), leaderSA},
+{LEADER_SEQ(LEAD(3), Key_B), leaderSB},
+{LEADER_SEQ(LEAD(3), Key_C), leaderSC},
+{LEADER_SEQ(LEAD(3), Key_D), leaderSD},
+{LEADER_SEQ(LEAD(3), Key_E), leaderSE},
+{LEADER_SEQ(LEAD(3), Key_F), leaderSF},
+{LEADER_SEQ(LEAD(3), Key_G), leaderSG},
+{LEADER_SEQ(LEAD(3), Key_H), leaderSH},
+{LEADER_SEQ(LEAD(3), Key_I), leaderSI},
+{LEADER_SEQ(LEAD(3), Key_J), leaderSJ},
+{LEADER_SEQ(LEAD(3), Key_K), leaderSK},
+{LEADER_SEQ(LEAD(3), Key_L), leaderSL},
+{LEADER_SEQ(LEAD(3), Key_M), leaderSM},
+{LEADER_SEQ(LEAD(3), Key_N), leaderSN},
+{LEADER_SEQ(LEAD(3), Key_O), leaderSO},
+{LEADER_SEQ(LEAD(3), Key_P), leaderSP},
+{LEADER_SEQ(LEAD(3), Key_Q), leaderSQ},
+{LEADER_SEQ(LEAD(3), Key_R), leaderSR},
+{LEADER_SEQ(LEAD(3), Key_S), leaderSS},
+{LEADER_SEQ(LEAD(3), Key_T), leaderST},
+{LEADER_SEQ(LEAD(3), Key_U), leaderSU},
+{LEADER_SEQ(LEAD(3), Key_V), leaderSV},
+{LEADER_SEQ(LEAD(3), Key_W), leaderSW},
+{LEADER_SEQ(LEAD(3), Key_X), leaderSX},
+{LEADER_SEQ(LEAD(3), Key_Y), leaderSY},
+{LEADER_SEQ(LEAD(3), Key_Z), leaderSZ},
+{LEADER_SEQ(LEAD(3), Key_Spacebar), leaderS},
+{LEADER_SEQ(LEAD(3), Key_Escape), leader}
 
 );
 
