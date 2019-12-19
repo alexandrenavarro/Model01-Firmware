@@ -86,6 +86,9 @@
 // Support for Leader
 #include <Kaleidoscope-Leader.h>
 
+// Support for Magic Combo
+#include <Kaleidoscope-MagicCombo.h>
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -196,6 +199,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_SEMICOLON,
        MACRO_SHIFT_SUPER_Z,
        MACRO_SHIFT_TAB,
+       MACRO_SPACE,
        MACRO_SPACE_EQUALS_SPACE,
        MACRO_SUPER_DOWN,
        MACRO_SUPER_LEFT,
@@ -362,16 +366,16 @@ KEYMAPS(
   (___,                        Key_1,                 M(MACRO_ALT_GR_2),       M(MACRO_ALT_GR_3),   Key_4,                Key_5,                   ___,
    Key_Backtick,               Key_Q,                 Key_W,                   Key_E,               Key_R,                Key_T,                   Key_Tab,
    Key_RightBracket,           Key_A,                 Key_S,                   Key_D,               Key_F,                Key_G,
-   Key_Minus,                  Key_Z,                 Key_X,                   Key_C,               Key_V,                Key_B,                   Key_Escape,
+   Key_Minus,                  Key_Z,                 Key_X,                   Key_C,               Key_V,                Key_B,                   M(MACRO_ALT_SPACE),
    OSM(LeftShift), Key_Backspace, OSM(LeftControl), OSM(LeftAlt),
-   ShiftToLayer(FUNCTION), //M(MACRO_ALT_SPACE),
+   Key_Escape,
 
    ___,                        Key_6,                 Key_7,                   Key_8,               Key_9,                Key_0,                   Key_Equals,
-   M(MACRO_ALT_SPACE),         Key_Y,                 Key_U,                   Key_I,               Key_O,                Key_P,                   Key_LeftBracket,
+   ___,                        Key_Y,                 Key_U,                   Key_I,               Key_O,                Key_P,                   Key_LeftBracket,
                                Key_H,                 Key_J,                   Key_K,               Key_L,                Key_Semicolon,           Key_Quote,
-   M(MACRO_SPACE_EQUALS_SPACE),Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
-   OSM(LeftGui), Key_Enter, Key_Spacebar, OSM(LeftShift),
-   ShiftToLayer(NUMPAD)), //M(MACRO_SHIFT_SUPER_Z)),
+   M(MACRO_SHIFT_SUPER_Z),     Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
+   Key_LeftGui, Key_Enter, Key_Spacebar, OSM(LeftShift),
+   LEAD(0)),
 
 #else
 
@@ -383,7 +387,7 @@ KEYMAPS(
 
   [NUMPAD] =  KEYMAP_STACKED
   (___,                        M(MACRO_ALT_GR_1),      Key_2,                  Key_3,               M(MACRO_ALT_GR_4),    M(MACRO_ALT_GR_5),       ___,
-   M(MACRO_ALT_GR_DOLLAR),     M(MACRO_ALT_GR_B),      M(MACRO_ALT_GR_E_AIGU), M(MACRO_ALT_GR_P),   M(MACRO_ALT_GR_O),    M(MACRO_ALT_GR_E_GRAVE), ___,
+   M(MACRO_ALT_GR_DOLLAR),     M(MACRO_ALT_GR_B),      M(MACRO_ALT_GR_E_AIGU), M(MACRO_ALT_GR_P),   M(MACRO_ALT_GR_O),    M(MACRO_ALT_GR_E_GRAVE), M(MACRO_ALT_GR_SPACE),
    M(MACRO_EXCLAMATION_POINT), M(MACRO_ALT_GR_A),      M(MACRO_ALT_GR_U),      M(MACRO_COLON),      M(MACRO_SEMICOLON),   M(MACRO_ALT_GR_E),
    M(MACRO_ALT_GR_EQUALS),     M(MACRO_ALT_GR_A_AIGU), M(MACRO_ALT_GR_Y),      M(MACRO_ALT_GR_X),   M(MACRO_ALT_GR_I),    M(MACRO_ALT_GR_K),       ___,
    ___, ___, ___, ___,
@@ -393,24 +397,50 @@ KEYMAPS(
    M(MACRO_ALT_ENTER),         M(MACRO_5),             M(MACRO_6),             M(MACRO_7),          M(MACRO_8),           M(MACRO_9),              ___,
                                M(MACRO_0),             M(MACRO_1),             M(MACRO_2),          M(MACRO_3),           M(MACRO_4),              Key_V,
    ___,                        Key_PcApplication,      M(MACRO_SUPER_LEFT),    M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP),    M(MACRO_SUPER_RIGHT),    ___,
-   Key_LeftGui, M(MACRO_ALT_ENTER), M(MACRO_ALT_GR_SPACE), Key_LeftShift,
+   Key_LeftGui, M(MACRO_ALT_ENTER), ___, Key_LeftShift,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,            Key_F1,                 Key_F2,                 Key_F3,              Key_F4,               Key_F5,                  Key_Insert,
-   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_T),        M(MACRO_CTRL_F3),    M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_SHIFT_TAB),
+   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_T),        M(MACRO_CTRL_F3),    M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_CTRL_F),
    Key_Delete,                 M(MACRO_CTRL_Z),        M(MACRO_CTRL_X),        M(MACRO_CTRL_C),     M(MACRO_CTRL_V),      M(MACRO_CTRL_F),
    M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),        M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),         M(MACRO_ALT_1),
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
    ___,
 
    Key_F12,                    Key_F10,                Key_F6,                 Key_F7,              Key_F8,               Key_F9,                  Key_F11,
-   M(MACRO_SHIFT_SUPER_Z),     M(MACRO_CTRL_HOME),     M(MACRO_CTRL_LEFT),     M(MACRO_CTRL_DOWN),  M(MACRO_CTRL_UP),     M(MACRO_CTRL_RIGHT),     M(MACRO_CTRL_END),
+   ___,                        M(MACRO_CTRL_HOME),     M(MACRO_CTRL_SHIFT_W),  M(MACRO_ALT_DOWN),   M(MACRO_ALT_UP),      M(MACRO_CTRL_W),         ___,
                                Key_Home,               Key_LeftArrow,          Key_DownArrow,       Key_UpArrow,          Key_RightArrow,          Key_End,
-   ___,                        Key_PcApplication,      M(MACRO_CTRL_SHIFT_W),  Key_PageDown,        Key_PageUp,           M(MACRO_CTRL_W),         Key_F12,
+   ___,                        Key_PcApplication,      M(MACRO_CTRL_LEFT),     Key_PageDown,        Key_PageUp,           M(MACRO_CTRL_RIGHT),     M(MACRO_CTRL_END),
    ___, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_CTRL_SHIFT_SPACE), ___,
    ___)
+
 ) // KEYMAPS(
+
+
+// Leader plugin
+static void leader_dd(uint8_t seq_index) {
+    Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+    Macros.play(MACRO(T(Backspace)));
+}
+
+static void leader_2dd(uint8_t seq_index) {
+    Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+    Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+    Macros.play(MACRO(T(Backspace)));
+}
+
+
+static void leader_dw(uint8_t seq_index) {
+    Macros.play(MACRO(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftShift), T(Delete)));
+}
+
+ static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
+ LEADER_DICT(
+ { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_RightBracket), leader_dd},
+ { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
+ { LEADER_SEQ(LEAD(0), Key_2, Key_RightBracket, Key_RightBracket), leader_2dd}
+  );
 
 
 
@@ -907,6 +937,14 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftShift), T(Tab), U(LeftShift));
     break;
 
+  case MACRO_SPACE:
+    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+        return MACRODOWN(U(LeftShift), T(Space));
+    } else {
+        return MACRODOWN(T(Space));
+    }
+    break;
+
   case MACRO_SPACE_EQUALS_SPACE:
     return MACRODOWN(T(Spacebar), T(Minus), T(Spacebar));
     break;
@@ -931,371 +969,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftGui), D(UpArrow), U(UpArrow), U(LeftGui));
     break;
 
-  case MACRO_VI:
-    // TODO
-    break;
+
 
   }
   return MACRO_NONE;
 }
-
-// Leader plugin
-// static void leader_dd(uint8_t seq_index) {
-//     //Macro.play(MACRODOWN(D(LeftControl), T(H), U(LeftControl)));
-//     Macros.type(PSTR("aaaa"));
-// }
-//
-// static void leaderPSA(uint8_t seq_index) {
-//     Macros.type(PSTR(". A"));
-// }
-// static void leaderPSB(uint8_t seq_index) {
-//     Macros.type(PSTR(". B"));
-// }
-// static void leaderPSC(uint8_t seq_index) {
-//     Macros.type(PSTR(". C"));
-// }
-// static void leaderPSD(uint8_t seq_index) {
-//     Macros.type(PSTR(". D"));
-// }
-// static void leaderPSE(uint8_t seq_index) {
-//     Macros.type(PSTR(". E"));
-// }
-// static void leaderPSF(uint8_t seq_index) {
-//     Macros.type(PSTR(". F"));
-// }
-// static void leaderPSG(uint8_t seq_index) {
-//     Macros.type(PSTR(". G"));
-// }
-// static void leaderPSH(uint8_t seq_index) {
-//     Macros.type(PSTR(". H"));
-// }
-// static void leaderPSI(uint8_t seq_index) {
-//     Macros.type(PSTR(". I"));
-// }
-// static void leaderPSJ(uint8_t seq_index) {
-//     Macros.type(PSTR(". J"));
-// }
-// static void leaderPSK(uint8_t seq_index) {
-//     Macros.type(PSTR(". K"));
-// }
-// static void leaderPSL(uint8_t seq_index) {
-//     Macros.type(PSTR(". L"));
-// }
-// static void leaderPSM(uint8_t seq_index) {
-//     Macros.type(PSTR(". M"));
-// }
-// static void leaderPSN(uint8_t seq_index) {
-//     Macros.type(PSTR(". N"));
-// }
-// static void leaderPSO(uint8_t seq_index) {
-//     Macros.type(PSTR(". O"));
-// }
-// static void leaderPSP(uint8_t seq_index) {
-//     Macros.type(PSTR(". P"));
-// }
-// static void leaderPSQ(uint8_t seq_index) {
-//     Macros.type(PSTR(". Q"));
-// }
-// static void leaderPSR(uint8_t seq_index) {
-//     Macros.type(PSTR(". R"));
-// }
-// static void leaderPSS(uint8_t seq_index) {
-//     Macros.type(PSTR(". S"));
-// }
-// static void leaderPST(uint8_t seq_index) {
-//     Macros.type(PSTR(". T"));
-// }
-// static void leaderPSU(uint8_t seq_index) {
-//     Macros.type(PSTR(". U"));
-// }
-// static void leaderPSV(uint8_t seq_index) {
-//     Macros.type(PSTR(". V"));
-// }
-// static void leaderPSW(uint8_t seq_index) {
-//     Macros.type(PSTR(". W"));
-// }
-// static void leaderPSX(uint8_t seq_index) {
-//     Macros.type(PSTR(". X"));
-// }
-// static void leaderPSY(uint8_t seq_index) {
-//     Macros.type(PSTR(". Y"));
-// }
-// static void leaderPSZ(uint8_t seq_index) {
-//     Macros.type(PSTR(". Z"));
-// }
-// static void leaderP(uint8_t seq_index) {
-//     Macros.type(PSTR("."));
-// }
-//
-//
-//
-// static void leaderEA(uint8_t seq_index) {
-//     Macros.type(PSTR("\nA"));
-// }
-// static void leaderEB(uint8_t seq_index) {
-//     Macros.type(PSTR("\nB"));
-// }
-// static void leaderEC(uint8_t seq_index) {
-//     Macros.type(PSTR("\nC"));
-// }
-// static void leaderED(uint8_t seq_index) {
-//     Macros.type(PSTR("\nD"));
-// }
-// static void leaderEE(uint8_t seq_index) {
-//     Macros.type(PSTR("\nE"));
-// }
-// static void leaderEF(uint8_t seq_index) {
-//     Macros.type(PSTR("\nF"));
-// }
-// static void leaderEG(uint8_t seq_index) {
-//     Macros.type(PSTR("\nG"));
-// }
-// static void leaderEH(uint8_t seq_index) {
-//     Macros.type(PSTR("\nH"));
-// }
-// static void leaderEI(uint8_t seq_index) {
-//     Macros.type(PSTR("\nI"));
-// }
-// static void leaderEJ(uint8_t seq_index) {
-//     Macros.type(PSTR("\nJ"));
-// }
-// static void leaderEK(uint8_t seq_index) {
-//     Macros.type(PSTR("\nK"));
-// }
-// static void leaderEL(uint8_t seq_index) {
-//     Macros.type(PSTR("\nL"));
-// }
-// static void leaderEM(uint8_t seq_index) {
-//     Macros.type(PSTR("\nM"));
-// }
-// static void leaderEN(uint8_t seq_index) {
-//     Macros.type(PSTR("\nN"));
-// }
-// static void leaderEO(uint8_t seq_index) {
-//     Macros.type(PSTR("\nO"));
-// }
-// static void leaderEP(uint8_t seq_index) {
-//     Macros.type(PSTR("\nP"));
-// }
-// static void leaderEQ(uint8_t seq_index) {
-//     Macros.type(PSTR("\nQ"));
-// }
-// static void leaderER(uint8_t seq_index) {
-//     Macros.type(PSTR("\nR"));
-// }
-// static void leaderES(uint8_t seq_index) {
-//     Macros.type(PSTR("\nS"));
-// }
-// static void leaderET(uint8_t seq_index) {
-//     Macros.type(PSTR("\nT"));
-// }
-// static void leaderEU(uint8_t seq_index) {
-//     Macros.type(PSTR("\nU"));
-// }
-// static void leaderEV(uint8_t seq_index) {
-//     Macros.type(PSTR("\nV"));
-// }
-// static void leaderEW(uint8_t seq_index) {
-//     Macros.type(PSTR("\nW"));
-// }
-// static void leaderEX(uint8_t seq_index) {
-//     Macros.type(PSTR("\nX"));
-// }
-// static void leaderEY(uint8_t seq_index) {
-//     Macros.type(PSTR("\nY"));
-// }
-// static void leaderEZ(uint8_t seq_index) {
-//     Macros.type(PSTR("\nZ"));
-// }
-// static void leaderE(uint8_t seq_index) {
-//     Macros.type(PSTR("\n"));
-// }
-//
-// static void leader(uint8_t seq_index) {
-//     Macros.type(PSTR(""));
-// }
-//
-//
-// static void leaderSA(uint8_t seq_index) {
-//     Macros.type(PSTR(" A"));
-// }
-// static void leaderSB(uint8_t seq_index) {
-//     Macros.type(PSTR(" B"));
-// }
-// static void leaderSC(uint8_t seq_index) {
-//     Macros.type(PSTR(" C"));
-// }
-// static void leaderSD(uint8_t seq_index) {
-//     Macros.type(PSTR(" D"));
-// }
-// static void leaderSE(uint8_t seq_index) {
-//     Macros.type(PSTR(" E"));
-// }
-// static void leaderSF(uint8_t seq_index) {
-//     Macros.type(PSTR(" F"));
-// }
-// static void leaderSG(uint8_t seq_index) {
-//     Macros.type(PSTR(" G"));
-// }
-// static void leaderSH(uint8_t seq_index) {
-//     Macros.type(PSTR(" H"));
-// }
-// static void leaderSI(uint8_t seq_index) {
-//     Macros.type(PSTR(" I"));
-// }
-// static void leaderSJ(uint8_t seq_index) {
-//     Macros.type(PSTR(" J"));
-// }
-// static void leaderSK(uint8_t seq_index) {
-//     Macros.type(PSTR(" K"));
-// }
-// static void leaderSL(uint8_t seq_index) {
-//     Macros.type(PSTR(" L"));
-// }
-// static void leaderSM(uint8_t seq_index) {
-//     Macros.type(PSTR(" M"));
-// }
-// static void leaderSN(uint8_t seq_index) {
-//     Macros.type(PSTR(" N"));
-// }
-// static void leaderSO(uint8_t seq_index) {
-//     Macros.type(PSTR(" O"));
-// }
-// static void leaderSP(uint8_t seq_index) {
-//     Macros.type(PSTR(" P"));
-// }
-// static void leaderSQ(uint8_t seq_index) {
-//     Macros.type(PSTR(" Q"));
-// }
-// static void leaderSR(uint8_t seq_index) {
-//     Macros.type(PSTR(" R"));
-// }
-// static void leaderSS(uint8_t seq_index) {
-//     Macros.type(PSTR(" S"));
-// }
-// static void leaderST(uint8_t seq_index) {
-//     Macros.type(PSTR(" T"));
-// }
-// static void leaderSU(uint8_t seq_index) {
-//     Macros.type(PSTR(" U"));
-// }
-// static void leaderSV(uint8_t seq_index) {
-//     Macros.type(PSTR(" V"));
-// }
-// static void leaderSW(uint8_t seq_index) {
-//     Macros.type(PSTR(" W"));
-// }
-// static void leaderSX(uint8_t seq_index) {
-//     Macros.type(PSTR(" X"));
-// }
-// static void leaderSY(uint8_t seq_index) {
-//     Macros.type(PSTR(" Y"));
-// }
-// static void leaderSZ(uint8_t seq_index) {
-//     Macros.type(PSTR(" Z"));
-// }
-// static void leaderS(uint8_t seq_index) {
-//     Macros.type(PSTR(" "));
-// }
-//
-//
-//
-// static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
-// LEADER_DICT(
-// //{LEADER_SEQ(LEAD(0), Key_LeftControl, Key_C), leaderCopy},
-// {LEADER_SEQ(LEAD(0), Key_D, Key_D), leader_dd},
-//
-// {LEADER_SEQ(LEAD(1), Key_A), leaderPSA},
-// {LEADER_SEQ(LEAD(1), Key_B), leaderPSB},
-// {LEADER_SEQ(LEAD(1), Key_C), leaderPSC},
-// {LEADER_SEQ(LEAD(1), Key_D), leaderPSD},
-// {LEADER_SEQ(LEAD(1), Key_E), leaderPSE},
-// {LEADER_SEQ(LEAD(1), Key_F), leaderPSF},
-// {LEADER_SEQ(LEAD(1), Key_G), leaderPSG},
-// {LEADER_SEQ(LEAD(1), Key_H), leaderPSH},
-// {LEADER_SEQ(LEAD(1), Key_I), leaderPSI},
-// {LEADER_SEQ(LEAD(1), Key_J), leaderPSJ},
-// {LEADER_SEQ(LEAD(1), Key_K), leaderPSK},
-// {LEADER_SEQ(LEAD(1), Key_L), leaderPSL},
-// {LEADER_SEQ(LEAD(1), Key_M), leaderPSM},
-// {LEADER_SEQ(LEAD(1), Key_N), leaderPSN},
-// {LEADER_SEQ(LEAD(1), Key_O), leaderPSO},
-// {LEADER_SEQ(LEAD(1), Key_P), leaderPSP},
-// {LEADER_SEQ(LEAD(1), Key_Q), leaderPSQ},
-// {LEADER_SEQ(LEAD(1), Key_R), leaderPSR},
-// {LEADER_SEQ(LEAD(1), Key_S), leaderPSS},
-// {LEADER_SEQ(LEAD(1), Key_T), leaderPST},
-// {LEADER_SEQ(LEAD(1), Key_U), leaderPSU},
-// {LEADER_SEQ(LEAD(1), Key_V), leaderPSV},
-// {LEADER_SEQ(LEAD(1), Key_W), leaderPSW},
-// {LEADER_SEQ(LEAD(1), Key_X), leaderPSX},
-// {LEADER_SEQ(LEAD(1), Key_Y), leaderPSY},
-// {LEADER_SEQ(LEAD(1), Key_Z), leaderPSZ},
-// {LEADER_SEQ(LEAD(1), Key_Spacebar), leaderP},
-// {LEADER_SEQ(LEAD(1), Key_Escape), leader},
-//
-//
-//
-// {LEADER_SEQ(LEAD(2), Key_A), leaderEA},
-// {LEADER_SEQ(LEAD(2), Key_B), leaderEB},
-// {LEADER_SEQ(LEAD(2), Key_C), leaderEC},
-// {LEADER_SEQ(LEAD(2), Key_D), leaderED},
-// {LEADER_SEQ(LEAD(2), Key_E), leaderEE},
-// {LEADER_SEQ(LEAD(2), Key_F), leaderEF},
-// {LEADER_SEQ(LEAD(2), Key_G), leaderEG},
-// {LEADER_SEQ(LEAD(2), Key_H), leaderEH},
-// {LEADER_SEQ(LEAD(2), Key_I), leaderEI},
-// {LEADER_SEQ(LEAD(2), Key_J), leaderEJ},
-// {LEADER_SEQ(LEAD(2), Key_K), leaderEK},
-// {LEADER_SEQ(LEAD(2), Key_L), leaderEL},
-// {LEADER_SEQ(LEAD(2), Key_M), leaderEM},
-// {LEADER_SEQ(LEAD(2), Key_N), leaderEN},
-// {LEADER_SEQ(LEAD(2), Key_O), leaderEO},
-// {LEADER_SEQ(LEAD(2), Key_P), leaderEP},
-// {LEADER_SEQ(LEAD(2), Key_Q), leaderEQ},
-// {LEADER_SEQ(LEAD(2), Key_R), leaderER},
-// {LEADER_SEQ(LEAD(2), Key_S), leaderES},
-// {LEADER_SEQ(LEAD(2), Key_T), leaderET},
-// {LEADER_SEQ(LEAD(2), Key_U), leaderEU},
-// {LEADER_SEQ(LEAD(2), Key_V), leaderEV},
-// {LEADER_SEQ(LEAD(2), Key_W), leaderEW},
-// {LEADER_SEQ(LEAD(2), Key_X), leaderEX},
-// {LEADER_SEQ(LEAD(2), Key_Y), leaderEY},
-// {LEADER_SEQ(LEAD(2), Key_Z), leaderEZ},
-// {LEADER_SEQ(LEAD(2), Key_Enter), leaderE},
-// {LEADER_SEQ(LEAD(2), Key_Escape), leader},
-//
-// {LEADER_SEQ(LEAD(3), Key_A), leaderSA},
-// {LEADER_SEQ(LEAD(3), Key_B), leaderSB},
-// {LEADER_SEQ(LEAD(3), Key_C), leaderSC},
-// {LEADER_SEQ(LEAD(3), Key_D), leaderSD},
-// {LEADER_SEQ(LEAD(3), Key_E), leaderSE},
-// {LEADER_SEQ(LEAD(3), Key_F), leaderSF},
-// {LEADER_SEQ(LEAD(3), Key_G), leaderSG},
-// {LEADER_SEQ(LEAD(3), Key_H), leaderSH},
-// {LEADER_SEQ(LEAD(3), Key_I), leaderSI},
-// {LEADER_SEQ(LEAD(3), Key_J), leaderSJ},
-// {LEADER_SEQ(LEAD(3), Key_K), leaderSK},
-// {LEADER_SEQ(LEAD(3), Key_L), leaderSL},
-// {LEADER_SEQ(LEAD(3), Key_M), leaderSM},
-// {LEADER_SEQ(LEAD(3), Key_N), leaderSN},
-// {LEADER_SEQ(LEAD(3), Key_O), leaderSO},
-// {LEADER_SEQ(LEAD(3), Key_P), leaderSP},
-// {LEADER_SEQ(LEAD(3), Key_Q), leaderSQ},
-// {LEADER_SEQ(LEAD(3), Key_R), leaderSR},
-// {LEADER_SEQ(LEAD(3), Key_S), leaderSS},
-// {LEADER_SEQ(LEAD(3), Key_T), leaderST},
-// {LEADER_SEQ(LEAD(3), Key_U), leaderSU},
-// {LEADER_SEQ(LEAD(3), Key_V), leaderSV},
-// {LEADER_SEQ(LEAD(3), Key_W), leaderSW},
-// {LEADER_SEQ(LEAD(3), Key_X), leaderSX},
-// {LEADER_SEQ(LEAD(3), Key_Y), leaderSY},
-// {LEADER_SEQ(LEAD(3), Key_Z), leaderSZ},
-// {LEADER_SEQ(LEAD(3), Key_Spacebar), leaderS},
-// {LEADER_SEQ(LEAD(3), Key_Escape), leader}
-//
-// );
-
 
 
 // These 'solid' color effect definitions define a rainbow of
@@ -1367,28 +1045,51 @@ static void enterHardwareTestMode(uint8_t combo_index) {
   HardwareTestMode.runTests();
 }
 
+static void playMacroShiftSuperZ(uint8_t combo_index) {
+  Macros.play(MACRO(T(Backspace), T(Backspace), D(LeftShift), D(LeftGui), T(LeftBracket), U(LeftGui), U(LeftShift)));
+}
+
+static void playMacroAltSpace(uint8_t combo_index) {
+  Macros.play(MACRO(T(Backspace), T(Backspace), D(LeftAlt), T(Space), U(LeftAlt)));
+}
+
+
 
 /** Magic combo list, a list of key combo and action pairs the firmware should
  * recognise.
  */
-USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
-                  // Left Fn + Esc + Shift
-                  .keys = { R3C6, R2C6, R3C7 }
-}, {
-  .action = enterHardwareTestMode,
-  // Left Fn + Prog + LED
-  .keys = { R3C6, R0C0, R0C6 }
-});
+USE_MAGIC_COMBOS(
+{
+    .action = toggleKeyboardProtocol,
+    // Left Fn + Esc + Shift
+    .keys = { R3C6, R2C6, R3C7 }
+},
+{
+    .action = enterHardwareTestMode,
+    // Left Fn + Prog + LED
+    .keys = { R3C6, R0C0, R0C6 }
+},
+{
+    .action = playMacroShiftSuperZ,
+    .keys = { R2C11, R2C12 }
+},
+{
+    .action = playMacroAltSpace,
+    .keys = { R2C3, R2C4 }
+}
+
+);
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
+
 KALEIDOSCOPE_INIT_PLUGINS(
   // Qukeys
-  //Qukeys,
+  Qukeys,
 
   // Leader
-  //Leader,
+  Leader,
 
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
   // editable keymap in EEPROM.
@@ -1506,13 +1207,14 @@ void setup() {
 //     kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
 //   )
 
-//  QUKEYS(
+  QUKEYS(
        //kaleidoscope::plugin::Qukey(0, 2, 1, OSM(LeftShift)),
        //kaleidoscope::plugin::Qukey(0, 2, 14,OSM(LeftShift)),
+       //kaleidoscope::plugin::Qukey(0, 1, 7, Key_LeftAlt),
 
-//       kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION)),
-//       kaleidoscope::plugin::Qukey(0, 3, 9, ShiftToLayer(NUMPAD))
-//  )
+       kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION)),
+       kaleidoscope::plugin::Qukey(0, 3, 9, ShiftToLayer(NUMPAD))
+  )
 
 //  Qukeys.setTimeout(300);
 
@@ -1525,8 +1227,8 @@ void setup() {
   MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
 
   // Leader
-//  Leader.dictionary = leader_dictionary;
-//  Leader.time_out = 3000;
+  Leader.dictionary = leader_dictionary;
+  Leader.time_out = 3000;
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
