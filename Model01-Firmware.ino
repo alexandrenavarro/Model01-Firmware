@@ -151,6 +151,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_ALT_SHIFT_TAB,
        MACRO_ALT_SPACE,
        MACRO_ALT_TAB,
+       MACRO_ALT_TAB_DOWN,
        MACRO_COLON,
        MACRO_CTRL_A,
        MACRO_CTRL_ALT_B,
@@ -366,16 +367,16 @@ KEYMAPS(
   (___,                        Key_1,                 M(MACRO_ALT_GR_2),       M(MACRO_ALT_GR_3),   Key_4,                Key_5,                   ___,
    Key_Backtick,               Key_Q,                 Key_W,                   Key_E,               Key_R,                Key_T,                   Key_Tab,
    Key_RightBracket,           Key_A,                 Key_S,                   Key_D,               Key_F,                Key_G,
-   Key_Minus,                  Key_Z,                 Key_X,                   Key_C,               Key_V,                Key_B,                   M(MACRO_ALT_SPACE),
+   Key_Minus,                  Key_Z,                 Key_X,                   Key_C,               Key_V,                Key_B,                   Key_Escape,
    OSM(LeftShift), Key_Backspace, OSM(LeftControl), OSM(LeftAlt),
-   Key_Escape,
+   M(MACRO_ALT_SPACE),
 
    ___,                        Key_6,                 Key_7,                   Key_8,               Key_9,                Key_0,                   Key_Equals,
    ___,                        Key_Y,                 Key_U,                   Key_I,               Key_O,                Key_P,                   Key_LeftBracket,
                                Key_H,                 Key_J,                   Key_K,               Key_L,                Key_Semicolon,           Key_Quote,
-   M(MACRO_SHIFT_SUPER_Z),     Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
+   LEAD(0),                    Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
    Key_LeftGui, Key_Enter, Key_Spacebar, OSM(LeftShift),
-   LEAD(0)),
+   M(MACRO_SHIFT_SUPER_Z)),
 
 #else
 
@@ -394,7 +395,7 @@ KEYMAPS(
    ___,
 
    ___,                        ___,                    ___,                    ___,                 ___,                  ___,                     ___,
-   M(MACRO_ALT_ENTER),         M(MACRO_5),             M(MACRO_6),             M(MACRO_7),          M(MACRO_8),           M(MACRO_9),              ___,
+   ___,                        M(MACRO_5),             M(MACRO_6),             M(MACRO_7),          M(MACRO_8),           M(MACRO_9),              ___,
                                M(MACRO_0),             M(MACRO_1),             M(MACRO_2),          M(MACRO_3),           M(MACRO_4),              Key_V,
    ___,                        Key_PcApplication,      M(MACRO_SUPER_LEFT),    M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP),    M(MACRO_SUPER_RIGHT),    ___,
    Key_LeftGui, M(MACRO_ALT_ENTER), ___, Key_LeftShift,
@@ -402,7 +403,7 @@ KEYMAPS(
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,            Key_F1,                 Key_F2,                 Key_F3,              Key_F4,               Key_F5,                  Key_Insert,
-   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_T),        M(MACRO_CTRL_F3),    M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_CTRL_F),
+   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_T),        M(MACRO_CTRL_F3),    M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_CTRL_G),
    Key_Delete,                 M(MACRO_CTRL_Z),        M(MACRO_CTRL_X),        M(MACRO_CTRL_C),     M(MACRO_CTRL_V),      M(MACRO_CTRL_F),
    M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),        M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),         M(MACRO_ALT_1),
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
@@ -424,10 +425,32 @@ static void leader_dd(uint8_t seq_index) {
     Macros.play(MACRO(T(Backspace)));
 }
 
-static void leader_2dd(uint8_t seq_index) {
-    Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
-    Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+static void leader_1dd(uint8_t seq_index) { leader_ndd(seq_index, 1);}
+static void leader_2dd(uint8_t seq_index) { leader_ndd(seq_index, 2);}
+
+static void leader_ndd(uint8_t seq_index, int n) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+    }
     Macros.play(MACRO(T(Backspace)));
+}
+
+static void leader_nd0(uint8_t seq_index, int n) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftShift), T(Home), U(LeftShift), T(Delete)));
+    }
+}
+
+static void leader_ndb(uint8_t seq_index, int n) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftShift), D(LeftControl), D(LeftArrow), U(LeftControl), U(LeftShift), T(Delete)));
+    }
+}
+
+static void leader_ng(uint8_t seq_index, int n) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftControl), T(Comma), U(LeftControl)));
+    }
 }
 
 
@@ -694,7 +717,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_ALT_TAB:
-    return MACRODOWN(D(LeftAlt), T(LeftShift), T(Tab), U(LeftAlt));
+    return MACRODOWN(D(LeftAlt), T(Tab), U(LeftAlt));
+    break;
+
+  case MACRO_ALT_TAB_DOWN:
+    return MACRODOWN(D(LeftAlt), T(Tab));
     break;
 
   case MACRO_COLON:
@@ -1053,6 +1080,9 @@ static void playMacroAltSpace(uint8_t combo_index) {
   Macros.play(MACRO(T(Backspace), T(Backspace), D(LeftAlt), T(Space), U(LeftAlt)));
 }
 
+static void playMacroAltTab(uint8_t combo_index) {
+  Macros.play(MACRO(D(LeftAlt), T(Tab)));
+}
 
 
 /** Magic combo list, a list of key combo and action pairs the firmware should
@@ -1077,7 +1107,6 @@ USE_MAGIC_COMBOS(
     .action = playMacroAltSpace,
     .keys = { R2C3, R2C4 }
 }
-
 );
 
 // First, tell Kaleidoscope which plugins you want to use.
