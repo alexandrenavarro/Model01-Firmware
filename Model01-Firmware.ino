@@ -388,22 +388,22 @@ KEYMAPS(
 
   [NUMPAD] =  KEYMAP_STACKED
   (___,                        M(MACRO_ALT_GR_1),      Key_2,                  Key_3,               M(MACRO_ALT_GR_4),    M(MACRO_ALT_GR_5),       ___,
-   M(MACRO_ALT_GR_DOLLAR),     M(MACRO_ALT_GR_B),      M(MACRO_ALT_GR_E_AIGU), M(MACRO_ALT_GR_P),   M(MACRO_ALT_GR_O),    M(MACRO_ALT_GR_E_GRAVE), M(MACRO_ALT_GR_SPACE),
+   M(MACRO_ALT_GR_DOLLAR),     M(MACRO_ALT_GR_B),      M(MACRO_ALT_GR_E_AIGU), M(MACRO_ALT_GR_P),   M(MACRO_ALT_GR_O),    M(MACRO_ALT_GR_E_GRAVE), ___,
    M(MACRO_EXCLAMATION_POINT), M(MACRO_ALT_GR_A),      M(MACRO_ALT_GR_U),      M(MACRO_COLON),      M(MACRO_SEMICOLON),   M(MACRO_ALT_GR_E),
    M(MACRO_ALT_GR_EQUALS),     M(MACRO_ALT_GR_A_AIGU), M(MACRO_ALT_GR_Y),      M(MACRO_ALT_GR_X),   M(MACRO_ALT_GR_I),    M(MACRO_ALT_GR_K),       ___,
    ___, ___, ___, ___,
    ___,
 
-   ___,                        ___,                    ___,                    ___,                 ___,                  ___,                     ___,
+   ___,                        ___,                    Key_KeypadAdd,          Key_KeypadSubtract,  Key_KeypadDivide,     Key_KeypadMultiply,      ___,
    ___,                        M(MACRO_5),             M(MACRO_6),             M(MACRO_7),          M(MACRO_8),           M(MACRO_9),              ___,
                                M(MACRO_0),             M(MACRO_1),             M(MACRO_2),          M(MACRO_3),           M(MACRO_4),              Key_V,
    ___,                        Key_PcApplication,      M(MACRO_SUPER_LEFT),    M(MACRO_SUPER_DOWN), M(MACRO_SUPER_UP),    M(MACRO_SUPER_RIGHT),    ___,
-   Key_LeftGui, M(MACRO_ALT_ENTER), ___, Key_LeftShift,
+   Key_LeftGui, M(MACRO_ALT_ENTER), M(MACRO_ALT_GR_SPACE), Key_LeftShift,
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,            Key_F1,                 Key_F2,                 Key_F3,              Key_F4,               Key_F5,                  Key_Insert,
-   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_T),        M(MACRO_CTRL_F3),    M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_CTRL_G),
+   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_F3),       M(MACRO_CTRL_T),     M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),         M(MACRO_CTRL_G),
    Key_Delete,                 M(MACRO_CTRL_Z),        M(MACRO_CTRL_X),        M(MACRO_CTRL_C),     M(MACRO_CTRL_V),      M(MACRO_CTRL_F),
    M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),        M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),         M(MACRO_ALT_1),
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
