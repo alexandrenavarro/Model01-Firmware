@@ -157,6 +157,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_ALT_B,
        MACRO_CTRL_ALT_GR_3,
        MACRO_CTRL_ALT_GR_4,
+       MACRO_CTRL_ALT_SHIFT_R,
        MACRO_CTRL_BRACKET_LEFT,
        MACRO_CTRL_BRACKET_RIGHT,
        MACRO_CTRL_C,
@@ -368,19 +369,19 @@ KEYMAPS(
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (___,                        Key_1,                 M(MACRO_ALT_GR_2),       M(MACRO_ALT_GR_3),   Key_4,                Key_5,                   M(MACRO_ALT_TAB),
+  (___,                        Key_1,                 M(MACRO_ALT_GR_2),       M(MACRO_ALT_GR_3),   Key_4,                Key_5,                   Key_Insert,
    Key_Backtick,               Key_Q,                 Key_W,                   Key_E,               Key_R,                Key_T,                   Key_Tab,
    Key_RightBracket,           Key_A,                 Key_S,                   Key_D,               Key_F,                Key_G,
-   Key_Minus,                  Key_Z,                 Key_X,                   Key_C,               Key_V,                Key_B,                   Key_Escape,
+   Key_Minus,                  Key_Z,                 Key_X,                   Key_C,               Key_V,                Key_B,                   LEAD(0),
    OSM(LeftShift), Key_Backspace, OSM(LeftControl), OSM(LeftAlt),
-   M(MACRO_ALT_SPACE),
+   Key_Escape,
 
    ___,                        Key_6,                 Key_7,                   Key_8,               Key_9,                Key_0,                   Key_Equals,
    ___,                        Key_Y,                 Key_U,                   Key_I,               Key_O,                Key_P,                   Key_LeftBracket,
                                Key_H,                 Key_J,                   Key_K,               Key_L,                Key_Semicolon,           Key_Quote,
-   LEAD(0),                    Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
+   M(MACRO_ALT_SPACE),         Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
    Key_LeftGui, Key_Enter, Key_Spacebar, OSM(LeftShift),
-   M(MACRO_SHIFT_SUPER_Z)),
+   M(MACRO_ALT_1)),
 
 #else
 
@@ -406,19 +407,19 @@ KEYMAPS(
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (Key_PrintScreen,            Key_F1,                 Key_F2,                    Key_F3,              Key_F4,               Key_F5,                    Key_Insert,
+  (Key_PrintScreen,            Key_F1,                 Key_F2,                    Key_F3,              Key_F4,               Key_F5,                    ___,
    M(MACRO_CTRL_S),            M(MACRO_CTRL_N),        M(MACRO_CTRL_F3),          M(MACRO_CTRL_T),     M(MACRO_CTRL_F4),     M(MACRO_ALT_F4),           M(MACRO_CTRL_R),
    Key_Delete,                 M(MACRO_CTRL_Z),        M(MACRO_CTRL_X),           M(MACRO_CTRL_C),     M(MACRO_CTRL_V),      M(MACRO_CTRL_F),
-   M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),           M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),           M(MACRO_ALT_1),
+   M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),      M(MACRO_CTRL_U),           M(MACRO_CTRL_ALT_B), Key_F4,               M(MACRO_ALT_F6),           Key_Enter,
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
    ___,
 
    Key_F12,                    Key_F10,                Key_F6,                    Key_F7,              Key_F8,               Key_F9,                    Key_F11,
-   ___,                        M(MACRO_CTRL_HOME),     M(MACRO_CTRL_BRACKET_LEFT),M(MACRO_ALT_DOWN),   M(MACRO_ALT_UP),      M(MACRO_CTRL_BRACKET_RIGHT),M(MACRO_CTRL_END),
+   MACRO_CTRL_ALT_SHIFT_R,     M(MACRO_CTRL_HOME),     M(MACRO_CTRL_BRACKET_LEFT),M(MACRO_ALT_DOWN),   M(MACRO_ALT_UP),      M(MACRO_CTRL_BRACKET_RIGHT),M(MACRO_CTRL_END),
                                Key_Home,               Key_LeftArrow,             Key_DownArrow,       Key_UpArrow,          Key_RightArrow,            Key_End,
-   ___,                        M(MACRO_CTRL_LEFT_LEFT),M(MACRO_CTRL_LEFT),        Key_PageDown,        Key_PageUp,           M(MACRO_CTRL_RIGHT),       M(MACRO_CTRL_RIGHT_RIGHT),
+   ___,                        M(MACRO_CTRL_SHIFT_W),  M(MACRO_CTRL_LEFT),        Key_PageDown,        Key_PageUp,           M(MACRO_CTRL_RIGHT),       M(MACRO_CTRL_W),
    ___, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_CTRL_SHIFT_SPACE), ___,
-   ___)
+   M(MACRO_ALT_SPACE))
 
 ) // KEYMAPS(
 
@@ -746,6 +747,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_ALT_GR_4:
     return MACRODOWN(D(LeftControl), D(RightAlt), T(4), U(RightAlt), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_ALT_SHIFT_R:
+    return MACRODOWN(D(LeftControl), D(RightAlt), D(LeftShift), T(L), U(LeftShift), U(RightAlt), U(LeftControl));
     break;
 
   case MACRO_CTRL_BRACKET_LEFT:
