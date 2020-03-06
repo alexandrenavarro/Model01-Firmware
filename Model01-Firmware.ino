@@ -157,7 +157,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_ALT_B,
        MACRO_CTRL_ALT_GR_3,
        MACRO_CTRL_ALT_GR_4,
-       MACRO_CTRL_ALT_SHIFT_R,
+       MACRO_CTRL_ALT_SHIFT_T,
        MACRO_CTRL_BRACKET_LEFT,
        MACRO_CTRL_BRACKET_RIGHT,
        MACRO_CTRL_C,
@@ -381,7 +381,7 @@ KEYMAPS(
                                Key_H,                 Key_J,                   Key_K,               Key_L,                Key_Semicolon,           Key_Quote,
    M(MACRO_ALT_SPACE),         Key_N,                 Key_M,                   Key_Comma,           Key_Period,           Key_Slash,               Key_Backslash,
    Key_LeftGui, Key_Enter, Key_Spacebar, OSM(LeftShift),
-   M(MACRO_ALT_1)),
+   M(MACRO_SHIFT_SUPER_Z)),
 
 #else
 
@@ -415,11 +415,11 @@ KEYMAPS(
    ___,
 
    Key_F12,                    Key_F10,                Key_F6,                    Key_F7,              Key_F8,               Key_F9,                    Key_F11,
-   MACRO_CTRL_ALT_SHIFT_R,     M(MACRO_CTRL_HOME),     M(MACRO_CTRL_BRACKET_LEFT),M(MACRO_ALT_DOWN),   M(MACRO_ALT_UP),      M(MACRO_CTRL_BRACKET_RIGHT),M(MACRO_CTRL_END),
+   M(MACRO_CTRL_ALT_SHIFT_T),  M(MACRO_CTRL_HOME),     M(MACRO_CTRL_BRACKET_LEFT),M(MACRO_ALT_DOWN),   M(MACRO_ALT_UP),      M(MACRO_CTRL_BRACKET_RIGHT),M(MACRO_CTRL_END),
                                Key_Home,               Key_LeftArrow,             Key_DownArrow,       Key_UpArrow,          Key_RightArrow,            Key_End,
    ___,                        M(MACRO_CTRL_SHIFT_W),  M(MACRO_CTRL_LEFT),        Key_PageDown,        Key_PageUp,           M(MACRO_CTRL_RIGHT),       M(MACRO_CTRL_W),
    ___, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_CTRL_SHIFT_SPACE), ___,
-   M(MACRO_ALT_SPACE))
+   M(MACRO_ALT_1))
 
 ) // KEYMAPS(
 
@@ -749,8 +749,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), D(RightAlt), T(4), U(RightAlt), U(LeftControl));
     break;
 
-  case MACRO_CTRL_ALT_SHIFT_R:
-    return MACRODOWN(D(LeftControl), D(RightAlt), D(LeftShift), T(L), U(LeftShift), U(RightAlt), U(LeftControl));
+  case MACRO_CTRL_ALT_SHIFT_T:
+    return MACRODOWN(D(LeftControl), D(RightAlt), D(LeftShift), T(J), U(LeftShift), U(RightAlt), U(LeftControl));
     break;
 
   case MACRO_CTRL_BRACKET_LEFT:
