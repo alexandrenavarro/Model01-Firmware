@@ -420,7 +420,7 @@ KEYMAPS(
   (Key_PrintScreen,            Key_F1,                          Key_F2,                          Key_F3,                        Key_F4,                      Key_F5,                           ___,
    M(MACRO_CTRL_S),            M(MACRO_CTRL_N),                 M(MACRO_CTRL_F3),                M(MACRO_CTRL_T),               M(MACRO_CTRL_F4),            M(MACRO_ALT_F4),                  M(MACRO_CTRL_R),
    Key_Delete,                 M(MACRO_CTRL_Z),                 M(MACRO_CTRL_X),                 M(MACRO_CTRL_C),               M(MACRO_CTRL_V),             M(MACRO_CTRL_F),
-   M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),               M(MACRO_CTRL_U),                 M(MACRO_CTRL_ALT_B),           Key_F4,                      M(MACRO_ALT_F6),                  Key_Enter,
+   M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),               M(MACRO_CTRL_ALT_B),             M(MACRO_ALT_RIGHT),            Key_F4,                      M(MACRO_ALT_F6),                  Key_Enter,
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
    ___,
 
@@ -1362,9 +1362,10 @@ void setup() {
        //kaleidoscope::plugin::Qukey(0, 2, 1, OSM(LeftShift)),
        //kaleidoscope::plugin::Qukey(0, 2, 14,OSM(LeftShift)),
        //kaleidoscope::plugin::Qukey(0, 1, 7, Key_LeftAlt),
-       kaleidoscope::plugin::Qukey(0, 1, 7, ShiftToLayer(CUT)),
+       kaleidoscope::plugin::Qukey(0, 1, 7, ShiftToLayer(NUMPAD)),
+       kaleidoscope::plugin::Qukey(0, 1, 8, ShiftToLayer(NUMPAD)),
        kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION)),
-       kaleidoscope::plugin::Qukey(0, 3, 9, ShiftToLayer(NUMPAD))
+       kaleidoscope::plugin::Qukey(0, 3, 9, ShiftToLayer(CUT))
   )
 
   Qukeys.setTimeout(180);
