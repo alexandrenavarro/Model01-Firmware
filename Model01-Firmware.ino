@@ -418,15 +418,15 @@ KEYMAPS(
   [NUMPAD] =  KEYMAP_STACKED
   (___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
    ___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
-   ___,                        ___,                             ___,                             ___,                           ___,                         ___,
-   ___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
+   Key_Home,                   Key_LeftArrow,                   Key_DownArrow,                   Key_UpArrow,                   Key_RightArrow,              Key_End,
+   Key_PcApplication,          M(MACRO_SUPER_LEFT),             M(MACRO_SUPER_DOWN),             M(MACRO_SUPER_UP),             M(MACRO_SUPER_RIGHT),        ___,                              ___,
    ___, ___, ___, ___,
    ___,
 
    ___,                        ___,                             Key_KeypadAdd,                   Key_KeypadSubtract,            Key_KeypadDivide,            Key_KeypadMultiply,               ___,
    M(MACRO_CTRL_G),            M(MACRO_5),                      M(MACRO_6),                      M(MACRO_7),                    M(MACRO_8),                  M(MACRO_9),                       ___,
                                M(MACRO_0),                      M(MACRO_1),                      M(MACRO_2),                    M(MACRO_3),                  M(MACRO_4),                       Key_V,
-   ___,                        Key_PcApplication,               M(MACRO_SUPER_LEFT),             M(MACRO_SUPER_DOWN),           M(MACRO_SUPER_UP),           M(MACRO_SUPER_RIGHT),             ___,
+   ___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
    ___, ___, Key_Spacebar, ___,
    ___),
 
