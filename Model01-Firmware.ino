@@ -411,9 +411,9 @@ KEYMAPS(
    ___,
 
    Key_F12,                    Key_F6,                          Key_F7,                          Key_F8,                        Key_F9,                      Key_F10,                           Key_F11,
-   M(MACRO_CTRL_ALT_SHIFT_T),  M(MACRO_CTRL_HOME),              M(MACRO_CTRL_BRACKET_LEFT),      M(MACRO_ALT_DOWN),             M(MACRO_ALT_UP),             M(MACRO_CTRL_BRACKET_RIGHT),      M(MACRO_CTRL_END),
+   M(MACRO_CTRL_ALT_SHIFT_T),  M(MACRO_CTRL_SHIFT_W),           M(MACRO_CTRL_BRACKET_LEFT),      M(MACRO_ALT_DOWN),             M(MACRO_ALT_UP),             M(MACRO_CTRL_BRACKET_RIGHT),      M(MACRO_CTRL_W),
                                Key_Home,                        Key_LeftArrow,                   Key_DownArrow,                 Key_UpArrow,                 Key_RightArrow,                   Key_End,
-   ___,                        M(MACRO_CTRL_SHIFT_W),           M(MACRO_CTRL_LEFT),              Key_PageDown,                  Key_PageUp,                  M(MACRO_CTRL_RIGHT),              M(MACRO_CTRL_W),
+   ___,                        M(MACRO_CTRL_HOME),              M(MACRO_CTRL_LEFT),              Key_PageDown,                  Key_PageUp,                  M(MACRO_CTRL_RIGHT),              M(MACRO_CTRL_END),
    ___, M(MACRO_CTRL_SHIFT_ENTER), M(MACRO_CTRL_SHIFT_SPACE), ___,
    M(MACRO_ALT_1)),
 
@@ -428,7 +428,7 @@ KEYMAPS(
    ___,                        ___,                             Key_KeypadAdd,                   Key_KeypadSubtract,            Key_KeypadDivide,            Key_KeypadMultiply,               ___,
    ___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
                                M(MACRO_6),                      M(MACRO_7),                      M(MACRO_8),                    M(MACRO_9),                  M(MACRO_0),                       Key_V,
-   ___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
+   ___,                        M(MACRO_COLON),                  ___,                             ___,                           ___,                         ___,                              ___,
    ___, ___, Key_Backspace, ___,
    ___),
 
@@ -456,9 +456,9 @@ KEYMAPS(
     ___,
 
     ___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
-    ___,                        M(MACRO_SHIFT_CTRL_HOME_X),      M(MACRO_SUPER_LEFT),             M(MACRO_SUPER_DOWN),           M(MACRO_SUPER_UP),           M(MACRO_SUPER_RIGHT),             M(MACRO_SHIFT_CTRL_END_X),
+    ___,                        ___,                             M(MACRO_SUPER_LEFT),             M(MACRO_SUPER_DOWN),           M(MACRO_SUPER_UP),           M(MACRO_SUPER_RIGHT),             ___,
                                 M(MACRO_SHIFT_HOME_CTRL_X),      Key_Backspace,                   M(MACRO_SHIFT_DOWN_CTRL_X),    M(MACRO_SHIFT_UP_CTRL_X),    Key_Delete,                       M(MACRO_SHIFT_END_CTRL_X),
-    ___,                        ___,                             M(MACRO_SHIFT_CTRL_LEFT_X),      M(MACRO_SHIFT_PG_DOWN_CTRL_X), M(MACRO_SHIFT_PG_UP_CTRL_X), M(MACRO_SHIFT_CTRL_RIGHT_X),      ___,
+    ___,                        M(MACRO_SHIFT_CTRL_HOME_X),      M(MACRO_SHIFT_CTRL_LEFT_X),      M(MACRO_SHIFT_PG_DOWN_CTRL_X), M(MACRO_SHIFT_PG_UP_CTRL_X), M(MACRO_SHIFT_CTRL_RIGHT_X),      M(MACRO_SHIFT_CTRL_END_X),
     ___, M(MACRO_ALT_ENTER), M(MACRO_ALT_GR_SPACE), Key_LeftShift,
     ___)
 
@@ -867,7 +867,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_K:
-     return MACRODOWN(D(LeftControl), T(I), U(LeftControl));
+     return MACRODOWN(D(LeftControl), T(B), U(LeftControl));
      break;
 
   case MACRO_CTRL_LEFT:
