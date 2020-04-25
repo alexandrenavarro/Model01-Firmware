@@ -404,7 +404,7 @@ KEYMAPS(
 #endif
   [FUNCTION] =  KEYMAP_STACKED
   (Key_PrintScreen,            Key_F1,                          Key_F2,                          Key_F3,                        Key_F4,                      Key_F5,                           ___,
-   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),                 M(MACRO_CTRL_F3),                M(MACRO_CTRL_T),               M(MACRO_CTRL_F4),            M(MACRO_ALT_F4),                  M(MACRO_CTRL_R),
+   M(MACRO_CTRL_S),            M(MACRO_CTRL_N),                 M(MACRO_CTRL_F3),                M(MACRO_CTRL_T),               M(MACRO_CTRL_W),            M(MACRO_ALT_F4),                  M(MACRO_CTRL_R),
    Key_Delete,                 M(MACRO_CTRL_Z),                 M(MACRO_CTRL_X),                 M(MACRO_CTRL_C),               M(MACRO_CTRL_V),             M(MACRO_CTRL_F),
    M(MACRO_CTRL_DIVIDE),       M(MACRO_ALT_LEFT),               M(MACRO_CTRL_ALT_B),             M(MACRO_ALT_RIGHT),            Key_F4,                      M(MACRO_ALT_F6),                  Key_Enter,
    Key_LeftShift, Key_Enter, Key_LeftControl, Key_LeftAlt,
@@ -427,8 +427,8 @@ KEYMAPS(
 
    ___,                        ___,                             Key_KeypadAdd,                   Key_KeypadSubtract,            Key_KeypadDivide,            Key_KeypadMultiply,               ___,
    ___,                        ___,                             ___,                             ___,                           ___,                         ___,                              ___,
-                               M(MACRO_6),                      M(MACRO_7),                      M(MACRO_8),                    M(MACRO_9),                  M(MACRO_0),                       Key_V,
-   ___,                        M(MACRO_COLON),                  ___,                             ___,                           ___,                         ___,                              ___,
+                               M(MACRO_6),                      M(MACRO_7),                      M(MACRO_8),                    M(MACRO_9),                  M(MACRO_0),                       M(MACRO_CTRL_K),
+   ___,                        M(MACRO_CTRL_U),                 M(MACRO_CTRL_W),                 ___,                           ___,                         M(MACRO_ALT_D),                   ___,
    ___, ___, Key_Backspace, ___,
    ___),
 
