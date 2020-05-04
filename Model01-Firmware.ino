@@ -414,10 +414,10 @@ KEYMAPS(
    Key_RightBracket,                       Key_A,                                  Key_S,                                  Key_D,                                  Key_F,                        Key_G,
    Key_Minus,                              Key_Z,                                  Key_X,                                  Key_C,                                  Key_V,                        Key_B,                              Key_Escape,
    OSM(LeftShift),                         Key_Backspace,                          OSM(LeftControl),                       OSM(LeftAlt),
-   Key_Escape,
+   LEAD(0),
 
    ___,                                    Key_6,                                  Key_7,                                  Key_8,                                  Key_9,                        Key_0,                              Key_Equals,
-   ___,                                    Key_Y,                                  Key_U,                                  Key_I,                                  Key_O,                        Key_P,                              Key_LeftBracket,
+   LEAD(0),                                Key_Y,                                  Key_U,                                  Key_I,                                  Key_O,                        Key_P,                              Key_LeftBracket,
                                            Key_H,                                  Key_J,                                  Key_K,                                  Key_L,                        Key_Semicolon,                      Key_Quote,
    M(MACRO_ALT_SPACE),                     Key_N,                                  Key_M,                                  Key_Comma,                              Key_Period,                   Key_Slash,                          Key_Backslash,
    Key_LeftGui,                            Key_Enter,                              Key_Spacebar,                           OSM(LeftShift),
@@ -432,7 +432,7 @@ KEYMAPS(
   (M(MACRO_CTRL_P),                        Key_F1,                                 Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                  M(MACRO_CTRL_A),
    M(MACRO_CTRL_N),                        M(MACRO_CTRL_S),                        M(MACRO_CTRL_F3),                       M(MACRO_CTRL_T),                        M(MACRO_CTRL_W),                        M(MACRO_ALT_F4),                         M(MACRO_CTRL_R),
    Key_Delete,                             M(MACRO_CTRL_Z),                        M(MACRO_CTRL_X),                        M(MACRO_CTRL_C),                        M(MACRO_CTRL_V),                        M(MACRO_CTRL_F),
-   M(MACRO_CTRL_DIVIDE),                   M(MACRO_ALT_LEFT),                      M(MACRO_CTRL_PAGE_DOWN),                M(MACRO_CTRL_PAGE_UP),                  Key_F4,                                 M(MACRO_ALT_F7),                         M(MACRO_ALT_RIGHT),
+   M(MACRO_CTRL_DIVIDE),                   M(MACRO_ALT_LEFT),                      M(MACRO_CTRL_PAGE_UP_ALT_COMMA),        M(MACRO_CTRL_PAGE_DOWN_ALT_PERIOD),     Key_F4,                                 M(MACRO_ALT_F7),                         M(MACRO_ALT_RIGHT),
    Key_LeftShift,                          Key_Enter,                              Key_LeftControl,                        Key_LeftAlt,
    ___,
 
@@ -493,6 +493,20 @@ KEYMAPS(
 
 // Leader plugin
 // Move (jkl), Go (g), Undo (u), Paste (p) Comment (?)
+static void moveNNextChar(uint8_t seq_index, int n) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(RightArrow)));
+    }
+}
+static void move1NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 1);}
+static void move2NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 2);}
+static void move3NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 3);}
+static void move4NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 4);}
+static void move5NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 5);}
+static void move6NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 6);}
+static void move7NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 7);}
+static void move8NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 8);}
+static void move9NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 9);}
 
 // Delete () / Cut (d) / Copy (y)
 static void leader_1dd(uint8_t seq_index) { leader_ndd(seq_index, 1);}
@@ -505,6 +519,12 @@ static void leader_7dd(uint8_t seq_index) { leader_ndd(seq_index, 7);}
 static void leader_8dd(uint8_t seq_index) { leader_ndd(seq_index, 8);}
 static void leader_9dd(uint8_t seq_index) { leader_ndd(seq_index, 9);}
 
+static void test(uint8_t seq_index, int n, macro_t* macro) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+    }
+    Macros.play(macro);
+}
 
 static void leader_ndd(uint8_t seq_index, int n) {
     for (int i = 0; i < n; i++) {
@@ -535,21 +555,35 @@ static void leader_ng(uint8_t seq_index, int n) {
 static void leader_dw(uint8_t seq_index) {
     Macros.play(MACRO(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftShift), T(Delete)));
 }
+//   Key_RightBracket,                       Key_A,                                  Key_S,                                  Key_D,                                  Key_F,                        Key_G,
+//                                           Key_H,                                  Key_J,                                  Key_K,                                  Key_L,                        Key_Semicolon,                      Key_Quote,
 
  static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
  LEADER_DICT(
- { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
- { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_RightBracket), leader_1dd},
- { LEADER_SEQ(LEAD(0), Key_1, Key_RightBracket, Key_RightBracket), leader_1dd},
- { LEADER_SEQ(LEAD(0), Key_2, Key_RightBracket, Key_RightBracket), leader_2dd},
- { LEADER_SEQ(LEAD(0), Key_3, Key_RightBracket, Key_RightBracket), leader_3dd},
- { LEADER_SEQ(LEAD(0), Key_4, Key_RightBracket, Key_RightBracket), leader_4dd},
- { LEADER_SEQ(LEAD(0), Key_5, Key_RightBracket, Key_RightBracket), leader_5dd},
- { LEADER_SEQ(LEAD(0), Key_6, Key_RightBracket, Key_RightBracket), leader_6dd},
- { LEADER_SEQ(LEAD(0), Key_7, Key_RightBracket, Key_RightBracket), leader_7dd},
- { LEADER_SEQ(LEAD(0), Key_8, Key_RightBracket, Key_RightBracket), leader_8dd},
- { LEADER_SEQ(LEAD(0), Key_9, Key_RightBracket, Key_RightBracket), leader_9dd}
+  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
+//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_RightBracket), leader_1dd},
+//  { LEADER_SEQ(LEAD(0), Key_1, Key_RightBracket, Key_RightBracket), leader_1dd},
+// { LEADER_SEQ(LEAD(0), Key_2, Key_RightBracket, Key_RightBracket), leader_2dd},
+//  { LEADER_SEQ(LEAD(0), Key_3, Key_RightBracket, Key_RightBracket), leader_3dd},
+//  { LEADER_SEQ(LEAD(0), Key_4, Key_RightBracket, Key_RightBracket), leader_4dd},
+//  { LEADER_SEQ(LEAD(0), Key_5, Key_RightBracket, Key_RightBracket), leader_5dd},
+//  { LEADER_SEQ(LEAD(0), Key_6, Key_RightBracket, Key_RightBracket), leader_6dd},
+//  { LEADER_SEQ(LEAD(0), Key_7, Key_RightBracket, Key_RightBracket), leader_7dd},
+//  { LEADER_SEQ(LEAD(0), Key_8, Key_RightBracket, Key_RightBracket), leader_8dd},
+//  { LEADER_SEQ(LEAD(0), Key_9, Key_RightBracket, Key_RightBracket), leader_9dd},
 
+    { LEADER_SEQ(LEAD(0), Key_Semicolon), move1NextChar},
+    { LEADER_SEQ(LEAD(0), Key_1, Key_Semicolon), move1NextChar},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_Semicolon), move1NextChar},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_Semicolon), move2NextChar},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_Semicolon), move3NextChar},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_Semicolon), move4NextChar},
+    { LEADER_SEQ(LEAD(0), Key_4, Key_Semicolon), move4NextChar},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_Semicolon), move5NextChar},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_Semicolon), move6NextChar},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_Semicolon), move7NextChar},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_Semicolon), move8NextChar},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_Semicolon), move9NextChar}
   );
 
 
@@ -1381,14 +1415,9 @@ static void playMacroAltTab(uint8_t combo_index) {
 // added in the order they're listed here.
 
 KALEIDOSCOPE_INIT_PLUGINS(
-  // The macros plugin adds support for macros
-  Macros,
 
   // Qukeys
   Qukeys,
-
-  //OneShot,
-  OneShot,
 
   // Leader
   Leader,
@@ -1417,11 +1446,12 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The hardware test mode, which can be invoked by tapping Prog, LED and the
   // left Fn button at the same time.
-  HardwareTestMode,
+  //HardwareTestMode,
 
   // LEDControl provides support for other LED modes
   LEDControl,
 
+  // ActiveModColorEffect (need LEDControl and OneShot)
   ActiveModColorEffect,
 
   // We start with the LED effect that turns off all the LEDs.
@@ -1454,7 +1484,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The LED Palette Theme plugin provides a shared palette for other plugins,
   // like Colormap below
-  LEDPaletteTheme,
+  //LEDPaletteTheme,
 
   // The Colormap effect makes it possible to set up per-layer colormaps
   //ColormapEffect,
@@ -1463,6 +1493,12 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
   //NumPad,
+
+  //OneShot,
+  OneShot,
+
+  // The macros plugin adds support for macros
+  Macros,
 
   // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
   //MouseKeys,
@@ -1507,8 +1543,8 @@ void setup() {
        //kaleidoscope::plugin::Qukey(0, 2, 1, OSM(LeftShift)),
        //kaleidoscope::plugin::Qukey(0, 2, 14,OSM(LeftShift)),
        //kaleidoscope::plugin::Qukey(0, 1, 7, Key_LeftAlt),
-       kaleidoscope::plugin::Qukey(0, 1, 7, OSL(NUMPAD)),
-       kaleidoscope::plugin::Qukey(0, 1, 8, OSL(ALTGR)),
+       kaleidoscope::plugin::Qukey(0, 1, 7, ShiftToLayer(NUMPAD)),
+       kaleidoscope::plugin::Qukey(0, 1, 8, ShiftToLayer(ALTGR)),
        kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION)),
        kaleidoscope::plugin::Qukey(0, 3, 9, ShiftToLayer(CUT))
   )
@@ -1521,11 +1557,11 @@ void setup() {
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
-  //MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
+  MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
 
   // Leader
   Leader.dictionary = leader_dictionary;
-  Leader.time_out = 3000;
+  Leader.time_out = 5000;
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
