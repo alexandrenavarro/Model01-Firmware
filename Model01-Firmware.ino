@@ -179,6 +179,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_N,
        MACRO_CTRL_O,
        MACRO_CTRL_P,
+       MACRO_CTRL_Q,
        MACRO_CTRL_PAGE_DOWN,
        MACRO_CTRL_PAGE_DOWN_ALT_PERIOD,
        MACRO_CTRL_PAGE_UP,
@@ -429,10 +430,10 @@ KEYMAPS(
 
 #endif
   [FUNCTION] =  KEYMAP_STACKED
-  (M(MACRO_CTRL_P),                        Key_F1,                                 Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                  M(MACRO_CTRL_A),
-   M(MACRO_CTRL_N),                        M(MACRO_CTRL_S),                        M(MACRO_CTRL_F3),                       M(MACRO_CTRL_T),                        M(MACRO_CTRL_W),                        M(MACRO_ALT_F4),                         M(MACRO_CTRL_R),
+  (M(MACRO_CTRL_P),                        Key_F1,                                 Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                  M(MACRO_CTRL_Q),
+   M(MACRO_CTRL_N),                        M(MACRO_CTRL_S),                        M(MACRO_CTRL_F3),                       M(MACRO_CTRL_T),                        M(MACRO_CTRL_W),                        M(MACRO_ALT_F4),                         M(MACRO_CTRL_A),
    Key_Delete,                             M(MACRO_CTRL_Z),                        M(MACRO_CTRL_X),                        M(MACRO_CTRL_C),                        M(MACRO_CTRL_V),                        M(MACRO_CTRL_F),
-   M(MACRO_CTRL_DIVIDE),                   M(MACRO_ALT_LEFT),                      M(MACRO_CTRL_PAGE_UP_ALT_COMMA),        M(MACRO_CTRL_PAGE_DOWN_ALT_PERIOD),     Key_F4,                                 M(MACRO_ALT_F7),                         M(MACRO_ALT_RIGHT),
+   M(MACRO_CTRL_DIVIDE),                   M(MACRO_ALT_LEFT),                      M(MACRO_CTRL_PAGE_UP),                  M(MACRO_CTRL_PAGE_DOWN),                Key_F4,                                 M(MACRO_ALT_F7),                         M(MACRO_CTRL_R),
    Key_LeftShift,                          Key_Enter,                              Key_LeftControl,                        Key_LeftAlt,
    ___,
 
@@ -1001,6 +1002,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(E), U(LeftControl));
     break;
 
+  case MACRO_CTRL_Q:
+    return MACRODOWN(D(LeftControl), T(M), U(LeftControl));
+    break;
+
   case MACRO_CTRL_PAGE_DOWN:
     return MACRODOWN(D(LeftControl), T(PageDown), U(LeftControl));
     break;
@@ -1417,28 +1422,28 @@ static void playMacroAltTab(uint8_t combo_index) {
 KALEIDOSCOPE_INIT_PLUGINS(
 
   // Qukeys
-  Qukeys,
+  Qukeys, //4.5
 
   // Leader
-  Leader,
+  Leader, //2.1
 
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
   // editable keymap in EEPROM.
-  EEPROMSettings,
-  EEPROMKeymap,
+  EEPROMSettings, //0.6
+  EEPROMKeymap, //2.4
 
   // Focus allows bi-directional communication with the host, and is the
   // interface through which the keymap in EEPROM can be edited.
-  Focus,
+  Focus, // 8.9
 
   // FocusSettingsCommand adds a few Focus commands, intended to aid in
   // changing some settings of the keyboard, such as the default layer (via the
   // `settings.defaultLayer` command)
-  FocusSettingsCommand,
+  FocusSettingsCommand, //1.7
 
   // FocusEEPROMCommand adds a set of Focus commands, which are very helpful in
   // both debugging, and in backing up one's EEPROM contents.
-  FocusEEPROMCommand,
+  FocusEEPROMCommand, //1.0
 
   // The boot greeting effect pulses the LED button for 10 seconds after the
   // keyboard is first connected
@@ -1449,13 +1454,13 @@ KALEIDOSCOPE_INIT_PLUGINS(
   //HardwareTestMode,
 
   // LEDControl provides support for other LED modes
-  LEDControl,
+  LEDControl, //3.5
 
   // ActiveModColorEffect (need LEDControl and OneShot)
-  ActiveModColorEffect,
+  ActiveModColorEffect, //2.1
 
   // We start with the LED effect that turns off all the LEDs.
-  LEDOff,
+  LEDOff, //O.0  (Absolutely needed)
 
   // The rainbow effect changes the color of all of the keyboard's keys at the same time
   // running through all the colors of the rainbow.
@@ -1495,7 +1500,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   //NumPad,
 
   //OneShot,
-  OneShot,
+  OneShot, //3.4
 
   // The macros plugin adds support for macros
   Macros,
@@ -1516,7 +1521,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // comfortable - or able - to do automatically, but can be useful
   // nevertheless. Such as toggling the key report protocol between Boot (used
   // by BIOSes) and Report (NKRO).
-  USBQuirks
+  USBQuirks //0.1 (Absolutely needed)
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
