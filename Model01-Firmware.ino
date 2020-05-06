@@ -1434,16 +1434,16 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // Focus allows bi-directional communication with the host, and is the
   // interface through which the keymap in EEPROM can be edited.
-  Focus, // 8.9
+  //Focus, // 8.9
 
   // FocusSettingsCommand adds a few Focus commands, intended to aid in
   // changing some settings of the keyboard, such as the default layer (via the
   // `settings.defaultLayer` command)
-  FocusSettingsCommand, //1.7
+  //FocusSettingsCommand, //1.7
 
   // FocusEEPROMCommand adds a set of Focus commands, which are very helpful in
   // both debugging, and in backing up one's EEPROM contents.
-  FocusEEPROMCommand, //1.0
+  //FocusEEPROMCommand, //1.0
 
   // The boot greeting effect pulses the LED button for 10 seconds after the
   // keyboard is first connected
