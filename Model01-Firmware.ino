@@ -510,58 +510,59 @@ static void move8NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 8);}
 static void move9NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 9);}
 
 // Delete () / Cut (d) / Copy (y)
-static void leader_1dd(uint8_t seq_index) { leader_ndd(seq_index, 1);}
-static void leader_2dd(uint8_t seq_index) { leader_ndd(seq_index, 2);}
-static void leader_3dd(uint8_t seq_index) { leader_ndd(seq_index, 3);}
-static void leader_4dd(uint8_t seq_index) { leader_ndd(seq_index, 4);}
-static void leader_5dd(uint8_t seq_index) { leader_ndd(seq_index, 5);}
-static void leader_6dd(uint8_t seq_index) { leader_ndd(seq_index, 6);}
-static void leader_7dd(uint8_t seq_index) { leader_ndd(seq_index, 7);}
-static void leader_8dd(uint8_t seq_index) { leader_ndd(seq_index, 8);}
-static void leader_9dd(uint8_t seq_index) { leader_ndd(seq_index, 9);}
+// static void leader_1dd(uint8_t seq_index) { leader_ndd(seq_index, 1);}
+// static void leader_2dd(uint8_t seq_index) { leader_ndd(seq_index, 2);}
+// static void leader_3dd(uint8_t seq_index) { leader_ndd(seq_index, 3);}
+// static void leader_4dd(uint8_t seq_index) { leader_ndd(seq_index, 4);}
+// static void leader_5dd(uint8_t seq_index) { leader_ndd(seq_index, 5);}
+// static void leader_6dd(uint8_t seq_index) { leader_ndd(seq_index, 6);}
+// static void leader_7dd(uint8_t seq_index) { leader_ndd(seq_index, 7);}
+// static void leader_8dd(uint8_t seq_index) { leader_ndd(seq_index, 8);}
+// static void leader_9dd(uint8_t seq_index) { leader_ndd(seq_index, 9);}
+//
+// static void test(uint8_t seq_index, int n, macro_t* macro) {
+//     for (int i = 0; i < n; i++) {
+//         Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+//     }
+//     Macros.play(macro);
+// }
+//
+// static void leader_ndd(uint8_t seq_index, int n) {
+//     for (int i = 0; i < n; i++) {
+//         Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
+//     }
+//     Macros.play(MACRO(T(Backspace)));
+// }
+//
+// static void leader_nd0(uint8_t seq_index, int n) {
+//     for (int i = 0; i < n; i++) {
+//         Macros.play(MACRO(D(LeftShift), T(Home), U(LeftShift), T(Delete)));
+//     }
+// }
+//
+// static void leader_ndb(uint8_t seq_index, int n) {
+//     for (int i = 0; i < n; i++) {
+//         Macros.play(MACRO(D(LeftShift), D(LeftControl), D(LeftArrow), U(LeftControl), U(LeftShift), T(Delete)));
+//     }
+// }
+//
+// static void leader_ng(uint8_t seq_index, int n) {
+//     for (int i = 0; i < n; i++) {
+//         Macros.play(MACRO(D(LeftControl), T(Comma), U(LeftControl)));
+//     }
+// }
+//
+//
+// static void leader_dw(uint8_t seq_index) {
+//     Macros.play(MACRO(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftShift), T(Delete)));
+// }
 
-static void test(uint8_t seq_index, int n, macro_t* macro) {
-    for (int i = 0; i < n; i++) {
-        Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
-    }
-    Macros.play(macro);
-}
-
-static void leader_ndd(uint8_t seq_index, int n) {
-    for (int i = 0; i < n; i++) {
-        Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
-    }
-    Macros.play(MACRO(T(Backspace)));
-}
-
-static void leader_nd0(uint8_t seq_index, int n) {
-    for (int i = 0; i < n; i++) {
-        Macros.play(MACRO(D(LeftShift), T(Home), U(LeftShift), T(Delete)));
-    }
-}
-
-static void leader_ndb(uint8_t seq_index, int n) {
-    for (int i = 0; i < n; i++) {
-        Macros.play(MACRO(D(LeftShift), D(LeftControl), D(LeftArrow), U(LeftControl), U(LeftShift), T(Delete)));
-    }
-}
-
-static void leader_ng(uint8_t seq_index, int n) {
-    for (int i = 0; i < n; i++) {
-        Macros.play(MACRO(D(LeftControl), T(Comma), U(LeftControl)));
-    }
-}
-
-
-static void leader_dw(uint8_t seq_index) {
-    Macros.play(MACRO(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftShift), T(Delete)));
-}
 //   Key_RightBracket,                       Key_A,                                  Key_S,                                  Key_D,                                  Key_F,                        Key_G,
 //                                           Key_H,                                  Key_J,                                  Key_K,                                  Key_L,                        Key_Semicolon,                      Key_Quote,
 
  static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
  LEADER_DICT(
-  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
+//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
 //  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_RightBracket), leader_1dd},
 //  { LEADER_SEQ(LEAD(0), Key_1, Key_RightBracket, Key_RightBracket), leader_1dd},
 // { LEADER_SEQ(LEAD(0), Key_2, Key_RightBracket, Key_RightBracket), leader_2dd},
@@ -794,7 +795,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
      break;
 
   case MACRO_ALT_GR_SPACE:
-     if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+     if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(U(LeftShift)));
         return MACRODOWN(D(RightAlt), T(Space), U(RightAlt));
      } else {
@@ -903,16 +904,16 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_END:
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
         Macros.play(MACRODOWN(D(LeftAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
         Macros.play(MACRODOWN(D(RightAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(End), U(LeftControl));
@@ -935,16 +936,16 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_HOME:
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
         Macros.play(MACRODOWN(D(LeftAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
         Macros.play(MACRODOWN(D(RightAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(Home), U(LeftControl));
@@ -955,32 +956,32 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
      break;
 
   case MACRO_CTRL_LEFT:
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
         Macros.play(MACRODOWN(D(LeftAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
         Macros.play(MACRODOWN(D(RightAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
     break;
 
   case MACRO_CTRL_LEFT_LEFT:
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
         Macros.play(MACRODOWN(D(LeftAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
         Macros.play(MACRODOWN(D(RightAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(LeftArrow), T(LeftArrow), U(LeftControl));
@@ -1035,32 +1036,32 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_RIGHT:
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
         Macros.play(MACRODOWN(D(LeftAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
         Macros.play(MACRODOWN(D(RightAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
     break;
 
   case MACRO_CTRL_RIGHT_RIGHT:
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
         Macros.play(MACRODOWN(D(LeftAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_RightAlt)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
         Macros.play(MACRODOWN(D(RightAlt)));
     }
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftGui) || kaleidoscope::hid::wasModifierKeyActive(Key_RightGui)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(RightArrow), T(RightArrow), U(LeftControl));
@@ -1211,7 +1212,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_SPACE:
-    if (kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)) {
+    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         return MACRODOWN(U(LeftShift), T(Space));
     } else {
         return MACRODOWN(T(Space));
@@ -1386,32 +1387,32 @@ enum {
 
 /** Wrappers, to be used by MagicCombo. **/
 
-/**
- * This simply toggles the keyboard protocol via USBQuirks, and wraps it within
- * a function with an unused argument, to match what MagicCombo expects.
- */
-static void toggleKeyboardProtocol(uint8_t combo_index) {
-  USBQuirks.toggleKeyboardProtocol();
-}
+// /**
+//  * This simply toggles the keyboard protocol via USBQuirks, and wraps it within
+//  * a function with an unused argument, to match what MagicCombo expects.
+//  */
+// static void toggleKeyboardProtocol(uint8_t combo_index) {
+//   USBQuirks.toggleKeyboardProtocol();
+// }
+//
+// /**
+//  *  This enters the hardware test mode
+//  */
+// static void enterHardwareTestMode(uint8_t combo_index) {
+//   HardwareTestMode.runTests();
+// }
 
-/**
- *  This enters the hardware test mode
- */
-static void enterHardwareTestMode(uint8_t combo_index) {
-  HardwareTestMode.runTests();
-}
-
-static void playMacroShiftSuperZ(uint8_t combo_index) {
-  Macros.play(MACRO(T(Backspace), T(Backspace), D(LeftShift), D(LeftGui), T(LeftBracket), U(LeftGui), U(LeftShift)));
-}
-
-static void playMacroAltSpace(uint8_t combo_index) {
-  Macros.play(MACRO(T(Backspace), T(Backspace), D(LeftAlt), T(Space), U(LeftAlt)));
-}
-
-static void playMacroAltTab(uint8_t combo_index) {
-  Macros.play(MACRO(D(LeftAlt), T(Tab)));
-}
+// static void playMacroShiftSuperZ(uint8_t combo_index) {
+//   Macros.play(MACRO(T(Backspace), T(Backspace), D(LeftShift), D(LeftGui), T(LeftBracket), U(LeftGui), U(LeftShift)));
+// }
+//
+// static void playMacroAltSpace(uint8_t combo_index) {
+//   Macros.play(MACRO(T(Backspace), T(Backspace), D(LeftAlt), T(Space), U(LeftAlt)));
+// }
+//
+// static void playMacroAltTab(uint8_t combo_index) {
+//   Macros.play(MACRO(D(LeftAlt), T(Tab)));
+// }
 
 
 
@@ -1548,13 +1549,13 @@ void setup() {
        //kaleidoscope::plugin::Qukey(0, 2, 1, OSM(LeftShift)),
        //kaleidoscope::plugin::Qukey(0, 2, 14,OSM(LeftShift)),
        //kaleidoscope::plugin::Qukey(0, 1, 7, Key_LeftAlt),
-       kaleidoscope::plugin::Qukey(0, 1, 7, ShiftToLayer(NUMPAD)),
-       kaleidoscope::plugin::Qukey(0, 1, 8, ShiftToLayer(ALTGR)),
-       kaleidoscope::plugin::Qukey(0, 3, 6, ShiftToLayer(FUNCTION)),
-       kaleidoscope::plugin::Qukey(0, 3, 9, ShiftToLayer(CUT))
+       kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), ShiftToLayer(NUMPAD)),
+       kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(ALTGR)),
+       kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), ShiftToLayer(FUNCTION)),
+       kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), ShiftToLayer(CUT))
   )
 
-  Qukeys.setTimeout(180);
+  Qukeys.setHoldTimeout(180);
 
   //OneShot
   OneShot.time_out = 500;
