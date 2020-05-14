@@ -184,6 +184,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_F3,
        MACRO_CTRL_F4,
        MACRO_CTRL_G,
+       MACRO_CTRL_H,
        MACRO_CTRL_HOME,
        MACRO_CTRL_K,
        MACRO_CTRL_LEFT,
@@ -235,6 +236,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_SHIFT_DOWN_CTRL_X,
        MACRO_SHIFT_END_CTRL_X,
        MACRO_SHIFT_HOME_CTRL_X,
+       MACRO_SHIFT_INSERT,
        MACRO_SHIFT_LEFT_CTRL_X,
        MACRO_SHIFT_PG_DOWN_CTRL_X,
        MACRO_SHIFT_PG_UP_CTRL_X,
@@ -447,10 +449,10 @@ KEYMAPS(
 
 #endif
   [FUNCTION] =  KEYMAP_STACKED
-  (M(MACRO_CTRL_P),                        Key_F1,                                 Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                  M(MACRO_CTRL_Q),
+  (M(MACRO_SHIFT_INSERT),                  Key_F1,                                 Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                  M(MACRO_CTRL_Q),
    M(MACRO_CTRL_N),                        M(MACRO_CTRL_S),                        M(MACRO_CTRL_F3),                       M(MACRO_CTRL_T),                        M(MACRO_CTRL_W),                        M(MACRO_ALT_F4),                         M(MACRO_CTRL_A),
    Key_Delete,                             M(MACRO_CTRL_Z),                        M(MACRO_CTRL_X),                        M(MACRO_CTRL_C),                        M(MACRO_CTRL_V),                        M(MACRO_CTRL_F),
-   M(MACRO_CTRL_DIVIDE),                   M(MACRO_ALT_LEFT),                      M(MACRO_CTRL_PAGE_UP),                  M(MACRO_CTRL_PAGE_DOWN),                Key_F4,                                 M(MACRO_ALT_F7),                         M(MACRO_CTRL_R),
+   M(MACRO_CTRL_DIVIDE),                   M(MACRO_ALT_LEFT),                      M(MACRO_CTRL_PAGE_UP),                  M(MACRO_CTRL_PAGE_DOWN),                Key_F4,                                 M(MACRO_ALT_F7),                         M(MACRO_CTRL_H),
    Key_LeftShift,                          Key_Enter,                              Key_LeftControl,                        Key_LeftAlt,
    ___,
 
@@ -1094,6 +1096,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(Comma), U(LeftControl));
     break;
 
+  case MACRO_CTRL_H:
+    return MACRODOWN(D(LeftControl), T(L), U(LeftControl));
+    break;
+
   case MACRO_CTRL_HOME:
     if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
@@ -1356,6 +1362,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_SHIFT_HOME_CTRL_X:
     return MACRODOWN(D(LeftShift), T(Home), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
+    break;
+
+  case MACRO_SHIFT_INSERT:
+    return MACRODOWN(D(LeftShift), T(Insert), U(LeftControl));
     break;
 
   case MACRO_SHIFT_LEFT_CTRL_X:
