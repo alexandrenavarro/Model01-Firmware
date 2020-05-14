@@ -161,8 +161,21 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_ALT_GR_3,
        MACRO_CTRL_ALT_GR_4,
        MACRO_CTRL_ALT_SHIFT_T,
-       MACRO_CTRL_BRACKET_LEFT,
-       MACRO_CTRL_BRACKET_RIGHT,
+       MACRO_CTRL_B,
+       MACRO_CTRL_B_AMPERSAND,
+       MACRO_CTRL_B_LEFT_BRACKET,
+       MACRO_CTRL_B_C,
+       MACRO_CTRL_B_COMMA,
+       MACRO_CTRL_B_F,
+       MACRO_CTRL_B_LEFT_CURLY_BRACKET,
+       MACRO_CTRL_B_N,
+       MACRO_CTRL_B_O,
+       MACRO_CTRL_B_P,
+       MACRO_CTRL_B_PERCENT,
+       MACRO_CTRL_B_QUOTE,
+       MACRO_CTRL_B_RIGHT_CURLY_BRACKET,
+       MACRO_CTRL_B_W,
+       MACRO_CTRL_B_X,
        MACRO_CTRL_C,
        MACRO_CTRL_DIVIDE,
        MACRO_CTRL_DOWN,
@@ -175,6 +188,8 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_K,
        MACRO_CTRL_LEFT,
        MACRO_CTRL_LEFT_LEFT,
+       MACRO_CTRL_LEFT_BRACKET,
+       MACRO_CTRL_LEFT_PARENTHESIS,
        MACRO_CTRL_L,
        MACRO_CTRL_N,
        MACRO_CTRL_O,
@@ -188,6 +203,8 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_UP,
        MACRO_CTRL_R,
        MACRO_CTRL_RIGHT,
+       MACRO_CTRL_RIGHT_BRACKET,
+       MACRO_CTRL_RIGHT_PARENTHESIS,
        MACRO_CTRL_RIGHT_RIGHT,
        MACRO_CTRL_S,
        MACRO_CTRL_SHIFT_ENTER,
@@ -438,17 +455,17 @@ KEYMAPS(
    ___,
 
    Key_F12,                                Key_F6,                                 Key_F7,                                 Key_F8,                                 Key_F9,                                 Key_F10,                                 Key_F11,
-   M(MACRO_CTRL_ALT_SHIFT_T),              M(MACRO_CTRL_SHIFT_W),                  M(MACRO_CTRL_BRACKET_LEFT),             M(MACRO_CTRL_DOWN),                     M(MACRO_CTRL_UP),                       M(MACRO_CTRL_BRACKET_RIGHT),             M(MACRO_CTRL_W),
+   M(MACRO_CTRL_ALT_SHIFT_T),              M(MACRO_CTRL_SHIFT_W),                  M(MACRO_CTRL_LEFT_PARENTHESIS),         M(MACRO_CTRL_DOWN),                     M(MACRO_CTRL_UP),                       M(MACRO_CTRL_RIGHT_PARENTHESIS),         M(MACRO_CTRL_W),
                                            Key_Home,                               Key_LeftArrow,                          Key_DownArrow,                          Key_UpArrow,                            Key_RightArrow,                          Key_End,
    Key_PcApplication,                      M(MACRO_CTRL_HOME),                     M(MACRO_CTRL_LEFT),                     Key_PageDown,                           Key_PageUp,                             M(MACRO_CTRL_RIGHT),                     M(MACRO_CTRL_END),
    ___,                                    M(MACRO_CTRL_SHIFT_ENTER),              M(MACRO_CTRL_SHIFT_SPACE),              ___,
    M(MACRO_ALT_1)),
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___,                                    ___,                                    ___,                                    ___,                                    ___,                                    ___,                                     ___,
-   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                    ___,                                     ___,
+  (___,                                    ___,                                    M(MACRO_CTRL_B_COMMA),                  ___,                                    ___,                                    ___,                                     M(MACRO_CTRL_B_LEFT_BRACKET),
+   ___,                                    ___,                                    M(MACRO_CTRL_B_F),                      M(MACRO_CTRL_B_C),                      M(MACRO_CTRL_B_AMPERSAND),              ___,                                     M(MACRO_CTRL_B_W),
    M(MACRO_CTRL_G),                        M(MACRO_1),                             M(MACRO_2),                             M(MACRO_3),                             M(MACRO_4),                             M(MACRO_5),
-   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                    ___,                                     ___,
+   M(MACRO_CTRL_B_QUOTE),                  M(MACRO_CTRL_B_O),                      M(MACRO_CTRL_B_P),                      M(MACRO_CTRL_B_N),                      ___,                                    M(MACRO_CTRL_B_PERCENT),                 ___,
    ___, ___, ___, ___,
    ___,
 
@@ -459,57 +476,179 @@ KEYMAPS(
    ___,                                    ___,                                    Key_Backspace,                          ___,
    ___),
 
-   [ALTGR] =  KEYMAP_STACKED
-   (___,                                   M(MACRO_ALT_GR_1),                      Key_2,                                  Key_3,                                  M(MACRO_ALT_GR_4),                      M(MACRO_ALT_GR_5),                        ___,
-    M(MACRO_ALT_GR_DOLLAR),                M(MACRO_ALT_GR_B),                      M(MACRO_ALT_GR_E_AIGU),                 M(MACRO_ALT_GR_P),                      M(MACRO_ALT_GR_O),                      M(MACRO_ALT_GR_E_GRAVE),                  ___,
-    M(MACRO_EXCLAMATION_POINT),            M(MACRO_ALT_GR_A),                      M(MACRO_ALT_GR_U),                      M(MACRO_COLON),                         M(MACRO_SEMICOLON),                     M(MACRO_ALT_GR_E),
-    M(MACRO_ALT_GR_EQUALS),                M(MACRO_ALT_GR_A_AIGU),                 M(MACRO_ALT_GR_Y),                      M(MACRO_ALT_GR_X),                      M(MACRO_ALT_GR_I),                      M(MACRO_ALT_GR_K),                        ___,
-    ___, Key_Spacebar, ___, ___,
-    ___,
+  [ALTGR] =  KEYMAP_STACKED
+  (___,                                   M(MACRO_ALT_GR_1),                      Key_2,                                  Key_3,                                  M(MACRO_ALT_GR_4),                      M(MACRO_ALT_GR_5),                        ___,
+   M(MACRO_ALT_GR_DOLLAR),                M(MACRO_ALT_GR_B),                      M(MACRO_ALT_GR_E_AIGU),                 M(MACRO_ALT_GR_P),                      M(MACRO_ALT_GR_O),                      M(MACRO_ALT_GR_E_GRAVE),                  ___,
+   M(MACRO_EXCLAMATION_POINT),            M(MACRO_ALT_GR_A),                      M(MACRO_ALT_GR_U),                      M(MACRO_COLON),                         M(MACRO_SEMICOLON),                     M(MACRO_ALT_GR_E),
+   M(MACRO_ALT_GR_EQUALS),                M(MACRO_ALT_GR_A_AIGU),                 M(MACRO_ALT_GR_Y),                      M(MACRO_ALT_GR_X),                      M(MACRO_ALT_GR_I),                      M(MACRO_ALT_GR_K),                        ___,
+   ___, Key_Spacebar, ___, ___,
+   ___,
 
-    ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                      ___,
-    ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                      ___,
+   ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                      ___,
+   ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                      ___,
                                            ___,                                    ___,                                    ___,                                    ___,                                    ___,                                      ___,
-    ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                      ___,
-    ___,                                   ___,                                    ___,                                    ___,
-    ___),
+   ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                      ___,
+   ___,                                   ___,                                    ___,                                    ___,
+   ___),
 
   [CUT] =  KEYMAP_STACKED
-   (Key_PrintScreen,                       ___,                                    M(MACRO_SUPER_CTRL_SHIFT_ALT_DOWN),     M(MACRO_SUPER_CTRL_SHIFT_ALT_UP),       ___,                                    ___,                                     ___,
-    M(MACRO_SUPER_CTRL_SHIFT_HOME),        M(MACRO_SUPER_CTRL_HOME),               M(MACRO_SUPER_CTRL_SHIFT_DOWN),         M(MACRO_SUPER_CTRL_SHIFT_UP),           M(MACRO_SUPER_CTRL_PAGE_UP),            M(MACRO_SUPER_CTRL_SHIFT_PAGE_UP),       ___,
-    M(MACRO_SUPER_CTRL_SHIFT_LEFT),        M(MACRO_SUPER_CTRL_LEFT),               M(MACRO_SUPER_CTRL_DOWN),               M(MACRO_SUPER_CTRL_UP),                 M(MACRO_SUPER_CTRL_RIGHT),              M(MACRO_SUPER_CTRL_SHIFT_RIGHT),
-    M(MACRO_SUPER_CTRL_SHIFT_END),         M(MACRO_SUPER_CTRL_END),                M(MACRO_SUPER_CTRL_SHIFT_ALT_LEFT),     M(MACRO_SUPER_CTRL_SHIFT_ALT_RIGHT),    M(MACRO_SUPER_CTRL_PAGE_DOWN),          M(MACRO_SUPER_CTRL_SHIFT_PAGE_DOWN),     ___,
-    ___, ___, ___, ___,
-    ___,
+  (Key_PrintScreen,                       ___,                                    M(MACRO_SUPER_CTRL_SHIFT_ALT_DOWN),     M(MACRO_SUPER_CTRL_SHIFT_ALT_UP),       ___,                                    ___,                                     ___,
+   M(MACRO_SUPER_CTRL_SHIFT_HOME),        M(MACRO_SUPER_CTRL_HOME),               M(MACRO_SUPER_CTRL_SHIFT_DOWN),         M(MACRO_SUPER_CTRL_SHIFT_UP),           M(MACRO_SUPER_CTRL_PAGE_UP),            M(MACRO_SUPER_CTRL_SHIFT_PAGE_UP),       ___,
+   M(MACRO_SUPER_CTRL_SHIFT_LEFT),        M(MACRO_SUPER_CTRL_LEFT),               M(MACRO_SUPER_CTRL_DOWN),               M(MACRO_SUPER_CTRL_UP),                 M(MACRO_SUPER_CTRL_RIGHT),              M(MACRO_SUPER_CTRL_SHIFT_RIGHT),
+   M(MACRO_SUPER_CTRL_SHIFT_END),         M(MACRO_SUPER_CTRL_END),                M(MACRO_SUPER_CTRL_SHIFT_ALT_LEFT),     M(MACRO_SUPER_CTRL_SHIFT_ALT_RIGHT),    M(MACRO_SUPER_CTRL_PAGE_DOWN),          M(MACRO_SUPER_CTRL_SHIFT_PAGE_DOWN),     ___,
+   ___, ___, ___, ___,
+   ___,
 
-    ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                 ___,
-    ___,                                   ___,                                    M(MACRO_SUPER_LEFT),                    M(MACRO_SUPER_DOWN),                    M(MACRO_SUPER_UP),                      M(MACRO_SUPER_RIGHT),                ___,
-                                           M(MACRO_SHIFT_HOME_CTRL_X),             Key_Backspace,                          M(MACRO_SHIFT_DOWN_CTRL_X),             M(MACRO_SHIFT_UP_CTRL_X),               Key_Delete,                          M(MACRO_SHIFT_END_CTRL_X),
-    ___,                                   M(MACRO_SHIFT_CTRL_HOME_X),             M(MACRO_SHIFT_CTRL_LEFT_X),             M(MACRO_SHIFT_PG_DOWN_CTRL_X),          M(MACRO_SHIFT_PG_UP_CTRL_X),            M(MACRO_SHIFT_CTRL_RIGHT_X),         M(MACRO_SHIFT_CTRL_END_X),
-    ___,                                   M(MACRO_ALT_ENTER),                     M(MACRO_ALT_GR_SPACE),                  Key_LeftShift,
-    ___)
+   ___,                                   ___,                                    ___,                                    ___,                                    ___,                                    ___,                                 ___,
+   ___,                                   ___,                                    M(MACRO_SUPER_LEFT),                    M(MACRO_SUPER_DOWN),                    M(MACRO_SUPER_UP),                      M(MACRO_SUPER_RIGHT),                ___,
+                                          M(MACRO_SHIFT_HOME_CTRL_X),             Key_Backspace,                          M(MACRO_SHIFT_DOWN_CTRL_X),             M(MACRO_SHIFT_UP_CTRL_X),               Key_Delete,                          M(MACRO_SHIFT_END_CTRL_X),
+   ___,                                   M(MACRO_SHIFT_CTRL_HOME_X),             M(MACRO_SHIFT_CTRL_LEFT_X),             M(MACRO_SHIFT_PG_DOWN_CTRL_X),          M(MACRO_SHIFT_PG_UP_CTRL_X),            M(MACRO_SHIFT_CTRL_RIGHT_X),         M(MACRO_SHIFT_CTRL_END_X),
+   ___,                                   M(MACRO_ALT_ENTER),                     M(MACRO_ALT_GR_SPACE),                  Key_LeftShift,
+   ___)
 
 ) // KEYMAPS(
 
 
 // Leader plugin
 // Move (jkl), Go (g), Undo (u), Paste (p) Comment (?)
-static void moveNNextChar(uint8_t seq_index, int n) {
+
+//moveFileStart
+static void moveFileStart(uint8_t seq_index) {
+    Macros.play(MACRO(D(LeftControl), T(Home), U(LeftControl)));
+}
+
+//moveNParagraphsBefore
+static void moveNParagraphsBefore(uint8_t seq_index, int n) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftControl), T(UpArrow), U(LeftControl)));
+    }
+}
+static void move1ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 1);}
+static void move2ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 2);}
+static void move3ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 3);}
+static void move4ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 4);}
+static void move5ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 5);}
+static void move6ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 6);}
+static void move7ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 7);}
+static void move8ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 8);}
+static void move9ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 9);}
+
+//moveNLinesBefore
+static void moveNLinesBefore(uint8_t seq_index, int n) {
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(T(UpArrow)));
+    }
+}
+static void move1LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 1);}
+static void move2LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 2);}
+static void move3LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 3);}
+static void move4LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 4);}
+static void move5LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 5);}
+static void move6LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 6);}
+static void move7LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 7);}
+static void move8LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 8);}
+static void move9LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 9);}
+
+//moveLineStart
+static void moveLineStart(uint8_t seq_index) {
+    Macros.play(MACRO(T(Home)));
+}
+//moveNWordsBefore
+//moveNCharsBefore
+//moveNCharsAfter
+static void moveNCharsAfter(uint8_t seq_index, int n) {
     for (int i = 0; i < n; i++) {
         Macros.play(MACRO(D(RightArrow)));
     }
 }
-static void move1NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 1);}
-static void move2NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 2);}
-static void move3NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 3);}
-static void move4NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 4);}
-static void move5NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 5);}
-static void move6NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 6);}
-static void move7NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 7);}
-static void move8NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 8);}
-static void move9NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 9);}
+static void move1CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 1);}
+static void move2CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 2);}
+static void move3CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 3);}
+static void move4CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 4);}
+static void move5CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 5);}
+static void move6CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 6);}
+static void move7CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 7);}
+static void move8CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 8);}
+static void move9CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 9);}
+
+//moveNWordsAfter
+//moveLineEnd
+static void moveLineEnd(uint8_t seq_index) {
+    Macros.play(MACRO(T(End)));
+}
+//moveNLinesAfter
+//moveNParagraphsAfter
+//moveFileEnd
 
 // Delete () / Cut (d) / Copy (y)
+
+//   Key_RightBracket,                       Key_A,                                  Key_S,                                  Key_D,                                  Key_F,                        Key_G,
+//                                           Key_H,                                  Key_J,                                  Key_K,                                  Key_L,                        Key_Semicolon,                      Key_Quote,
+
+ static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
+ LEADER_DICT(
+//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
+//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_RightBracket), leader_1dd},
+//  { LEADER_SEQ(LEAD(0), Key_1, Key_RightBracket, Key_RightBracket), leader_1dd},
+//  { LEADER_SEQ(LEAD(0), Key_2, Key_RightBracket, Key_RightBracket), leader_2dd},
+//  { LEADER_SEQ(LEAD(0), Key_3, Key_RightBracket, Key_RightBracket), leader_3dd},
+//  { LEADER_SEQ(LEAD(0), Key_4, Key_RightBracket, Key_RightBracket), leader_4dd},
+//  { LEADER_SEQ(LEAD(0), Key_5, Key_RightBracket, Key_RightBracket), leader_5dd},
+//  { LEADER_SEQ(LEAD(0), Key_6, Key_RightBracket, Key_RightBracket), leader_6dd},
+//  { LEADER_SEQ(LEAD(0), Key_7, Key_RightBracket, Key_RightBracket), leader_7dd},
+//  { LEADER_SEQ(LEAD(0), Key_8, Key_RightBracket, Key_RightBracket), leader_8dd},
+//  { LEADER_SEQ(LEAD(0), Key_9, Key_RightBracket, Key_RightBracket), leader_9dd},
+
+    // Move
+    // moveFileStart
+    { LEADER_SEQ(LEAD(0), Key_N), moveFileStart},
+
+    //moveNParagraphsBefore
+    { LEADER_SEQ(LEAD(0), Key_O), move1ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_O), move1ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_O), move2ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_O), move3ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_O), move4ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_O), move5ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_O), move6ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_O), move7ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_O), move8ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_O), move9ParagraphsBefore},
+
+    //moveNLinesBefore
+    { LEADER_SEQ(LEAD(0), Key_L), move1LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_L), move1LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_L), move2LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_L), move3LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_L), move4LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_L), move5LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_L), move6LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_L), move7LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_L), move8LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_L), move9LinesBefore},
+
+    //moveLineStart
+    { LEADER_SEQ(LEAD(0), Key_H), moveLineStart},
+
+    // moveNCharsAfter
+    { LEADER_SEQ(LEAD(0), Key_Semicolon), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_Semicolon), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_Semicolon), move2CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_Semicolon), move3CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_Semicolon), move4CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_Semicolon), move5CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_Semicolon), move6CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_Semicolon), move7CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_Semicolon), move8CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_Semicolon), move9CharsAfter},
+
+    //moveLineEnd
+    { LEADER_SEQ(LEAD(0), Key_Quote), moveLineEnd}
+
+  );
+
+
+
 // static void leader_1dd(uint8_t seq_index) { leader_ndd(seq_index, 1);}
 // static void leader_2dd(uint8_t seq_index) { leader_ndd(seq_index, 2);}
 // static void leader_3dd(uint8_t seq_index) { leader_ndd(seq_index, 3);}
@@ -556,38 +695,6 @@ static void move9NextChar(uint8_t seq_index) { moveNNextChar(seq_index, 9);}
 // static void leader_dw(uint8_t seq_index) {
 //     Macros.play(MACRO(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftShift), T(Delete)));
 // }
-
-//   Key_RightBracket,                       Key_A,                                  Key_S,                                  Key_D,                                  Key_F,                        Key_G,
-//                                           Key_H,                                  Key_J,                                  Key_K,                                  Key_L,                        Key_Semicolon,                      Key_Quote,
-
- static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
- LEADER_DICT(
-//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
-//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_RightBracket), leader_1dd},
-//  { LEADER_SEQ(LEAD(0), Key_1, Key_RightBracket, Key_RightBracket), leader_1dd},
-// { LEADER_SEQ(LEAD(0), Key_2, Key_RightBracket, Key_RightBracket), leader_2dd},
-//  { LEADER_SEQ(LEAD(0), Key_3, Key_RightBracket, Key_RightBracket), leader_3dd},
-//  { LEADER_SEQ(LEAD(0), Key_4, Key_RightBracket, Key_RightBracket), leader_4dd},
-//  { LEADER_SEQ(LEAD(0), Key_5, Key_RightBracket, Key_RightBracket), leader_5dd},
-//  { LEADER_SEQ(LEAD(0), Key_6, Key_RightBracket, Key_RightBracket), leader_6dd},
-//  { LEADER_SEQ(LEAD(0), Key_7, Key_RightBracket, Key_RightBracket), leader_7dd},
-//  { LEADER_SEQ(LEAD(0), Key_8, Key_RightBracket, Key_RightBracket), leader_8dd},
-//  { LEADER_SEQ(LEAD(0), Key_9, Key_RightBracket, Key_RightBracket), leader_9dd},
-
-    { LEADER_SEQ(LEAD(0), Key_Semicolon), move1NextChar},
-    { LEADER_SEQ(LEAD(0), Key_1, Key_Semicolon), move1NextChar},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_Semicolon), move1NextChar},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_Semicolon), move2NextChar},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_Semicolon), move3NextChar},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_Semicolon), move4NextChar},
-    { LEADER_SEQ(LEAD(0), Key_4, Key_Semicolon), move4NextChar},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_Semicolon), move5NextChar},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_Semicolon), move6NextChar},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_Semicolon), move7NextChar},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_Semicolon), move8NextChar},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_Semicolon), move9NextChar}
-  );
-
 
 
 /* Re-enable astyle's indent enforcement */
@@ -883,12 +990,64 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), D(LeftAlt), D(LeftShift), T(J), U(LeftShift), U(LeftAlt), U(LeftControl));
     break;
 
-  case MACRO_CTRL_BRACKET_LEFT:
-    return MACRODOWN(D(LeftControl), D(RightAlt), T(4), U(RightAlt), U(LeftControl));
+  case MACRO_CTRL_B:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl));
     break;
 
-  case MACRO_CTRL_BRACKET_RIGHT:
-    return MACRODOWN(D(LeftControl), D(RightAlt), T(5), U(RightAlt), U(LeftControl));
+  case MACRO_CTRL_B_AMPERSAND:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(E), U(RightAlt));
+    break;
+
+  case MACRO_CTRL_B_C:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(H));
+    break;
+
+  case MACRO_CTRL_B_COMMA:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(G));
+    break;
+
+  case MACRO_CTRL_B_F:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(Slash));
+    break;
+
+  case MACRO_CTRL_B_LEFT_BRACKET:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(4), U(RightAlt));
+    break;
+
+  case MACRO_CTRL_B_LEFT_CURLY_BRACKET:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(X), U(RightAlt));
+    break;
+
+  case MACRO_CTRL_B_N:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(Semicolon));
+    break;
+
+  case MACRO_CTRL_B_O:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(R));
+    break;
+
+  case MACRO_CTRL_B_P:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(E));
+    break;
+
+  case MACRO_CTRL_B_QUOTE:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(1));
+    break;
+
+  case MACRO_CTRL_B_RIGHT_CURLY_BRACKET:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(C), U(RightAlt));
+    break;
+
+  case MACRO_CTRL_B_PERCENT:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(Equals));
+    break;
+
+  case MACRO_CTRL_B_W:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(RightBracket));
+    break;
+
+  case MACRO_CTRL_B_X:
+    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(C));
     break;
 
   case MACRO_CTRL_C:
@@ -971,6 +1130,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
     break;
 
+  case MACRO_CTRL_LEFT_BRACKET:
+    return MACRODOWN(D(LeftControl), D(RightAlt), T(4), U(RightAlt), U(LeftControl));
+    break;
+
   case MACRO_CTRL_LEFT_LEFT:
     if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
@@ -985,6 +1148,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(LeftArrow), T(LeftArrow), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_LEFT_PARENTHESIS:
+    return MACRODOWN(D(LeftControl), T(4), U(LeftControl));
     break;
 
   case MACRO_CTRL_L:
@@ -1049,6 +1216,14 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_RIGHT_BRACKET:
+    return MACRODOWN(D(LeftControl), D(RightAlt), T(5), U(RightAlt), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_RIGHT_PARENTHESIS:
+    return MACRODOWN(D(LeftControl), T(5), U(LeftControl));
     break;
 
   case MACRO_CTRL_RIGHT_RIGHT:
@@ -1423,10 +1598,10 @@ enum {
 KALEIDOSCOPE_INIT_PLUGINS(
 
   // Qukeys
-  Qukeys, //4.5
+  Qukeys, // Used : 4.5
 
   // Leader
-  Leader, //2.1
+  Leader, // Used : 2.1
 
   // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
   // editable keymap in EEPROM.
@@ -1455,10 +1630,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   //HardwareTestMode,
 
   // LEDControl provides support for other LED modes
-  LEDControl, //3.5
+  LEDControl, //Used : 3.5
 
   // ActiveModColorEffect (need LEDControl and OneShot)
-  ActiveModColorEffect, //2.1
+  ActiveModColorEffect, // Used a little 2.1
 
   // We start with the LED effect that turns off all the LEDs.
   LEDOff, //O.0  (Absolutely needed)
@@ -1501,10 +1676,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   //NumPad,
 
   //OneShot,
-  OneShot, //3.4
+  OneShot, // Used :  3.4
 
   // The macros plugin adds support for macros
-  Macros,
+  Macros, // Used
 
   // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
   //MouseKeys,
@@ -1563,7 +1738,7 @@ void setup() {
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
-  MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
+  //MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
 
   // Leader
   Leader.dictionary = leader_dictionary;
