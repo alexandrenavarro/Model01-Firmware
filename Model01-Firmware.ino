@@ -1097,7 +1097,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_CTRL_H:
-    return MACRODOWN(D(LeftControl), T(L), U(LeftControl));
+    return MACRODOWN(D(LeftControl), T(Period), U(LeftControl));
     break;
 
   case MACRO_CTRL_HOME:
