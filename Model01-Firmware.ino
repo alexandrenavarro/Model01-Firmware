@@ -177,6 +177,7 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_B_W,
        MACRO_CTRL_B_X,
        MACRO_CTRL_C,
+       MACRO_CTRL_COLON,
        MACRO_CTRL_DIVIDE,
        MACRO_CTRL_DOWN,
        MACRO_CTRL_END,
@@ -437,15 +438,15 @@ KEYMAPS(
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (Key_Insert,                             Key_1,                                          M(MACRO_ALT_GR_2),                      M(MACRO_ALT_GR_3),                      Key_4,                                  Key_5,                                       M(MACRO_COLON),
+  (Key_Insert,                             Key_1,                                          M(MACRO_ALT_GR_2),                      M(MACRO_ALT_GR_3),                      Key_4,                                  Key_5,                                       Key_Enter,
    Key_Backtick,                           Key_Q,                                          Key_W,                                  Key_E,                                  Key_R,                                  Key_T,                                       Key_Tab,
    Key_RightBracket,                       Key_A,                                          Key_S,                                  Key_D,                                  Key_F,                                  Key_G,
    Key_Minus,                              Key_Z,                                          Key_X,                                  Key_C,                                  Key_V,                                  Key_B,                                       Key_Escape,
    OSM(LeftShift),                         Key_Backspace,                                  OSM(LeftControl),                       OSM(LeftAlt),
    LEAD(0),
 
-   ___,                                    Key_6,                                          Key_7,                                  Key_8,                                  Key_9,                                  Key_0,                                       Key_Equals,
-   LEAD(0),                                Key_Y,                                          Key_U,                                  Key_I,                                  Key_O,                                  Key_P,                                       Key_LeftBracket,
+   M(MACRO_COLON),                         Key_6,                                          Key_7,                                  Key_8,                                  Key_9,                                  Key_0,                                       Key_Equals,
+   M(MACRO_ALT_GR_SPACE),                  Key_Y,                                          Key_U,                                  Key_I,                                  Key_O,                                  Key_P,                                       Key_LeftBracket,
                                            Key_H,                                          Key_J,                                  Key_K,                                  Key_L,                                  Key_Semicolon,                               Key_Quote,
    M(MACRO_ALT_SPACE),                     Key_N,                                          Key_M,                                  Key_Comma,                              Key_Period,                             Key_Slash,                                   Key_Backslash,
    Key_LeftGui,                            Key_Enter,                                      Key_Spacebar,                           OSM(LeftShift),
@@ -457,11 +458,11 @@ KEYMAPS(
 
 #endif
   [FUNCTION] =  KEYMAP_STACKED
-  (M(MACRO_SHIFT_INSERT),                  Key_F1,                                         Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                      M(MACRO_CTRL_A),
+  (M(MACRO_CTRL_P),                        Key_F1,                                         Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                      M(MACRO_CTRL_A),
    M(MACRO_CTRL_S),                        M(MACRO_CTRL_N),                                M(MACRO_CTRL_T),                        M(MACRO_CTRL_F3),                       M(MACRO_CTRL_W),                        M(MACRO_ALT_F4),                             M(MACRO_CTRL_H),
    Key_Delete,                             M(MACRO_CTRL_Z),                                M(MACRO_CTRL_X),                        M(MACRO_CTRL_C),                        M(MACRO_CTRL_V),                        M(MACRO_CTRL_F),
    M(MACRO_CTRL_DIVIDE),                   M(MACRO_ALT_LEFT),                              M(MACRO_ALT_DOWN),                      M(MACRO_ALT_UP),                        M(MACRO_ALT_RIGHT),                     Key_F4,                                      M(MACRO_ALT_F7),
-   Key_LeftShift,                          Key_Enter,                                      Key_LeftControl,                        Key_LeftAlt,
+   Key_LeftShift,                          Key_Backspace,                                  Key_LeftControl,                        Key_LeftAlt,
    ___,
 
    Key_F12,                                Key_F6,                                         Key_F7,                                 Key_F8,                                 Key_F9,                                 Key_F10,                                     Key_F11,
@@ -473,17 +474,17 @@ KEYMAPS(
 
   [NUMPAD] =  KEYMAP_STACKED
   (___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
-   ___,                                    M(MACRO_SUPER_CTRL_LEFT),                       M(MACRO_SUPER_CTRL_DOWN),               M(MACRO_SUPER_CTRL_UP),                 M(MACRO_SUPER_CTRL_RIGHT),              M(MACRO_ALT_F4),                             ___,
+   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    M(MACRO_CTRL_G),                        M(MACRO_1),                                     M(MACRO_2),                             M(MACRO_3),                             M(MACRO_4),                             M(MACRO_5),
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    ___, ___, ___, ___,
-   ___,
+   Key_Backspace,
 
-   M(MACRO_CTRL_U),                        ___,                                            Key_KeypadAdd,                          Key_KeypadSubtract,                     Key_KeypadDivide,                       Key_KeypadMultiply,                          ___,
-   M(MACRO_SHIFT_HOME_CTRL_X),             M(MACRO_CTRL_W),                                Key_Backspace,                          M(MACRO_SHIFT_DOWN_CTRL_X),             M(MACRO_SHIFT_UP_CTRL_X),               M(MACRO_ALT_D),                              M(MACRO_CTRL_K),
-                                           M(MACRO_6),                                     M(MACRO_7),                             M(MACRO_8),                             M(MACRO_9),                             M(MACRO_0),                                  M(MACRO_SHIFT_END_CTRL_X),
-   ___,                                    M(MACRO_SHIFT_CTRL_LEFT_LEFT_LEFT_LEFT_X),      M(MACRO_SHIFT_CTRL_LEFT_X),             M(MACRO_SHIFT_CTRL_DOWN_X),             M(MACRO_SHIFT_CTRL_UP_X),               M(MACRO_SHIFT_CTRL_RIGHT_X),                 M(MACRO_SHIFT_CTRL_RIGHT_RIGHT_RIGHT_RIGHT_X),
-   ___,                                    ___,                                            M(MACRO_ALT_GR_SPACE),                  ___,
+   ___,                                    ___,                                            Key_KeypadAdd,                          Key_KeypadSubtract,                     Key_KeypadDivide,                       Key_KeypadMultiply,                          ___,
+   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
+                                           M(MACRO_6),                                     M(MACRO_7),                             M(MACRO_8),                             M(MACRO_9),                             M(MACRO_0),                                  Key_V,
+   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
+   ___,                                    M(MACRO_ALT_ENTER),                             M(MACRO_ALT_GR_SPACE),                  ___,
    ___),
 
   [ALTGR] =  KEYMAP_STACKED
@@ -491,7 +492,7 @@ KEYMAPS(
    M(MACRO_ALT_GR_DOLLAR),                 M(MACRO_ALT_GR_B),                              M(MACRO_ALT_GR_E_AIGU),                 M(MACRO_ALT_GR_P),                      M(MACRO_ALT_GR_O),                      M(MACRO_ALT_GR_E_GRAVE),                     ___,
    M(MACRO_EXCLAMATION_POINT),             M(MACRO_ALT_GR_A),                              M(MACRO_ALT_GR_U),                      M(MACRO_COLON),                         M(MACRO_SEMICOLON),                     M(MACRO_ALT_GR_E),
    M(MACRO_ALT_GR_EQUALS),                 M(MACRO_ALT_GR_A_AIGU),                         M(MACRO_ALT_GR_Y),                      M(MACRO_ALT_GR_X),                      M(MACRO_ALT_GR_I),                      M(MACRO_ALT_GR_K),                           ___,
-   ___, Key_Spacebar, ___, ___,
+   ___, ___, ___, ___,
    ___,
 
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
@@ -499,7 +500,7 @@ KEYMAPS(
                                            ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    ___,                                    ___,                                            ___,                                    ___,
-   ___),
+   Key_Spacebar),
 
   [CUT] =  KEYMAP_STACKED
   (Key_PrintScreen,                        ___,                                            M(MACRO_SUPER_CTRL_SHIFT_ALT_DOWN),     M(MACRO_SUPER_CTRL_SHIFT_ALT_UP),       ___,                                    ___,                                         ___,
@@ -509,11 +510,11 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___,
 
-   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
-   ___,                                    M(MACRO_SHIFT_CTRL_HOME_X),                     M(MACRO_SUPER_LEFT),                    M(MACRO_SUPER_DOWN),                    M(MACRO_SUPER_UP),                      M(MACRO_SUPER_RIGHT),                        M(MACRO_SHIFT_CTRL_END_X),
+   M(MACRO_CTRL_COLON),                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
+   ___,                                    M(MACRO_SHIFT_CTRL_HOME_X),                     ___,                                    M(MACRO_SHIFT_PG_DOWN_CTRL_X),          M(MACRO_SHIFT_PG_UP_CTRL_X),            ___,                                         M(MACRO_SHIFT_CTRL_END_X),
                                            M(MACRO_SHIFT_HOME_CTRL_X),                     Key_Backspace,                          M(MACRO_SHIFT_DOWN_CTRL_X),             M(MACRO_SHIFT_UP_CTRL_X),               Key_Delete,                                  M(MACRO_SHIFT_END_CTRL_X),
    ___,                                    M(MACRO_SHIFT_CTRL_LEFT_LEFT_LEFT_LEFT_X),      M(MACRO_SHIFT_CTRL_LEFT_X),             M(MACRO_SHIFT_CTRL_DOWN_X),             M(MACRO_SHIFT_CTRL_UP_X),               M(MACRO_SHIFT_CTRL_RIGHT_X),                 M(MACRO_SHIFT_CTRL_RIGHT_RIGHT_RIGHT_RIGHT_X),
-   ___,                                    M(MACRO_ALT_ENTER),                             M(MACRO_ALT_GR_SPACE),                  Key_LeftShift,
+   ___,                                    M(MACRO_ALT_ENTER),                             M(MACRO_ALT_GR_SPACE),                  ___,
    ___)
 
 ) // KEYMAPS(
@@ -916,7 +917,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
         Macros.play(MACRODOWN(U(LeftShift)));
         return MACRODOWN(D(RightAlt), T(Space), U(RightAlt));
      } else {
-       return MACRODOWN(D(RightAlt), T(Space), U(RightAlt));
+        return MACRODOWN(D(RightAlt), T(Space), U(RightAlt));
      }
      break;
 
@@ -1062,6 +1063,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_CTRL_C:
     return MACRODOWN(D(LeftControl), T(H), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_COLON:
+    return MACRODOWN(D(LeftControl), D(LeftShift), T(V), U(LeftShift), U(LeftControl));
     break;
 
   case MACRO_CTRL_DIVIDE:
