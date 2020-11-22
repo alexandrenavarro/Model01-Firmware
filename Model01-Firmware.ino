@@ -445,8 +445,8 @@ KEYMAPS(
    OSM(LeftShift),                         Key_Backspace,                                  OSM(LeftControl),                       OSM(LeftAlt),
    LEAD(0),
 
-   M(MACRO_COLON),                         Key_6,                                          Key_7,                                  Key_8,                                  Key_9,                                  Key_0,                                       Key_Equals,
-   M(MACRO_ALT_GR_SPACE),                  Key_Y,                                          Key_U,                                  Key_I,                                  Key_O,                                  Key_P,                                       Key_LeftBracket,
+   ___,                                    Key_6,                                          Key_7,                                  Key_8,                                  Key_9,                                  Key_0,                                       Key_Equals,
+   M(MACRO_COLON),                         Key_Y,                                          Key_U,                                  Key_I,                                  Key_O,                                  Key_P,                                       Key_LeftBracket,
                                            Key_H,                                          Key_J,                                  Key_K,                                  Key_L,                                  Key_Semicolon,                               Key_Quote,
    M(MACRO_ALT_SPACE),                     Key_N,                                          Key_M,                                  Key_Comma,                              Key_Period,                             Key_Slash,                                   Key_Backslash,
    Key_LeftGui,                            Key_Enter,                                      Key_Spacebar,                           OSM(LeftShift),
@@ -466,14 +466,14 @@ KEYMAPS(
    ___,
 
    Key_F12,                                Key_F6,                                         Key_F7,                                 Key_F8,                                 Key_F9,                                 Key_F10,                                     Key_F11,
-   M(MACRO_CTRL_ALT_SHIFT_T),              M(MACRO_CTRL_HOME),                             M(MACRO_CTRL_LEFT_PARENTHESIS),         Key_PageDown,                           Key_PageUp,                             M(MACRO_CTRL_RIGHT_PARENTHESIS),             M(MACRO_CTRL_END),
+   M(MACRO_CTRL_COLON),                    M(MACRO_CTRL_HOME),                             M(MACRO_CTRL_LEFT_PARENTHESIS),         Key_PageDown,                           Key_PageUp,                             M(MACRO_CTRL_RIGHT_PARENTHESIS),             M(MACRO_CTRL_END),
                                            Key_Home,                                       Key_LeftArrow,                          Key_DownArrow,                          Key_UpArrow,                            Key_RightArrow,                              Key_End,
    Key_PcApplication,                      M(MACRO_CTRL_LEFT_LEFT_LEFT_LEFT),              M(MACRO_CTRL_LEFT),                     M(MACRO_CTRL_DOWN),                     M(MACRO_CTRL_UP),                       M(MACRO_CTRL_RIGHT),                         M(MACRO_CTRL_RIGHT_RIGHT_RIGHT_RIGHT),
    ___,                                    M(MACRO_CTRL_SHIFT_ENTER),                      M(MACRO_CTRL_SHIFT_SPACE),              ___,
    M(MACRO_ALT_1)),
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
+  (___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         M(MACRO_ALT_ENTER),
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    M(MACRO_CTRL_G),                        M(MACRO_1),                                     M(MACRO_2),                             M(MACRO_3),                             M(MACRO_4),                             M(MACRO_5),
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
@@ -514,22 +514,22 @@ KEYMAPS(
    ___,                                    M(MACRO_SHIFT_CTRL_HOME_X),                     ___,                                    M(MACRO_SHIFT_PG_DOWN_CTRL_X),          M(MACRO_SHIFT_PG_UP_CTRL_X),            ___,                                         M(MACRO_SHIFT_CTRL_END_X),
                                            M(MACRO_SHIFT_HOME_CTRL_X),                     Key_Backspace,                          M(MACRO_SHIFT_DOWN_CTRL_X),             M(MACRO_SHIFT_UP_CTRL_X),               Key_Delete,                                  M(MACRO_SHIFT_END_CTRL_X),
    ___,                                    M(MACRO_SHIFT_CTRL_LEFT_LEFT_LEFT_LEFT_X),      M(MACRO_SHIFT_CTRL_LEFT_X),             M(MACRO_SHIFT_CTRL_DOWN_X),             M(MACRO_SHIFT_CTRL_UP_X),               M(MACRO_SHIFT_CTRL_RIGHT_X),                 M(MACRO_SHIFT_CTRL_RIGHT_RIGHT_RIGHT_RIGHT_X),
-   ___,                                    M(MACRO_ALT_ENTER),                             M(MACRO_ALT_GR_SPACE),                  ___,
+   ___,                                    ___,                                            M(MACRO_ALT_GR_SPACE),                  ___,
    ___)
 
 ) // KEYMAPS(
 
 
 // Leader plugin
-// Move (jkl), Go (g), Undo (u), Paste (p) Comment (?)
 
 //moveFileStart
 static void moveFileStart(uint8_t seq_index) {
-    Macros.play(MACRO(D(LeftControl), T(Home), U(LeftControl)));
+    Macros.play(MACRO(D(LeftShift), D(LeftControl), T(Home), U(LeftControl)));
 }
 
 //moveNParagraphsBefore
 static void moveNParagraphsBefore(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
     for (int i = 0; i < n; i++) {
         Macros.play(MACRO(D(LeftControl), T(UpArrow), U(LeftControl)));
     }
@@ -546,6 +546,7 @@ static void move9ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq
 
 //moveNLinesBefore
 static void moveNLinesBefore(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
     for (int i = 0; i < n; i++) {
         Macros.play(MACRO(T(UpArrow)));
     }
@@ -562,16 +563,19 @@ static void move9LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 9)
 
 //moveLineStart
 static void moveLineStart(uint8_t seq_index) {
+    Macros.play(MACRO(D(LeftShift)));
     Macros.play(MACRO(T(Home)));
 }
 //moveNWordsBefore
 //moveNCharsBefore
 //moveNCharsAfter
 static void moveNCharsAfter(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
     for (int i = 0; i < n; i++) {
         Macros.play(MACRO(D(RightArrow)));
     }
 }
+
 static void move1CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 1);}
 static void move2CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 2);}
 static void move3CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 3);}
@@ -582,130 +586,80 @@ static void move7CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 7);}
 static void move8CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 8);}
 static void move9CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 9);}
 
+
 //moveNWordsAfter
 //moveLineEnd
 static void moveLineEnd(uint8_t seq_index) {
+    Macros.play(MACRO(D(LeftShift)));
     Macros.play(MACRO(T(End)));
 }
 //moveNLinesAfter
-//moveNParagraphsAfter
+//nmoveNParagraphsAfter
 //moveFileEnd
-
-// Delete () / Cut (d) / Copy (y)
-
-//   Key_RightBracket,                       Key_A,                                  Key_S,                                  Key_D,                                  Key_F,                        Key_G,
-//                                           Key_H,                                  Key_J,                                  Key_K,                                  Key_L,                        Key_Semicolon,                      Key_Quote,
 
  static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
  LEADER_DICT(
-//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_P), leader_dw},
-//  { LEADER_SEQ(LEAD(0), Key_RightBracket, Key_RightBracket), leader_1dd},
-//  { LEADER_SEQ(LEAD(0), Key_1, Key_RightBracket, Key_RightBracket), leader_1dd},
-//  { LEADER_SEQ(LEAD(0), Key_2, Key_RightBracket, Key_RightBracket), leader_2dd},
-//  { LEADER_SEQ(LEAD(0), Key_3, Key_RightBracket, Key_RightBracket), leader_3dd},
-//  { LEADER_SEQ(LEAD(0), Key_4, Key_RightBracket, Key_RightBracket), leader_4dd},
-//  { LEADER_SEQ(LEAD(0), Key_5, Key_RightBracket, Key_RightBracket), leader_5dd},
-//  { LEADER_SEQ(LEAD(0), Key_6, Key_RightBracket, Key_RightBracket), leader_6dd},
-//  { LEADER_SEQ(LEAD(0), Key_7, Key_RightBracket, Key_RightBracket), leader_7dd},
-//  { LEADER_SEQ(LEAD(0), Key_8, Key_RightBracket, Key_RightBracket), leader_8dd},
-//  { LEADER_SEQ(LEAD(0), Key_9, Key_RightBracket, Key_RightBracket), leader_9dd},
 
     // Move
     // moveFileStart
-    { LEADER_SEQ(LEAD(0), Key_N), moveFileStart},
+    { LEADER_SEQ(LEAD(0), Key_Y, Key_Spacebar), moveFileStart},
 
-    //moveNParagraphsBefore
-    { LEADER_SEQ(LEAD(0), Key_O), move1ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_O), move1ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_O), move2ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_O), move3ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_O), move4ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_O), move5ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_O), move6ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_O), move7ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_O), move8ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_O), move9ParagraphsBefore},
+    // moveNParagraphsBefore
+    { LEADER_SEQ(LEAD(0), Key_Period, Key_Spacebar), move1ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Period, Key_Spacebar), move1ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Period, Key_Spacebar), move2ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Period, Key_Spacebar), move3ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Period, Key_Spacebar), move4ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Period, Key_Spacebar), move5ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Period, Key_Spacebar), move6ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Period, Key_Spacebar), move7ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Period, Key_Spacebar), move8ParagraphsBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Period, Key_Spacebar), move9ParagraphsBefore},
 
-    //moveNLinesBefore
-    { LEADER_SEQ(LEAD(0), Key_L), move1LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_L), move1LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_L), move2LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_L), move3LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_L), move4LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_L), move5LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_L), move6LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_L), move7LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_L), move8LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_L), move9LinesBefore},
+    // moveNLinesBefore
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar), move1LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_Spacebar), move1LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_L, Key_Spacebar), move2LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_L, Key_Spacebar), move3LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_L, Key_Spacebar), move4LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_L, Key_Spacebar), move5LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_L, Key_Spacebar), move6LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_L, Key_Spacebar), move7LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_L, Key_Spacebar), move8LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_L, Key_Spacebar), move9LinesBefore},
 
     //moveLineStart
-    { LEADER_SEQ(LEAD(0), Key_H), moveLineStart},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar), moveLineStart},
 
     // moveNCharsAfter
-    { LEADER_SEQ(LEAD(0), Key_Semicolon), move1CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Spacebar, Key_Semicolon), move1CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_Spacebar, Key_Semicolon), move2CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_Spacebar, Key_Semicolon), move3CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_Spacebar, Key_Semicolon), move4CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_Spacebar, Key_Semicolon), move5CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar, Key_Semicolon), move6CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Spacebar, Key_Semicolon), move7CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Spacebar, Key_Semicolon), move8CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar, Key_Semicolon), move9CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_Semicolon, Key_Spacebar), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_Spacebar), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon, Key_Spacebar), move2CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon, Key_Spacebar), move3CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon, Key_Spacebar), move4CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Semicolon, Key_Spacebar), move5CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon, Key_Spacebar), move6CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon, Key_Spacebar), move7CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon, Key_Spacebar), move8CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon, Key_Spacebar), move9CharsAfter},
+
+    // moveNCharsAfter
+    { LEADER_SEQ(LEAD(0), Key_Semicolon, Key_Spacebar), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_Spacebar), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon, Key_Spacebar), move2CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon, Key_Spacebar), move3CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon, Key_Spacebar), move4CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Semicolon, Key_Spacebar), move5CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon, Key_Spacebar), move6CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon, Key_Spacebar), move7CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon, Key_Spacebar), move8CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon, Key_Spacebar), move9CharsAfter},
 
     //moveLineEnd
-    { LEADER_SEQ(LEAD(0), Key_Quote), moveLineEnd}
+    { LEADER_SEQ(LEAD(0), Key_Quote, Key_Spacebar), moveLineEnd}
 
   );
 
-
-
-// static void leader_1dd(uint8_t seq_index) { leader_ndd(seq_index, 1);}
-// static void leader_2dd(uint8_t seq_index) { leader_ndd(seq_index, 2);}
-// static void leader_3dd(uint8_t seq_index) { leader_ndd(seq_index, 3);}
-// static void leader_4dd(uint8_t seq_index) { leader_ndd(seq_index, 4);}
-// static void leader_5dd(uint8_t seq_index) { leader_ndd(seq_index, 5);}
-// static void leader_6dd(uint8_t seq_index) { leader_ndd(seq_index, 6);}
-// static void leader_7dd(uint8_t seq_index) { leader_ndd(seq_index, 7);}
-// static void leader_8dd(uint8_t seq_index) { leader_ndd(seq_index, 8);}
-// static void leader_9dd(uint8_t seq_index) { leader_ndd(seq_index, 9);}
-//
-// static void test(uint8_t seq_index, int n, macro_t* macro) {
-//     for (int i = 0; i < n; i++) {
-//         Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
-//     }
-//     Macros.play(macro);
-// }
-//
-// static void leader_ndd(uint8_t seq_index, int n) {
-//     for (int i = 0; i < n; i++) {
-//         Macros.play(MACRO(T(Home), D(LeftShift), T(End), U(LeftShift), T(Delete)));
-//     }
-//     Macros.play(MACRO(T(Backspace)));
-// }
-//
-// static void leader_nd0(uint8_t seq_index, int n) {
-//     for (int i = 0; i < n; i++) {
-//         Macros.play(MACRO(D(LeftShift), T(Home), U(LeftShift), T(Delete)));
-//     }
-// }
-//
-// static void leader_ndb(uint8_t seq_index, int n) {
-//     for (int i = 0; i < n; i++) {
-//         Macros.play(MACRO(D(LeftShift), D(LeftControl), D(LeftArrow), U(LeftControl), U(LeftShift), T(Delete)));
-//     }
-// }
-//
-// static void leader_ng(uint8_t seq_index, int n) {
-//     for (int i = 0; i < n; i++) {
-//         Macros.play(MACRO(D(LeftControl), T(Comma), U(LeftControl)));
-//     }
-// }
-//
-//
-// static void leader_dw(uint8_t seq_index) {
-//     Macros.play(MACRO(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftShift), T(Delete)));
-// }
 
 
 /* Re-enable astyle's indent enforcement */
@@ -1467,9 +1421,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_SPACE:
     if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
-        return MACRODOWN(U(LeftShift), T(Space));
+        return MACRODOWN(U(LeftShift), D(RightAlt), T(Space), U(RightAlt), D(LeftShift));
     } else {
-        return MACRODOWN(T(Space));
+        return MACRODOWN(T(Spacebar));
     }
     break;
 
@@ -1669,7 +1623,6 @@ enum {
 // }
 
 
-
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
@@ -1859,6 +1812,7 @@ void setup() {
   // maps for. To make things simple, we set it to five layers, which is how
   // many editable layers we have (see above).
   ColormapEffect.max_layers(5);
+
 }
 
 /** loop is the second of the standard Arduino sketch functions.

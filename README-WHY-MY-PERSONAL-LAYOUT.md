@@ -1,12 +1,14 @@
 # My personal layout
+![My personal layout](keyboard-io-model-01.jpg)
+
 See on http://www.keyboard-layout-editor.com/#/gists/831524ae41aec20a65ff519557db7f50
 
 # My Layers
-There are 5 layers (main, fn, cut, numpad, altgr)
+There are 5 layers (primary, fn, cut, numpad, altgr)
 
-## Main layer (activated by default)
+## Primary layer (activated by default)
 
-### Classical keys
+### Classical key
 
 I used bépo layout (equivalent of dvorak for french) but tiny modifications because missing keys of the left upper side of the keyboardio model 01. 
 * w is on the first key on the left of the homerow left. 
@@ -15,13 +17,15 @@ I used bépo layout (equivalent of dvorak for french) but tiny modifications bec
 
 ### Special keys
 * Led is mapped to Enter (needed sometimes with left end).
-* Menu is mapped to launch my windowns selector (launch rofi under linux with only my windows, switcheroo on windows).
+* Menu is mapped to launch my windows selector (launch rofi under linux with only my windows, switcheroo on windows).
+* Enter is mapped to _
+* Any is mapped to :
 
 ### Palm keys
-* Right Palm keys is mapped Ctrl+Shift+Z to launch my launcher (launch rofi under linux and executor.dk on windows).
-* Left Palm keys is mapped to activate Leader key on my Vi mode (not really used, see below).
+* Right Palm keys is mapped Shift+Super+Z to launch my launcher (launch rofi under linux and executor.dk on windows).
+* Left Palm keys is mapped to activate Leader key on my Vi mode.
 
-### Left side :
+### Left side
 Shift, Backspace, Ctrl, Alt.
 
 #### Shift
@@ -51,14 +55,14 @@ Super on the left of Return.
 
 ### Left side keys
 All the common shortcuts available in File / Edit menu are available, can be used with the mouse if needed.
-* On the row below the homerow left, you have global shortcuts the file menu shortcuts (Ctrl+S, Ctrl+N, Ctrl+T, Ctrl+F3, Ctrl+W, Alt+F4)
+* On the row below the homerow left, you have global shortcuts the file menu shortcuts (Ctrl+S, Ctrl+N, Ctrl+T, Ctrl+F3, Ctrl+W, Alt+F4, Ctrl+A)
 * On the homerow left, you have global shortcuts the file menu shortcuts (delete, Ctrl+Z, Ctrl+X, Ctrl+C, Ctrl+V, Ctrl+F, Ctrl+H)
 * On the row below the homerow left, you have shorcuts for navigate between file mainly Intellij (Ctrl+/, Alt+Left, Alt+Down, Alt+Up, Alt+Right, F4, Alt+F7)
  
 ### Right side keys
 All the shortcuts to navigate really quickly in a editor.
 * On the homerow right, you have home, left, down, up, right, end (as vi k,j,l but shift on the right to have it on the real homerow keys), clearly better than a inverse T when you are used to.
-* On the row below the homerow right, you have the same but with ctrl + l (except where home / end replace by ctrl+left/Right*4)
+* On the row below the homerow right, you have the same but with Ctrl+L (except where home / end replace by Ctrl+Left/Right*4)
 * On the row above the homerow right, you have Ctrl+Home, Ctrl+\[, PgDown, PgUp, Ctrl+], Ctrl+End. 
 
 ### Palm Keys
@@ -69,7 +73,7 @@ All the shortcuts to navigate really quickly in a editor.
 ### Left side keys
 All the shortcuts to cut/delete really quickly in a editor or a terminal (customize your terminal shortcuts).
 * On the homerow right, you have cut/delete to : home, left, down, up, right, end.
-* On the row below the homerow right, you have the same to cut/delete but with ctrl+l (except where home / end replace by ctrl+left/Right*4)
+* On the row below the homerow right, you have the same to cut/delete but with Ctrl+L (except where home / end replace by Ctrl+Left/Right*4)
 * On the row above the homerow right, you have to cut/delete Ctrl+Home, Ctrl+\[, PgDown, PgUp, Ctrl+], Ctrl+End.
 
 ### Right side keys
@@ -86,22 +90,27 @@ It is the equivalent of altgr (right alt) for bépo but with some customization.
 ## Numpad Layer  
 All digits are set on the homerow (some x position as there are on the top row).
 
-On first key on homerow left is mapped to Ctrl+g (go to line).
+On first key on homerow left is mapped to Ctrl+g (go to line), generally use before typing number.
 
-The key at the right of 0 is mapped to point. 
+The key at the right of 0 is mapped to point.
+
+## Vi Mode
+Tap, after tapped the number (like numpad + digit but without numpad hold), then tap the movement on the right side (like fn + right keys but without ) and then Space.
+It will select the text . You have just to chosen.
+In vi you do number + command + movement, here you do number + movement, it will select the text and do the command like Ctrl+C.
 
 # Pros and Cons of my layout : 
 
 ## Pros :
 
 ### Fn Layers
-* All common shortcut are accessible through fn left keys.
-* You can quickly edit a file with a classical file editor with fn right keys.
+* All common shortcuts are accessible through fn left keys, notably edit shortcuts Delete/Undo/Cut/Copy/Paste/Search/Replace on the left homerow (really useful and accessible).
+* You can quickly edit a file with a classical file editor with fn right keys, notable Home/Left/Down/Up/Right/End on the right home (really useful and accessible)
 * You can easily navigate between your file in your favorite IDE through fn and left keys.
 * All common actions you use with your mouse are accessible with only the left hand.
 
 ### Cut Layer
-* Move, Maximize, Minimize your different windows are easily accessible and customizable.
+* Move, Maximize, Minimize your different windows are easily accessible and customizable on the left side.
 * Delete/Cut a letter / word / line are really easy, useful also in a terminal (don't forget to customize your shortcuts of your terminal). 
 
 ### Numpad layer 
@@ -119,16 +128,16 @@ The key at the right of 0 is mapped to point.
 ### Plugin Qukeys
 * You can have more layer with this plugin (the meanings of a key is different if it is tapped or hold).
 
-### Plugin Lead
-* You can have a vi mode like with leader plugin but finally I don't use really.
+### Plugin Leader
+* You can have a kind vi mode like with leader plugin nevertheless I don't use a lot.
 
-## Cons : 
-* Can't let backspace or space pushed to type multiple times, you have to use fn + backspace or cut + space to do it, but needed to have quick access to numpad and altgr layer.
+## Cons 
+* Can't let backspace or space pushed to type multiple times, you have to use fn + backspace or cut + left to do it, but needed to have quick access to numpad, altgr layer and _.
 * Alt + Tab is not accessible as I want (nevertheless accessible only with left hand, better than a classical placement) but I don't find better solution or a way to it.
 * Need to unpress backspace (or use cut + left) to fix an error when you type number.
 * Windows manipulations are not accessible with only the left hand.
 
-# Some feedbacks on ideas I tested but it was not sucessful.
+# Some feedbacks on ideas I tested but it was not sucessful
 
 ## Use Qukeys on homerow keys 
 I tried to used Qukeys like ctrl+alt+super+shift on the 2 homerows, it was easy to learn but there is one main drawback.
@@ -154,18 +163,19 @@ I didn't realize at first, I never got used to, I think the problem is you can't
 # Create a vi like mode with Leader plugin 
 I started to used Leader plugin to develop something like you can do in vi, 5dd (delete next 5 lines).
 
-I did some stuffs like leader key + number (equivalent of num + homerow) + movement (equivalent fn on right side) + action (fn on the left homerow) but I don't really use it finally.
+I did some stuffs like leader key + number (equivalent of num + homerow) + movement (equivalent fn on right side), it will select the text and after use the command like Ctrl+C you want but I don't really use it finally.
 
 I'm interested if some vi gurus what kind of command they often use they can't do it with my layout.
 
-## Some observations I didn't expect
+## Some observations I didn't expect when I customize my layout
 * I used really few Ctrl+S (my IDE for programming in Intellij which save automatically), Ctrl+O, Ctrl+N.
 * I used more Ctrl+F I expected.
 * With this layout I used quasi never Ctrl or Alt directly, except Alt+Tab and some IDE shortcuts (Alt+f12 or Ctrl+Shift+F10 mainly).
 * Don't try optimize everything, focus on the one the need to keep your "flow" like when you are programming or stuffs you do regularly and you want to be productive as possible. 
 Example : Don't care the shortcuts when you navigate on an browser because generally, you are not in your flow but you are just searching / reading something. 
-* Use palm key + somehing for one action (because it is really quick to tap) but not something in your flow of typing like an altgr (because the position of your hands are not well positioned).
+* Use palm key + something for one action (because it is really quick to tap) but not something in your flow of typing like an altgr (because the position of your hands are not well positioned).
 * Don't map Left Palm with a launcher or something similar because you will use a lot and sometimes for editing and sometime you will tap it by accident (you tapped and untapped quickly because you changed what you want to do).
+* You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the caracters are typed are really different, use showkeys -a to understand how you terminal understand what you type, it can be really different between the terminals. 
  
 # Conclusion
 I really think customizing my layout help me to be more productive on the different common tasks notably when I'm programming (reading or writing code).
