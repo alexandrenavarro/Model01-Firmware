@@ -449,7 +449,7 @@ KEYMAPS(
    M(MACRO_COLON),                         Key_Y,                                          Key_U,                                  Key_I,                                  Key_O,                                  Key_P,                                       Key_LeftBracket,
                                            Key_H,                                          Key_J,                                  Key_K,                                  Key_L,                                  Key_Semicolon,                               Key_Quote,
    M(MACRO_ALT_SPACE),                     Key_N,                                          Key_M,                                  Key_Comma,                              Key_Period,                             Key_Slash,                                   Key_Backslash,
-   Key_LeftGui,                            Key_Enter,                                      Key_Spacebar,                           OSM(LeftShift),
+   Key_LeftGui,                            Key_Enter,                                      M(MACRO_SPACE),                         OSM(LeftShift),
    M(MACRO_SHIFT_SUPER_Z)),
 
 #else
@@ -514,18 +514,37 @@ KEYMAPS(
    ___,                                    M(MACRO_SHIFT_CTRL_HOME_X),                     ___,                                    M(MACRO_SHIFT_PG_DOWN_CTRL_X),          M(MACRO_SHIFT_PG_UP_CTRL_X),            ___,                                         M(MACRO_SHIFT_CTRL_END_X),
                                            M(MACRO_SHIFT_HOME_CTRL_X),                     Key_Backspace,                          M(MACRO_SHIFT_DOWN_CTRL_X),             M(MACRO_SHIFT_UP_CTRL_X),               Key_Delete,                                  M(MACRO_SHIFT_END_CTRL_X),
    ___,                                    M(MACRO_SHIFT_CTRL_LEFT_LEFT_LEFT_LEFT_X),      M(MACRO_SHIFT_CTRL_LEFT_X),             M(MACRO_SHIFT_CTRL_DOWN_X),             M(MACRO_SHIFT_CTRL_UP_X),               M(MACRO_SHIFT_CTRL_RIGHT_X),                 M(MACRO_SHIFT_CTRL_RIGHT_RIGHT_RIGHT_RIGHT_X),
-   ___,                                    ___,                                            M(MACRO_ALT_GR_SPACE),                  ___,
+   ___,                                    ___,                                            Key_Spacebar,                           ___,
    ___)
 
 ) // KEYMAPS(
 
 
-// Leader plugin
+// Leader plugin to have Vi mode
 
 //moveFileStart
 static void moveFileStart(uint8_t seq_index) {
     Macros.play(MACRO(D(LeftShift), D(LeftControl), T(Home), U(LeftControl)));
 }
+
+//moveNPagesBefore
+static void moveNPagesBefore(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftControl), T(PageUp), U(LeftControl)));
+    }
+}
+
+static void move1PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 1);}
+static void move2PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 2);}
+static void move3PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 3);}
+static void move4PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 4);}
+static void move5PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 5);}
+static void move6PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 6);}
+static void move7PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 7);}
+static void move8PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 8);}
+static void move9PagesBefore(uint8_t seq_index) { moveNPagesBefore(seq_index, 9);}
+
 
 //moveNParagraphsBefore
 static void moveNParagraphsBefore(uint8_t seq_index, int n) {
@@ -534,6 +553,7 @@ static void moveNParagraphsBefore(uint8_t seq_index, int n) {
         Macros.play(MACRO(D(LeftControl), T(UpArrow), U(LeftControl)));
     }
 }
+
 static void move1ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 1);}
 static void move2ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 2);}
 static void move3ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 3);}
@@ -544,6 +564,7 @@ static void move7ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq
 static void move8ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 8);}
 static void move9ParagraphsBefore(uint8_t seq_index) { moveNParagraphsBefore(seq_index, 9);}
 
+
 //moveNLinesBefore
 static void moveNLinesBefore(uint8_t seq_index, int n) {
     Macros.play(MACRO(D(LeftShift)));
@@ -551,6 +572,7 @@ static void moveNLinesBefore(uint8_t seq_index, int n) {
         Macros.play(MACRO(T(UpArrow)));
     }
 }
+
 static void move1LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 1);}
 static void move2LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 2);}
 static void move3LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 3);}
@@ -560,19 +582,68 @@ static void move6LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 6)
 static void move7LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 7);}
 static void move8LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 8);}
 static void move9LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 9);}
+static void move10LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 10);}
+static void move11LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 11);}
+static void move12LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 12);}
+static void move13LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 13);}
+static void move14LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 14);}
+static void move15LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 15);}
+static void move16LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 16);}
+static void move17LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 17);}
+static void move18LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 18);}
+static void move19LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 19);}
+
 
 //moveLineStart
 static void moveLineStart(uint8_t seq_index) {
     Macros.play(MACRO(D(LeftShift)));
     Macros.play(MACRO(T(Home)));
 }
+
+
 //moveNWordsBefore
+static void moveNWordsBefore(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftControl), T(LeftArrow), U(LeftControl)));
+    }
+}
+
+static void move1WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 1);}
+static void move2WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 2);}
+static void move3WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 3);}
+static void move4WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 4);}
+static void move5WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 5);}
+static void move6WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 6);}
+static void move7WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 7);}
+static void move8WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 8);}
+static void move9WordsBefore(uint8_t seq_index) { moveNWordsBefore(seq_index, 9);}
+
+
 //moveNCharsBefore
+static void moveNCharsBefore(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(T(LeftArrow)));
+    }
+}
+
+static void move1CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 1);}
+static void move2CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 2);}
+static void move3CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 3);}
+static void move4CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 4);}
+static void move5CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 5);}
+static void move6CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 6);}
+static void move7CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 7);}
+static void move8CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 8);}
+static void move9CharsBefore(uint8_t seq_index) { moveNCharsBefore(seq_index, 9);}
+
+
 //moveNCharsAfter
 static void moveNCharsAfter(uint8_t seq_index, int n) {
     Macros.play(MACRO(D(LeftShift)));
     for (int i = 0; i < n; i++) {
-        Macros.play(MACRO(D(RightArrow)));
+        Macros.play(MACRO(T(RightArrow)));
     }
 }
 
@@ -588,75 +659,256 @@ static void move9CharsAfter(uint8_t seq_index) { moveNCharsAfter(seq_index, 9);}
 
 
 //moveNWordsAfter
+static void moveNWordsAfter(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftControl), T(RightArrow), U(LeftControl)));
+    }
+}
+
+static void move1WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 1);}
+static void move2WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 2);}
+static void move3WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 3);}
+static void move4WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 4);}
+static void move5WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 5);}
+static void move6WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 6);}
+static void move7WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 7);}
+static void move8WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 8);}
+static void move9WordsAfter(uint8_t seq_index) { moveNWordsAfter(seq_index, 9);}
+
+
 //moveLineEnd
 static void moveLineEnd(uint8_t seq_index) {
     Macros.play(MACRO(D(LeftShift)));
     Macros.play(MACRO(T(End)));
 }
+
 //moveNLinesAfter
+static void moveNLinesAfter(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(T(DownArrow)));
+    }
+}
+
+static void move1LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 1);}
+static void move2LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 2);}
+static void move3LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 3);}
+static void move4LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 4);}
+static void move5LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 5);}
+static void move6LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 6);}
+static void move7LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 7);}
+static void move8LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 8);}
+static void move9LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 9);}
+static void move10LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 10);}
+static void move11LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 11);}
+static void move12LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 12);}
+static void move13LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 13);}
+static void move14LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 14);}
+static void move15LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 15);}
+static void move16LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 16);}
+static void move17LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 17);}
+static void move18LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 18);}
+static void move19LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 19);}
+
+
 //nmoveNParagraphsAfter
+static void moveNParagraphsAfter(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftControl), T(DownArrow), U(LeftControl)));
+    }
+}
+static void move1ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 1);}
+static void move2ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 2);}
+static void move3ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 3);}
+static void move4ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 4);}
+static void move5ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 5);}
+static void move6ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 6);}
+static void move7ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 7);}
+static void move8ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 8);}
+static void move9ParagraphsAfter(uint8_t seq_index) { moveNParagraphsAfter(seq_index, 9);}
+
+//moveNPagesAfter
+static void moveNPagesAfter(uint8_t seq_index, int n) {
+    Macros.play(MACRO(D(LeftShift)));
+    for (int i = 0; i < n; i++) {
+        Macros.play(MACRO(D(LeftControl), T(PageDown), U(LeftControl)));
+    }
+}
+static void move1PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 1);}
+static void move2PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 2);}
+static void move3PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 3);}
+static void move4PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 4);}
+static void move5PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 5);}
+static void move6PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 6);}
+static void move7PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 7);}
+static void move8PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 8);}
+static void move9PagesAfter(uint8_t seq_index) { moveNPagesAfter(seq_index, 9);}
+
 //moveFileEnd
+static void moveFileEnd(uint8_t seq_index) {
+    Macros.play(MACRO(D(LeftShift), D(LeftControl), T(End), U(LeftControl)));
+}
+
+//TODO go to 59 (check memory)
+//TODO missed 4xword before / after and previous next {}, really needed honnestly?
 
  static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
  LEADER_DICT(
 
     // Move
     // moveFileStart
-    { LEADER_SEQ(LEAD(0), Key_Y, Key_Spacebar), moveFileStart},
+    { LEADER_SEQ(LEAD(0), Key_Y), moveFileStart},
 
-    // moveNParagraphsBefore
-    { LEADER_SEQ(LEAD(0), Key_Period, Key_Spacebar), move1ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Period, Key_Spacebar), move1ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_Period, Key_Spacebar), move2ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_Period, Key_Spacebar), move3ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_Period, Key_Spacebar), move4ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_Period, Key_Spacebar), move5ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Period, Key_Spacebar), move6ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Period, Key_Spacebar), move7ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Period, Key_Spacebar), move8ParagraphsBefore},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Period, Key_Spacebar), move9ParagraphsBefore},
+//     // moveNPagesBefore
+//     { LEADER_SEQ(LEAD(0), Key_O), move1PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_O), move1PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_S, Key_O), move2PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_D, Key_O), move3PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_O), move4PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_O), move5PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_O), move6PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_O), move7PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_O), move8PagesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_O), move9PagesBefore},
+//
+//     // moveNParagraphsBefore
+//     { LEADER_SEQ(LEAD(0), Key_Period), move1ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_Period), move1ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_S, Key_Period), move2ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_D, Key_Period), move3ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_Period), move4ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_Period), move5ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_Period), move6ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_Period), move7ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_Period), move8ParagraphsBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_Period), move9ParagraphsBefore},
 
     // moveNLinesBefore
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Spacebar), move1LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_Spacebar), move1LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_L, Key_Spacebar), move2LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_L, Key_Spacebar), move3LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_L, Key_Spacebar), move4LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_L, Key_Spacebar), move5LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_L, Key_Spacebar), move6LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_L, Key_Spacebar), move7LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_L, Key_Spacebar), move8LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_L, Key_Spacebar), move9LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon), move1LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L), move1LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_L), move2LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_L), move3LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_L), move4LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_L), move5LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_L), move6LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_L), move7LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_L), move8LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_L), move9LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_L), move10LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_A, Key_L), move11LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_S, Key_L), move12LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_D, Key_L), move13LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_L), move14LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_L), move15LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_L), move16LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
 
     //moveLineStart
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Spacebar), moveLineStart},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon), moveLineStart},
+
+    // moveNWordsBefore
+    { LEADER_SEQ(LEAD(0), Key_M), move1WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_M), move1WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_M), move2WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_M), move3WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_M), move4WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_M), move5WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_M), move6WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_M), move7WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_M), move8WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_M), move9WordsBefore},
+
+    // moveNCharsBefore
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon), move1CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J), move1CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_J), move2CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_J), move3CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_J), move4CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_J), move5CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_J), move6CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_J), move7CharsBefore},// Will not work with
+    { LEADER_SEQ(LEAD(0), Key_K, Key_J), move8CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_J), move9CharsBefore},
 
     // moveNCharsAfter
-    { LEADER_SEQ(LEAD(0), Key_Semicolon, Key_Spacebar), move1CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_Spacebar), move1CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon, Key_Spacebar), move2CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon, Key_Spacebar), move3CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon, Key_Spacebar), move4CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_Semicolon, Key_Spacebar), move5CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon, Key_Spacebar), move6CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon, Key_Spacebar), move7CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon, Key_Spacebar), move8CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon, Key_Spacebar), move9CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_Semicolon), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon), move2CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon), move3CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon), move4CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Semicolon), move5CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon), move6CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon), move7CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon), move8CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon), move9CharsAfter},
 
-    // moveNCharsAfter
-    { LEADER_SEQ(LEAD(0), Key_Semicolon, Key_Spacebar), move1CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_Spacebar), move1CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon, Key_Spacebar), move2CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon, Key_Spacebar), move3CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon, Key_Spacebar), move4CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_G, Key_Semicolon, Key_Spacebar), move5CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon, Key_Spacebar), move6CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon, Key_Spacebar), move7CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon, Key_Spacebar), move8CharsAfter},
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon, Key_Spacebar), move9CharsAfter},
+    // moveNWordsAfter
+    { LEADER_SEQ(LEAD(0), Key_Slash), move1WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Slash), move1WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Slash), move2WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Slash), move3WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_Slash), move4WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_Slash), move5WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_Slash), move6WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_Slash), move7WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Slash), move8WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_Slash), move9WordsAfter},
 
     //moveLineEnd
-    { LEADER_SEQ(LEAD(0), Key_Quote, Key_Spacebar), moveLineEnd}
+    { LEADER_SEQ(LEAD(0), Key_Quote), moveLineEnd},
+
+    // moveNLinesAfter
+    { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon), move1LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K), move1LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_K), move2LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_K), move3LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_F, Key_K), move4LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_G, Key_K), move5LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_H, Key_K), move6LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_J, Key_K), move7LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_K, Key_K), move8LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_L, Key_K), move9LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_K), move10LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_A, Key_K), move11LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_S, Key_K), move12LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_D, Key_K), move13LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_K), move14LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_K), move15LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_K), move16LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter},
+
+//     // moveNParagraphsAfter
+//     { LEADER_SEQ(LEAD(0), Key_Comma), move1ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_Comma), move1ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_S, Key_Comma), move2ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_D, Key_Comma), move3ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_Comma), move4ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_Comma), move5ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_Comma), move6ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_Comma), move7ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_Comma), move8ParagraphsAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_Comma), move9ParagraphsAfter},
+//
+//     // moveNPagesAfter
+//     { LEADER_SEQ(LEAD(0), Key_I), move1PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_I), move1PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_S, Key_I), move2PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_D, Key_I), move3PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_I), move4PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_I), move5PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_I), move6PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_I), move7PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_I), move8PagesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_I), move9PagesAfter},
+
+    // moveFileEnd
+    { LEADER_SEQ(LEAD(0), Key_LeftBracket), moveFileEnd}
 
   );
 
