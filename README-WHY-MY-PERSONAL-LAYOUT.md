@@ -185,7 +185,7 @@ I'm interested if some vi gurus what kind of command they often use they can't d
 Example : Don't care the shortcuts when you navigate on an browser because generally, you are not in your flow but you are just searching / reading something. 
 * Use palm key + something for one action (because it is really quick to tap) but not something in your flow of typing like an altgr (because the position of your hands are not well positioned).
 * Don't map Left Palm with a launcher or something similar because you will use a lot and sometimes for editing and sometime you will tap it by accident (you tapped and untapped quickly because you changed what you want to do).
-* You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the caracters are typed are really different, use showkeys -a to understand how you terminal understand what you type, it can be really different between the terminals. 
+* You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the caracters are typed are really different, use `showkey -a` to understand how you terminal understand what you type, it can be really different between the terminals. 
 
 
 ## Some others ideos not tested
