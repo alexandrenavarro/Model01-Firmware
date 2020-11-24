@@ -751,8 +751,16 @@ static void moveFileEnd(uint8_t seq_index) {
     Macros.play(MACRO(D(LeftShift), D(LeftControl), T(End), U(LeftControl)));
 }
 
-//TODO go to 59 (check memory)
-//TODO missed 4xword before / after and previous next {}, really needed honnestly?
+//moveCodeBlockStart
+static void moveCodeBlockStart(uint8_t seq_index) {
+    Macros.play(MACRO(D(LeftShift), D(LeftControl), T(4), U(LeftControl)));
+}
+
+//moveCodeBlockEnd
+static void moveCodeBlockEnd(uint8_t seq_index) {
+    Macros.play(MACRO(D(LeftShift), D(LeftControl), T(5), U(LeftControl)));
+}
+
 
  static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM =
  LEADER_DICT(
@@ -776,6 +784,9 @@ static void moveFileEnd(uint8_t seq_index) {
     //moveLineStart
     { LEADER_SEQ(LEAD(0), Key_H), moveLineStart},
 
+    // move4WordsBefore
+    { LEADER_SEQ(LEAD(0), Key_N), move2WordsBefore},
+
     // move1WordsBefore
     { LEADER_SEQ(LEAD(0), Key_M), move1WordsBefore},
 
@@ -787,6 +798,9 @@ static void moveFileEnd(uint8_t seq_index) {
 
     // move1WordsAfter
     { LEADER_SEQ(LEAD(0), Key_Slash), move1WordsAfter},
+
+    // move4WordsAfter
+    { LEADER_SEQ(LEAD(0), Key_Backslash), move4WordsAfter},
 
     // moveLineEnd
     { LEADER_SEQ(LEAD(0), Key_Quote), moveLineEnd},
@@ -803,8 +817,15 @@ static void moveFileEnd(uint8_t seq_index) {
     // moveFileEnd
     { LEADER_SEQ(LEAD(0), Key_LeftBracket), moveFileEnd},
 
+    // moveCodeBlockStart
+    { LEADER_SEQ(LEAD(0), Key_U), moveCodeBlockStart},
+
+    // moveCodeBlockEnd
+    { LEADER_SEQ(LEAD(0), Key_P), moveCodeBlockEnd},
+
     // 2 keys sequences
 
+// Commented because of memory usage
 //     // moveNPagesBefore
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_O), move1PagesBefore},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_O), move2PagesBefore},
@@ -893,6 +914,7 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_K, Key_K), move8LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_L, Key_K), move9LinesAfter},
 
+// Commented because of memory usage
 //     // moveNParagraphsAfter
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_Comma), move1ParagraphsAfter},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_Comma), move2ParagraphsAfter},
@@ -926,9 +948,9 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_L), move14LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_L), move15LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_L), move16LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
+//    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
 
     // moveNLinesAfter
     { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_K), move10LinesAfter},
@@ -938,9 +960,9 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_K), move14LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_K), move15LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_K), move16LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter}
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter}
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter}
 
   );
 
