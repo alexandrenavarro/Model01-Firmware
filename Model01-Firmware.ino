@@ -758,11 +758,54 @@ static void moveFileEnd(uint8_t seq_index) {
  LEADER_DICT(
 
     // Move
+
+    // 1 key sequence : Caution need to have first, 1 keys sequences, after 2, 3 because the sequence will be matched first and wait the timeout notably if you some sequence with the same first keys
+
     // moveFileStart
     { LEADER_SEQ(LEAD(0), Key_Y), moveFileStart},
 
+    // move1PagesBefore
+    { LEADER_SEQ(LEAD(0), Key_O), move1PagesBefore},
+
+    // move1ParagraphsBefore
+    { LEADER_SEQ(LEAD(0), Key_Period), move1ParagraphsBefore},
+
+    // move1LinesBefore
+    { LEADER_SEQ(LEAD(0), Key_L), move1LinesBefore},
+
+    //moveLineStart
+    { LEADER_SEQ(LEAD(0), Key_H), moveLineStart},
+
+    // move1WordsBefore
+    { LEADER_SEQ(LEAD(0), Key_M), move1WordsBefore},
+
+    // move1CharsBefore
+    { LEADER_SEQ(LEAD(0), Key_J), move1CharsBefore},
+
+    // move1CharsAfter
+    { LEADER_SEQ(LEAD(0)), move1CharsAfter},
+
+    // move1WordsAfter
+    { LEADER_SEQ(LEAD(0), Key_Slash), move1WordsAfter},
+
+    // moveLineEnd
+    { LEADER_SEQ(LEAD(0), Key_Quote), moveLineEnd},
+
+    // move1LinesAfter
+    { LEADER_SEQ(LEAD(0), Key_K), move1LinesAfter},
+
+    // moveNParagraphsAfter
+    { LEADER_SEQ(LEAD(0), Key_Comma), move1ParagraphsAfter},
+
+    // moveNPagesAfter
+    { LEADER_SEQ(LEAD(0), Key_I), move1PagesAfter},
+
+    // moveFileEnd
+    { LEADER_SEQ(LEAD(0), Key_LeftBracket), moveFileEnd},
+
+    // 2 keys sequences
+
 //     // moveNPagesBefore
-//     { LEADER_SEQ(LEAD(0), Key_O), move1PagesBefore},
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_O), move1PagesBefore},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_O), move2PagesBefore},
 //     { LEADER_SEQ(LEAD(0), Key_D, Key_O), move3PagesBefore},
@@ -774,7 +817,6 @@ static void moveFileEnd(uint8_t seq_index) {
 //     { LEADER_SEQ(LEAD(0), Key_L, Key_O), move9PagesBefore},
 //
 //     // moveNParagraphsBefore
-//     { LEADER_SEQ(LEAD(0), Key_Period), move1ParagraphsBefore},
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_Period), move1ParagraphsBefore},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_Period), move2ParagraphsBefore},
 //     { LEADER_SEQ(LEAD(0), Key_D, Key_Period), move3ParagraphsBefore},
@@ -786,7 +828,6 @@ static void moveFileEnd(uint8_t seq_index) {
 //     { LEADER_SEQ(LEAD(0), Key_L, Key_Period), move9ParagraphsBefore},
 
     // moveNLinesBefore
-    { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon), move1LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_L), move1LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_L), move2LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_L), move3LinesBefore},
@@ -796,22 +837,8 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_J, Key_L), move7LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_K, Key_L), move8LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_L, Key_L), move9LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_L), move10LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_A, Key_L), move11LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_S, Key_L), move12LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_D, Key_L), move13LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_L), move14LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_L), move15LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_L), move16LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
-
-    //moveLineStart
-    { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon), moveLineStart},
 
     // moveNWordsBefore
-    { LEADER_SEQ(LEAD(0), Key_M), move1WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_M), move1WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_M), move2WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_M), move3WordsBefore},
@@ -823,19 +850,17 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_M), move9WordsBefore},
 
     // moveNCharsBefore
-    { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon), move1CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_J), move1CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_J), move2CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_J), move3CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_F, Key_J), move4CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_G, Key_J), move5CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_H, Key_J), move6CharsBefore},
-    { LEADER_SEQ(LEAD(0), Key_J, Key_J), move7CharsBefore},// Will not work with
+    { LEADER_SEQ(LEAD(0), Key_J, Key_J), move7CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_K, Key_J), move8CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_L, Key_J), move9CharsBefore},
 
     // moveNCharsAfter
-    { LEADER_SEQ(LEAD(0), Key_Semicolon), move1CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon), move1CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon), move2CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon), move3CharsAfter},
@@ -847,7 +872,6 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon), move9CharsAfter},
 
     // moveNWordsAfter
-    { LEADER_SEQ(LEAD(0), Key_Slash), move1WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_Slash), move1WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_Slash), move2WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_Slash), move3WordsAfter},
@@ -858,11 +882,7 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_K, Key_Slash), move8WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_L, Key_Slash), move9WordsAfter},
 
-    //moveLineEnd
-    { LEADER_SEQ(LEAD(0), Key_Quote), moveLineEnd},
-
     // moveNLinesAfter
-    { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon), move1LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_K), move1LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_K), move2LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_K), move3LinesAfter},
@@ -872,19 +892,8 @@ static void moveFileEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_J, Key_K), move7LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_K, Key_K), move8LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_L, Key_K), move9LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_K), move10LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_A, Key_K), move11LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_S, Key_K), move12LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_D, Key_K), move13LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_K), move14LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_K), move15LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_K), move16LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter},
 
 //     // moveNParagraphsAfter
-//     { LEADER_SEQ(LEAD(0), Key_Comma), move1ParagraphsAfter},
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_Comma), move1ParagraphsAfter},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_Comma), move2ParagraphsAfter},
 //     { LEADER_SEQ(LEAD(0), Key_D, Key_Comma), move3ParagraphsAfter},
@@ -896,7 +905,6 @@ static void moveFileEnd(uint8_t seq_index) {
 //     { LEADER_SEQ(LEAD(0), Key_L, Key_Comma), move9ParagraphsAfter},
 //
 //     // moveNPagesAfter
-//     { LEADER_SEQ(LEAD(0), Key_I), move1PagesAfter},
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_I), move1PagesAfter},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_I), move2PagesAfter},
 //     { LEADER_SEQ(LEAD(0), Key_D, Key_I), move3PagesAfter},
@@ -907,8 +915,32 @@ static void moveFileEnd(uint8_t seq_index) {
 //     { LEADER_SEQ(LEAD(0), Key_K, Key_I), move8PagesAfter},
 //     { LEADER_SEQ(LEAD(0), Key_L, Key_I), move9PagesAfter},
 
-    // moveFileEnd
-    { LEADER_SEQ(LEAD(0), Key_LeftBracket), moveFileEnd}
+
+    // 3 keys sequences
+
+    // moveNLinesBefore
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_L), move10LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_A, Key_L), move11LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_S, Key_L), move12LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_D, Key_L), move13LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_L), move14LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_L), move15LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_L), move16LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
+
+    // moveNLinesAfter
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_K), move10LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_A, Key_K), move11LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_S, Key_K), move12LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_D, Key_K), move13LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_K), move14LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_K), move15LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_K), move16LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter}
 
   );
 
@@ -2026,7 +2058,7 @@ void setup() {
 
   // Leader
   Leader.dictionary = leader_dictionary;
-  Leader.time_out = 5000;
+  Leader.time_out = 2000;
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer

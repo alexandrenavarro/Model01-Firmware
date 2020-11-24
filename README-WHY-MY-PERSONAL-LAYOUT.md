@@ -136,6 +136,7 @@ In vi you do number + command + movement, here you do number + movement, it will
 * Alt + Tab is not accessible as I want (nevertheless accessible only with left hand, better than a classical placement) but I don't find better solution or a way to it.
 * Need to unpress backspace (or use cut + left) to fix an error when you type number.
 * Windows manipulations are not accessible with only the left hand.
+* Find no real solution for the pointer through a plugin keyboard (the official mouse plugin is not really useable for real life) or the add trackpoint/trackpad on the keyboard.
 
 # Some feedbacks on ideas I tested but it was not sucessful
 
@@ -143,6 +144,15 @@ In vi you do number + command + movement, here you do number + movement, it will
 I tried to used Qukeys like ctrl+alt+super+shift on the 2 homerows, it was easy to learn but there is one main drawback.
 
 You see the letter of the keys of the homerow appears when you untapped, not when you tapped the letter (like with a delay betwen 10-100 ms depending of your speed), and personnaly I never got used to.
+
+I used QuKeys only on backspace / spacebar because I can't really notice this problem on these special keys.
+ 
+## Use a macro to type several letters
+I tried some stuffs like ". ", ", " or ". "+Shift letter but at the end, I did not use it.
+
+## Use fn when typing a word
+When you hold the fn, you change the position of your hands which is not really problematic when type on key on the same hand or multiple on the other hand but not really easy when you type some keys on the same hand.
+So use fn for shortcuts one time or move your cursor.  
  
 ## Having a numpad only on a side
 I tried to have numpad just on the right side, first like classical numpad 
@@ -160,7 +170,7 @@ but it is not a good idea.
 
 I didn't realize at first, I never got used to, I think the problem is you can't type quickly number because you use only your right hand.
 
-# Create a vi like mode with Leader plugin 
+## Create a vi like mode with Leader plugin 
 I started to used Leader plugin to develop something like you can do in vi, 5dd (delete next 5 lines).
 
 I did some stuffs like leader key + number (equivalent of num + homerow) + movement (equivalent fn on right side), it will select the text and after use the command like Ctrl+C you want but I don't really use it finally.
@@ -176,7 +186,11 @@ Example : Don't care the shortcuts when you navigate on an browser because gener
 * Use palm key + something for one action (because it is really quick to tap) but not something in your flow of typing like an altgr (because the position of your hands are not well positioned).
 * Don't map Left Palm with a launcher or something similar because you will use a lot and sometimes for editing and sometime you will tap it by accident (you tapped and untapped quickly because you changed what you want to do).
 * You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the caracters are typed are really different, use showkeys -a to understand how you terminal understand what you type, it can be really different between the terminals. 
- 
+
+
+## Some others ideos not tested
+* Having a layout for tmux, I'm not a heavy user of tmux but clearly, if your are, create a layout for that makes sense and easy to do. 
+  
 # Conclusion
 I really think customizing my layout help me to be more productive on the different common tasks notably when I'm programming (reading or writing code).
 I wrote this because I want to share my feedbacks and I hope some of my ideas can be useful for some other people.
