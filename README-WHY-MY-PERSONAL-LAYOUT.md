@@ -74,8 +74,8 @@ All the shortcuts to navigate really quickly in a editor.
 ### Cut Layer (activated by holding the right palm key)
 
 ### Left side keys
-All the shortcuts are used to manipulate windows (on linux, I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md):
-* On the homerow right, you have : move to 1/4 left windows, move to 1/2 left windows, minimize, maximize, move to 1/2 right windows, move to 1/4 right window.
+All the shortcuts are used to manipulate windows (on linux, I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md because some weird behaviour on Super+Left / Super+Right and to have 1/4 or 1/8 windows):
+* On the homerow right, you have : move to 1/4 left windows, move to 1/2 left windows (like Super+Left on Windows or Gnome), minimize (like Super+Down on Windows or Gnome), maximize (like Super+Up on Windows or Gnome), move to 1/2 right windows (like Super+Right on Windows or Gnome), move to 1/4 right window.
 * On the row below the homerow right, you have more moves, to detail (see layout).
 * On the row above the homerow right, you have more moves, to detail (see layout).
 
