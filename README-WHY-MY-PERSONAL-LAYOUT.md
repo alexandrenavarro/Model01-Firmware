@@ -184,14 +184,15 @@ I'm interested if some vi gurus what kind of command they often use they can't d
 
 ## Some observations I didn't expect when I customize my layout
 * I used really few Ctrl+S (my IDE for programming in Intellij which save automatically), Ctrl+O, Ctrl+N.
+* I don't used a lot the Ctrl+Home/End (move to start/end file), Ctrl+Left/Right *4 (move to previous/next 4 words), Ctrl+(move to Code Block start/end).
 * I don't used anymore Super key.
 * I used more Ctrl+F I expected.
 * With this layout I used quasi never Ctrl or Alt directly, except Alt+Tab and some IDE shortcuts (Alt+f12 or Ctrl+Shift+F10 mainly).
 * Use palm key + something for one action (because it is really quick to tap) but not something in your flow of typing like an altgr (because the position of your hands are not well positioned).
-* You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the characters are typed are really different, use `showkey -a` to understand how you terminal understand what you type, it can be really different between the terminals. 
+* You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the characters are typed are really different, use `showkey -a` to understand how your terminal understand what you type, it can be really different between the terminals. 
 * Don't map Left Palm Key (fn1) with a launcher or something similar because you will use a lot and sometimes for editing and sometime you will tap it by accident (you tapped and untapped quickly because you changed what you want to do). Personnaly, it is mapped to Vi mode and works well in real life.
 * Don't try optimize everything, focus on the one the need to keep your "flow" like when you are programming or stuffs you do regularly and you want to be productive as possible. 
-Example : Don't care the shortcuts when you navigate on an browser because generally, you are not in your flow but you are just searching / reading something. 
+Example : Don't care the shortcuts when you navigate on a browser because generally, you are not in your flow but you are just searching / reading something maybe using the mouse. 
 
 ## Some others ideos not tested
 * Having a layout for tmux, I'm not a heavy user of tmux but clearly, if your are, create a layout for that makes sense and easy to do. 
