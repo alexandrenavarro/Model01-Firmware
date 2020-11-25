@@ -75,9 +75,10 @@ All the shortcuts to navigate really quickly in a editor.
 
 ### Left side keys
 All the shortcuts are used to manipulate windows (on linux, I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md because some weird behaviour on Super+Left / Super+Right and to have 1/4 or 1/8 windows):
-* On the homerow right, you have : move to 1/4 left windows, move to 1/2 left windows (like Super+Left on Windows or Gnome), minimize (like Super+Down on Windows or Gnome), maximize (like Super+Up on Windows or Gnome), move to 1/2 right windows (like Super+Right on Windows or Gnome), move to 1/4 right window.
-* On the row below the homerow right, you have more moves, to detail (see layout).
-* On the row above the homerow right, you have more moves, to detail (see layout).
+* On the homerow right, you have : move to left-left pane on [4x1], move to left pane on [2x1] (like Super+Left on Windows or Gnome), minimize (like Super+Down on Windows or Gnome), maximize (like Super+Up on Windows or Gnome), move right pane on [2x1] (like Super+Right on Windows or Gnome), move to right-right pane [4x1].
+* On the row below the homerow right, move to left-left-down pane on [4x2], move to left-down pane on [2x2], move to left-down pane on [4x2], move to right-down pane on [4x2], move to right-down pane on [2x2], move to right-right-down pane on [4x2]
+* On the row above the homerow right, move to left-left-up pane on [4x2], move to left-up pane on [2x2], move to left pane on [4x1], move to right pane on [4x1], move to right-up pane on [2x2], move to right-right-up pane on [4x2] 
+* On the first row right, nothing, nothing,  move to left-up pane on [4x2], move to right-up pane on [4x2] 
 
 ### Right side keys
 All the shortcuts to cut/delete really quickly in a editor or a terminal (customize your terminal shortcuts). There are totally equivalent of Fn layer

@@ -72,7 +72,7 @@
 #include "Kaleidoscope-HostPowerManagement.h"
 
 // Support for magic combos (key chords that trigger an action)
-#include "Kaleidoscope-MagicCombo.h"
+//#include "Kaleidoscope-MagicCombo.h"
 
 // Support for USB quirks, like changing the key state report protocol
 #include "Kaleidoscope-USB-Quirks.h"
@@ -227,10 +227,6 @@ enum { MACRO_VERSION_INFO,
        MACRO_END_SEMICOLON_ENTER,
        MACRO_EXCLAMATION_POINT,
        MACRO_LEFT_CURLY_BRACKET,
-       MACRO_MOUSE_NW_NW_NW,
-       MACRO_MOUSE_SW_SW_SW,
-       MACRO_MOUSE_NE_NE_NE,
-       MACRO_MOUSE_SE_SE_SE,
        MACRO_SEMICOLON,
        MACRO_SHIFT_CTRL_DOWN_X,
        MACRO_SHIFT_CTRL_END_X,
@@ -849,7 +845,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
 //     { LEADER_SEQ(LEAD(0), Key_L, Key_Period), move9ParagraphsBefore},
 
     // moveNLinesBefore
-    { LEADER_SEQ(LEAD(0), Key_A, Key_L), move1LinesBefore},
+    //{ LEADER_SEQ(LEAD(0), Key_A, Key_L), move1LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_L), move2LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_L), move3LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_F, Key_L), move4LinesBefore},
@@ -860,7 +856,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_L), move9LinesBefore},
 
     // moveNWordsBefore
-    { LEADER_SEQ(LEAD(0), Key_A, Key_M), move1WordsBefore},
+    //{ LEADER_SEQ(LEAD(0), Key_A, Key_M), move1WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_M), move2WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_M), move3WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_F, Key_M), move4WordsBefore},
@@ -871,7 +867,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_M), move9WordsBefore},
 
     // moveNCharsBefore
-    { LEADER_SEQ(LEAD(0), Key_A, Key_J), move1CharsBefore},
+    //{ LEADER_SEQ(LEAD(0), Key_A, Key_J), move1CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_J), move2CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_J), move3CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_F, Key_J), move4CharsBefore},
@@ -882,7 +878,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_J), move9CharsBefore},
 
     // moveNCharsAfter
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon), move1CharsAfter},
+    //{ LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon), move1CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon), move2CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon), move3CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon), move4CharsAfter},
@@ -893,7 +889,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon), move9CharsAfter},
 
     // moveNWordsAfter
-    { LEADER_SEQ(LEAD(0), Key_A, Key_Slash), move1WordsAfter},
+    //{ LEADER_SEQ(LEAD(0), Key_A, Key_Slash), move1WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_Slash), move2WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_Slash), move3WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_F, Key_Slash), move4WordsAfter},
@@ -904,7 +900,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_Slash), move9WordsAfter},
 
     // moveNLinesAfter
-    { LEADER_SEQ(LEAD(0), Key_A, Key_K), move1LinesAfter},
+    //{ LEADER_SEQ(LEAD(0), Key_A, Key_K), move1LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_K), move2LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_K), move3LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_F, Key_K), move4LinesAfter},
@@ -948,9 +944,9 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_L), move14LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_L), move15LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_L), move16LinesBefore},
-//    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
-//     { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
-//     { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
 
     // moveNLinesAfter
     { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_K), move10LinesAfter},
@@ -960,9 +956,9 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_A, Key_F, Key_K), move14LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_G, Key_K), move15LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_K), move16LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter}
-//     { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
-//     { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter}
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter}
 
   );
 
@@ -1621,22 +1617,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(RightAlt), T(X), U(RightAlt));
     break;
 
-  case MACRO_MOUSE_NW_NW_NW:
-    return MACRODOWN(T(mouseWarpNW), T(mouseWarpNW), T(mouseWarpNW), T(mouseWarpEnd));
-    break;
-
-  case MACRO_MOUSE_SW_SW_SW:
-    return MACRODOWN(T(mouseWarpSW), T(mouseWarpSW), T(mouseWarpSW), T(mouseWarpEnd));
-    break;
-
-  case MACRO_MOUSE_NE_NE_NE:
-    return MACRODOWN(T(mouseWarpNE), T(mouseWarpNE), T(mouseWarpNE), T(mouseWarpEnd));
-    break;
-
-  case MACRO_MOUSE_SE_SE_SE:
-    return MACRODOWN(T(mouseWarpSE), T(mouseWarpSE), T(mouseWarpSE), T(mouseWarpEnd));
-    break;
-
   case MACRO_SEMICOLON:
     return MACRODOWN(D(LeftShift), T(G), U(LeftShift));
     break;
@@ -1841,7 +1821,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftGui), D(UpArrow), U(UpArrow), U(LeftGui));
     break;
 
-
   }
   return MACRO_NONE;
 }
@@ -2044,24 +2023,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
  */
 void setup() {
 
-
-//   QUKEYS(
-//     kaleidoscope::plugin::Qukey(0, 2, 2,  Key_LeftAlt),
-//     kaleidoscope::plugin::Qukey(0, 2, 3,  Key_LeftControl),
-//     kaleidoscope::plugin::Qukey(0, 2, 4,  OSM(LeftShift)),
-//     kaleidoscope::plugin::Qukey(0, 2, 5,  ShiftToLayer(NUMPAD)),
-//     kaleidoscope::plugin::Qukey(0, 2, 10, ShiftToLayer(NUMPAD)),
-//     kaleidoscope::plugin::Qukey(0, 2, 11, OSM(LeftShift)),
-//     kaleidoscope::plugin::Qukey(0, 2, 12, Key_RightControl),
-//     kaleidoscope::plugin::Qukey(0, 2, 13, Key_RightAlt),
-//     kaleidoscope::plugin::Qukey(0, 3, 6,  ShiftToLayer(FUNCTION)),
-//     kaleidoscope::plugin::Qukey(0, 3, 9,  ShiftToLayer(FUNCTION))
-//   )
-
   QUKEYS(
-       //kaleidoscope::plugin::Qukey(0, 2, 1, OSM(LeftShift)),
-       //kaleidoscope::plugin::Qukey(0, 2, 14,OSM(LeftShift)),
-       //kaleidoscope::plugin::Qukey(0, 1, 7, Key_LeftAlt),
        kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), ShiftToLayer(NUMPAD)),
        kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(ALTGR)),
        kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), ShiftToLayer(FUNCTION)),
@@ -2076,15 +2038,13 @@ void setup() {
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
-  //MouseKeys.setWarpGridSize(MOUSE_WARP_GRID_3X3);
-
   // Leader
   Leader.dictionary = leader_dictionary;
   Leader.time_out = 2000;
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
-  NumPad.numPadLayer = NUMPAD;
+  //NumPad.numPadLayer = NUMPAD;
 
   // We configure the AlphaSquare effect to use RED letters
   AlphaSquare.color = CRGB(255, 0, 0);
