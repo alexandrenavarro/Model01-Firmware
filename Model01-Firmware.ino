@@ -102,9 +102,7 @@
   * a macro key is pressed.
   */
 
-enum { MACRO_VERSION_INFO,
-       MACRO_ANY,
-       MACRO_0,
+enum { MACRO_0,
        MACRO_1,
        MACRO_2,
        MACRO_3,
@@ -115,10 +113,8 @@ enum { MACRO_VERSION_INFO,
        MACRO_8,
        MACRO_9,
        MACRO_ALT_1,
-       MACRO_ALT_D,
        MACRO_ALT_ENTER,
        MACRO_ALT_F4,
-       MACRO_ALT_F6,
        MACRO_ALT_F7,
        MACRO_ALT_GR_1,
        MACRO_ALT_GR_2,
@@ -128,54 +124,26 @@ enum { MACRO_VERSION_INFO,
        MACRO_ALT_GR_A,
        MACRO_ALT_GR_A_AIGU,
        MACRO_ALT_GR_B,
-       MACRO_ALT_GR_COMMA,
        MACRO_ALT_GR_DOLLAR,
-       MACRO_ALT_GR_DOT,
        MACRO_ALT_GR_E,
        MACRO_ALT_GR_EQUALS,
        MACRO_ALT_GR_E_AIGU,
        MACRO_ALT_GR_E_GRAVE,
-       MACRO_ALT_GR_E_CIRC,
        MACRO_ALT_GR_I,
        MACRO_ALT_GR_K,
        MACRO_ALT_GR_O,
        MACRO_ALT_GR_P,
        MACRO_ALT_GR_SPACE,
        MACRO_ALT_GR_U,
-       MACRO_ALT_GR_W,
        MACRO_ALT_GR_X,
        MACRO_ALT_GR_Y,
        MACRO_ALT_DOWN,
        MACRO_ALT_LEFT,
        MACRO_ALT_RIGHT,
        MACRO_ALT_UP,
-       MACRO_ALT_SHIFT_TAB,
        MACRO_ALT_SPACE,
-       MACRO_ALT_TAB,
-       MACRO_ALT_TAB_DOWN,
        MACRO_COLON,
-       MACRO_COLON_Q_EXCLAMATION_POINT,
-       MACRO_COLON_W_EXCLAMATION_POINT,
        MACRO_CTRL_A,
-       MACRO_CTRL_ALT_B,
-       MACRO_CTRL_ALT_GR_3,
-       MACRO_CTRL_ALT_GR_4,
-       MACRO_CTRL_ALT_SHIFT_T,
-       MACRO_CTRL_B,
-       MACRO_CTRL_B_AMPERSAND,
-       MACRO_CTRL_B_LEFT_BRACKET,
-       MACRO_CTRL_B_C,
-       MACRO_CTRL_B_COMMA,
-       MACRO_CTRL_B_F,
-       MACRO_CTRL_B_LEFT_CURLY_BRACKET,
-       MACRO_CTRL_B_N,
-       MACRO_CTRL_B_O,
-       MACRO_CTRL_B_P,
-       MACRO_CTRL_B_PERCENT,
-       MACRO_CTRL_B_QUOTE,
-       MACRO_CTRL_B_RIGHT_CURLY_BRACKET,
-       MACRO_CTRL_B_W,
-       MACRO_CTRL_B_X,
        MACRO_CTRL_C,
        MACRO_CTRL_COLON,
        MACRO_CTRL_DIVIDE,
@@ -183,74 +151,45 @@ enum { MACRO_VERSION_INFO,
        MACRO_CTRL_END,
        MACRO_CTRL_F,
        MACRO_CTRL_F3,
-       MACRO_CTRL_F4,
        MACRO_CTRL_G,
        MACRO_CTRL_H,
        MACRO_CTRL_HOME,
-       MACRO_CTRL_K,
        MACRO_CTRL_LEFT,
-       MACRO_CTRL_LEFT_LEFT,
        MACRO_CTRL_LEFT_LEFT_LEFT_LEFT,
-       MACRO_CTRL_LEFT_BRACKET,
        MACRO_CTRL_LEFT_PARENTHESIS,
-       MACRO_CTRL_L,
        MACRO_CTRL_N,
-       MACRO_CTRL_O,
        MACRO_CTRL_P,
-       MACRO_CTRL_Q,
-       MACRO_CTRL_PAGE_DOWN,
-       MACRO_CTRL_PAGE_DOWN_ALT_PERIOD,
-       MACRO_CTRL_PAGE_UP,
-       MACRO_CTRL_PAGE_UP_ALT_COMMA,
        MACRO_CTRL_U,
        MACRO_CTRL_UP,
-       MACRO_CTRL_R,
        MACRO_CTRL_RIGHT,
-       MACRO_CTRL_RIGHT_BRACKET,
        MACRO_CTRL_RIGHT_PARENTHESIS,
-       MACRO_CTRL_RIGHT_RIGHT,
        MACRO_CTRL_RIGHT_RIGHT_RIGHT_RIGHT,
        MACRO_CTRL_S,
        MACRO_CTRL_SHIFT_ENTER,
        MACRO_CTRL_SHIFT_SPACE,
-       MACRO_CTRL_SHIFT_W,
-       MACRO_CTRL_SHIFT_Z,
        MACRO_CTRL_T,
-       MACRO_CTRL_TAB,
-       MACRO_CTRL_SHIFT_TAB,
        MACRO_CTRL_V,
        MACRO_CTRL_W,
        MACRO_CTRL_X,
-       MACRO_CTRL_Y,
        MACRO_CTRL_Z,
-       MACRO_END_SEMICOLON,
-       MACRO_END_SEMICOLON_ENTER,
        MACRO_EXCLAMATION_POINT,
-       MACRO_LEFT_CURLY_BRACKET,
        MACRO_SEMICOLON,
        MACRO_SHIFT_CTRL_DOWN_X,
        MACRO_SHIFT_CTRL_END_X,
        MACRO_SHIFT_CTRL_HOME_X,
        MACRO_SHIFT_CTRL_LEFT_X,
-       MACRO_SHIFT_CTRL_LEFT_LEFT_X,
        MACRO_SHIFT_CTRL_LEFT_LEFT_LEFT_LEFT_X,
        MACRO_SHIFT_CTRL_RIGHT_X,
-       MACRO_SHIFT_CTRL_RIGHT_RIGHT_X,
        MACRO_SHIFT_CTRL_RIGHT_RIGHT_RIGHT_RIGHT_X,
        MACRO_SHIFT_CTRL_UP_X,
        MACRO_SHIFT_DOWN_CTRL_X,
        MACRO_SHIFT_END_CTRL_X,
        MACRO_SHIFT_HOME_CTRL_X,
-       MACRO_SHIFT_INSERT,
-       MACRO_SHIFT_LEFT_CTRL_X,
        MACRO_SHIFT_PG_DOWN_CTRL_X,
        MACRO_SHIFT_PG_UP_CTRL_X,
-       MACRO_SHIFT_RIGHT_CTRL_X,
        MACRO_SHIFT_UP_CTRL_X,
        MACRO_SHIFT_SUPER_Z,
-       MACRO_SHIFT_TAB,
        MACRO_SPACE,
-       MACRO_SPACE_EQUALS_SPACE,
        MACRO_SUPER_CTRL_DOWN,
        MACRO_SUPER_CTRL_END,
        MACRO_SUPER_CTRL_HOME,
@@ -271,12 +210,6 @@ enum { MACRO_VERSION_INFO,
        MACRO_SUPER_CTRL_SHIFT_UP,
        MACRO_SUPER_CTRL_RIGHT,
        MACRO_SUPER_CTRL_UP,
-       MACRO_SUPER_DOWN,
-       MACRO_SUPER_LEFT,
-       MACRO_SUPER_M,
-       MACRO_SUPER_RIGHT,
-       MACRO_SUPER_TAB,
-       MACRO_SUPER_UP,
        MACRO_VI
      };
 
@@ -370,7 +303,7 @@ KEYMAPS(
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
+   ___,           Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
@@ -387,7 +320,7 @@ KEYMAPS(
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),   Key_6, Key_7, Key_8, Key_9, Key_0, LockLayer(NUMPAD),
+   ___,            Key_6, Key_7, Key_8, Key_9, Key_0, LockLayer(NUMPAD),
    Key_Enter,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
                    Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
    Key_RightAlt,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
@@ -404,7 +337,7 @@ KEYMAPS(
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
+   ___,  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
    Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
                   Key_H, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
    Key_RightAlt,  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
@@ -588,6 +521,86 @@ static void move16LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 1
 static void move17LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 17);}
 static void move18LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 18);}
 static void move19LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 19);}
+static void move20LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 20);}
+static void move21LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 21);}
+static void move22LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 22);}
+static void move23LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 23);}
+static void move24LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 24);}
+static void move25LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 25);}
+static void move26LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 26);}
+static void move27LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 27);}
+static void move28LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 28);}
+static void move29LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 29);}
+static void move30LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 30);}
+static void move31LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 31);}
+static void move32LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 32);}
+static void move33LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 33);}
+static void move34LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 34);}
+static void move35LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 35);}
+static void move36LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 36);}
+static void move37LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 37);}
+static void move38LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 38);}
+static void move39LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 39);}
+static void move40LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 40);}
+static void move41LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 41);}
+static void move42LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 42);}
+static void move43LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 43);}
+static void move44LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 44);}
+static void move45LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 45);}
+static void move46LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 46);}
+static void move47LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 47);}
+static void move48LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 48);}
+static void move49LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 49);}
+static void move50LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 50);}
+static void move51LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 51);}
+static void move52LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 52);}
+static void move53LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 53);}
+static void move54LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 54);}
+static void move55LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 55);}
+static void move56LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 56);}
+static void move57LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 57);}
+static void move58LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 58);}
+static void move59LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 59);}
+static void move60LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 60);}
+static void move61LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 61);}
+static void move62LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 62);}
+static void move63LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 63);}
+static void move64LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 64);}
+static void move65LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 65);}
+static void move66LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 66);}
+static void move67LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 67);}
+static void move68LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 68);}
+static void move69LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 69);}
+static void move70LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 70);}
+static void move71LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 71);}
+static void move72LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 72);}
+static void move73LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 73);}
+static void move74LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 74);}
+static void move75LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 75);}
+static void move76LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 76);}
+static void move77LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 77);}
+static void move78LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 78);}
+static void move79LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 79);}
+static void move80LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 80);}
+static void move81LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 81);}
+static void move82LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 82);}
+static void move83LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 83);}
+static void move84LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 84);}
+static void move85LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 85);}
+static void move86LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 86);}
+static void move87LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 87);}
+static void move88LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 88);}
+static void move89LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 89);}
+static void move90LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 90);}
+static void move91LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 91);}
+static void move92LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 92);}
+static void move93LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 93);}
+static void move94LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 94);}
+static void move95LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 95);}
+static void move96LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 96);}
+static void move97LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 97);}
+static void move98LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 98);}
+static void move99LinesBefore(uint8_t seq_index) { moveNLinesBefore(seq_index, 99);}
 
 
 //moveLineStart
@@ -706,6 +719,86 @@ static void move16LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 16)
 static void move17LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 17);}
 static void move18LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 18);}
 static void move19LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 19);}
+static void move20LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 20);}
+static void move21LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 21);}
+static void move22LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 22);}
+static void move23LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 23);}
+static void move24LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 24);}
+static void move25LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 25);}
+static void move26LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 26);}
+static void move27LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 27);}
+static void move28LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 28);}
+static void move29LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 29);}
+static void move30LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 30);}
+static void move31LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 31);}
+static void move32LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 32);}
+static void move33LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 33);}
+static void move34LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 34);}
+static void move35LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 35);}
+static void move36LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 36);}
+static void move37LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 37);}
+static void move38LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 38);}
+static void move39LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 39);}
+static void move40LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 40);}
+static void move41LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 41);}
+static void move42LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 42);}
+static void move43LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 43);}
+static void move44LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 44);}
+static void move45LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 45);}
+static void move46LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 46);}
+static void move47LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 47);}
+static void move48LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 48);}
+static void move49LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 49);}
+static void move50LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 50);}
+static void move51LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 51);}
+static void move52LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 52);}
+static void move53LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 53);}
+static void move54LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 54);}
+static void move55LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 55);}
+static void move56LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 56);}
+static void move57LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 57);}
+static void move58LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 58);}
+static void move59LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 59);}
+static void move60LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 60);}
+static void move61LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 61);}
+static void move62LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 62);}
+static void move63LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 63);}
+static void move64LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 64);}
+static void move65LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 65);}
+static void move66LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 66);}
+static void move67LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 67);}
+static void move68LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 68);}
+static void move69LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 69);}
+static void move70LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 70);}
+static void move71LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 71);}
+static void move72LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 72);}
+static void move73LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 73);}
+static void move74LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 74);}
+static void move75LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 75);}
+static void move76LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 76);}
+static void move77LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 77);}
+static void move78LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 78);}
+static void move79LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 79);}
+static void move80LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 80);}
+static void move81LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 81);}
+static void move82LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 82);}
+static void move83LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 83);}
+static void move84LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 84);}
+static void move85LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 85);}
+static void move86LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 86);}
+static void move87LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 87);}
+static void move88LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 88);}
+static void move89LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 89);}
+static void move90LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 90);}
+static void move91LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 91);}
+static void move92LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 92);}
+static void move93LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 93);}
+static void move94LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 94);}
+static void move95LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 95);}
+static void move96LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 96);}
+static void move97LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 97);}
+static void move98LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 98);}
+static void move99LinesAfter(uint8_t seq_index) { moveNLinesAfter(seq_index, 99);}
 
 
 //nmoveNParagraphsAfter
@@ -790,7 +883,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_J), move1CharsBefore},
 
     // move1CharsAfter
-    { LEADER_SEQ(LEAD(0)), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_Semicolon), move1CharsAfter},
 
     // move1WordsAfter
     { LEADER_SEQ(LEAD(0), Key_Slash), move1WordsAfter},
@@ -821,7 +914,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
 
     // 2 keys sequences
 
-// Commented because of memory usage
+// Commented because of memory usage and not really useful in real life
 //     // moveNPagesBefore
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_O), move1PagesBefore},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_O), move2PagesBefore},
@@ -845,7 +938,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
 //     { LEADER_SEQ(LEAD(0), Key_L, Key_Period), move9ParagraphsBefore},
 
     // moveNLinesBefore
-    //{ LEADER_SEQ(LEAD(0), Key_A, Key_L), move1LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L), move1LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_L), move2LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_L), move3LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_F, Key_L), move4LinesBefore},
@@ -856,7 +949,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_L), move9LinesBefore},
 
     // moveNWordsBefore
-    //{ LEADER_SEQ(LEAD(0), Key_A, Key_M), move1WordsBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_M), move1WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_M), move2WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_M), move3WordsBefore},
     { LEADER_SEQ(LEAD(0), Key_F, Key_M), move4WordsBefore},
@@ -867,7 +960,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_M), move9WordsBefore},
 
     // moveNCharsBefore
-    //{ LEADER_SEQ(LEAD(0), Key_A, Key_J), move1CharsBefore},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_J), move1CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_S, Key_J), move2CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_D, Key_J), move3CharsBefore},
     { LEADER_SEQ(LEAD(0), Key_F, Key_J), move4CharsBefore},
@@ -878,7 +971,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_J), move9CharsBefore},
 
     // moveNCharsAfter
-    //{ LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon), move1CharsAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon), move1CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon), move2CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon), move3CharsAfter},
     { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon), move4CharsAfter},
@@ -889,7 +982,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon), move9CharsAfter},
 
     // moveNWordsAfter
-    //{ LEADER_SEQ(LEAD(0), Key_A, Key_Slash), move1WordsAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_Slash), move1WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_Slash), move2WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_Slash), move3WordsAfter},
     { LEADER_SEQ(LEAD(0), Key_F, Key_Slash), move4WordsAfter},
@@ -900,7 +993,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_L, Key_Slash), move9WordsAfter},
 
     // moveNLinesAfter
-    //{ LEADER_SEQ(LEAD(0), Key_A, Key_K), move1LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_A, Key_K), move1LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_S, Key_K), move2LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_D, Key_K), move3LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_F, Key_K), move4LinesAfter},
@@ -910,7 +1003,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_K, Key_K), move8LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_L, Key_K), move9LinesAfter},
 
-// Commented because of memory usage
+// Commented because of memory usage and not really useful in real life
 //     // moveNParagraphsAfter
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_Comma), move1ParagraphsAfter},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_Comma), move2ParagraphsAfter},
@@ -947,6 +1040,88 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_L), move17LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_L), move18LinesBefore},
     { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_L), move19LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon, Key_L), move20LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_A, Key_L), move21LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_S, Key_L), move22LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_D, Key_L), move23LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_F, Key_L), move24LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_G, Key_L), move25LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_H, Key_L), move26LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_J, Key_L), move27LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_K, Key_L), move28LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_L, Key_L), move29LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon, Key_L), move30LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_A, Key_L), move31LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_S, Key_L), move32LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_D, Key_L), move33LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_F, Key_L), move34LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_G, Key_L), move35LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_H, Key_L), move36LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_J, Key_L), move37LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_K, Key_L), move38LinesBefore},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_L, Key_L), move39LinesBefore},
+// Commented because of memory usage and not really useful in real life
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon, Key_L), move40LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_A, Key_L), move41LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_S, Key_L), move42LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_D, Key_L), move43LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_F, Key_L), move44LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_G, Key_L), move45LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_H, Key_L), move46LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_J, Key_L), move47LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_K, Key_L), move48LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_L, Key_L), move49LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_Semicolon, Key_L), move50LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_A, Key_L), move51LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_S, Key_L), move52LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_D, Key_L), move53LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_F, Key_L), move54LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_G, Key_L), move55LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_H, Key_L), move56LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_J, Key_L), move57LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_K, Key_L), move58LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_L, Key_L), move59LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon, Key_L), move60LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_A, Key_L), move61LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_S, Key_L), move62LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_D, Key_L), move63LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_F, Key_L), move64LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_G, Key_L), move65LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_H, Key_L), move66LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_J, Key_L), move67LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_K, Key_L), move68LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_L, Key_L), move69LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon, Key_L), move70LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_A, Key_L), move71LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_S, Key_L), move72LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_D, Key_L), move73LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_F, Key_L), move74LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_G, Key_L), move75LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_H, Key_L), move76LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_J, Key_L), move77LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_K, Key_L), move78LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_L, Key_L), move79LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon, Key_L), move80LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_A, Key_L), move81LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_S, Key_L), move82LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_D, Key_L), move83LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_F, Key_L), move84LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_G, Key_L), move85LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_H, Key_L), move86LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_J, Key_L), move87LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_K, Key_L), move88LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_L, Key_L), move89LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon, Key_L), move90LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_A, Key_L), move91LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_S, Key_L), move92LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_D, Key_L), move93LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_F, Key_L), move94LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_G, Key_L), move95LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_H, Key_L), move96LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_J, Key_L), move97LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_K, Key_L), move98LinesBefore},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_L, Key_L), move99LinesBefore},
+
 
     // moveNLinesAfter
     { LEADER_SEQ(LEAD(0), Key_A, Key_Semicolon, Key_K), move10LinesAfter},
@@ -958,47 +1133,89 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_A, Key_H, Key_K), move16LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_J, Key_K), move17LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_A, Key_K, Key_K), move18LinesAfter},
-    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter}
-
+    { LEADER_SEQ(LEAD(0), Key_A, Key_L, Key_K), move19LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_Semicolon, Key_K), move20LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_A, Key_K), move21LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_S, Key_K), move22LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_D, Key_K), move23LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_F, Key_K), move24LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_G, Key_K), move25LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_H, Key_K), move26LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_J, Key_K), move27LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_K, Key_K), move28LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_S, Key_L, Key_K), move29LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_Semicolon, Key_K), move30LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_A, Key_K), move31LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_S, Key_K), move32LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_D, Key_K), move33LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_F, Key_K), move34LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_G, Key_K), move35LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_H, Key_K), move36LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_J, Key_K), move37LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_K, Key_K), move38LinesAfter},
+    { LEADER_SEQ(LEAD(0), Key_D, Key_L, Key_K), move39LinesAfter}
+// Commented because of memory usage and not really useful in real life
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_Semicolon, Key_K), move40LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_A, Key_K), move41LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_S, Key_K), move42LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_D, Key_K), move43LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_F, Key_K), move44LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_G, Key_K), move45LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_H, Key_K), move46LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_J, Key_K), move47LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_K, Key_K), move48LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_F, Key_L, Key_K), move49LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_Semicolon, Key_K), move50LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_A, Key_K), move51LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_S, Key_K), move52LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_D, Key_K), move53LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_F, Key_K), move54LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_G, Key_K), move55LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_H, Key_K), move56LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_J, Key_K), move57LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_K, Key_K), move58LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_G, Key_L, Key_K), move59LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_Semicolon, Key_K), move60LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_A, Key_K), move61LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_S, Key_K), move62LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_D, Key_K), move63LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_F, Key_K), move64LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_G, Key_K), move65LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_H, Key_K), move66LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_J, Key_K), move67LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_K, Key_K), move68LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_H, Key_L, Key_K), move69LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_Semicolon, Key_K), move70LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_A, Key_K), move71LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_S, Key_K), move72LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_D, Key_K), move73LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_F, Key_K), move74LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_G, Key_K), move75LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_H, Key_K), move76LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_J, Key_K), move77LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_K, Key_K), move78LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_J, Key_L, Key_K), move79LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_Semicolon, Key_K), move80LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_A, Key_K), move81LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_S, Key_K), move82LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_D, Key_K), move83LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_F, Key_K), move84LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_G, Key_K), move85LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_H, Key_K), move86LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_J, Key_K), move87LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_K, Key_K), move88LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_K, Key_L, Key_K), move89LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_Semicolon, Key_K), move90LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_A, Key_K), move91LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_S, Key_K), move92LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_D, Key_K), move93LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_F, Key_K), move94LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_G, Key_K), move95LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_H, Key_K), move96LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_J, Key_K), move97LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_K, Key_K), move98LinesAfter},
+//     { LEADER_SEQ(LEAD(0), Key_L, Key_L, Key_K), move99LinesAfter},
   );
-
-
-
-/* Re-enable astyle's indent enforcement */
-// *INDENT-ON*
-
-/** versionInfoMacro handles the 'firmware version info' macro
- *  When a key bound to the macro is pressed, this macro
- *  prints out the firmware build information as virtual keystrokes
- */
-
-static void versionInfoMacro(uint8_t keyState) {
-  if (keyToggledOn(keyState)) {
-    Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
-    Macros.type(PSTR(BUILD_INFORMATION));
-  }
-}
-
-/** anyKeyMacro is used to provide the functionality of the 'Any' key.
- *
- * When the 'any key' macro is toggled on, a random alphanumeric key is
- * selected. While the key is held, the function generates a synthetic
- * keypress event repeating that randomly selected key.
- *
- */
-
-static void anyKeyMacro(uint8_t keyState) {
-//   static Key lastKey;
-//   bool toggledOn = false;
-//   if (keyToggledOn(keyState)) {
-//     lastKey.setKeyCode(Key_A.getKeyCode() + (uint8_t)(millis() % 36));
-//     toggledOn = true;
-//   }
-//
-//   if (keyIsPressed(keyState))
-//     Kaleidoscope.hid().keyboard().pressKey(lastKey, toggledOn);
-}
-
 
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
@@ -1015,14 +1232,6 @@ static void anyKeyMacro(uint8_t keyState) {
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
-
-  case MACRO_VERSION_INFO:
-    versionInfoMacro(keyState);
-    break;
-
-  case MACRO_ANY:
-    anyKeyMacro(keyState);
-    break;
 
   case MACRO_0:
     return MACRODOWN(D(LeftShift), T(0), U(LeftShift));
@@ -1068,20 +1277,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftAlt), D(LeftShift), T(1), U(LeftShift), U(LeftAlt));
     break;
 
-  case MACRO_ALT_D:
-    return MACRODOWN(D(LeftAlt), T(I), U(LeftAlt));
-    break;
-
   case MACRO_ALT_ENTER:
     return MACRODOWN(D(LeftAlt), T(Enter), U(LeftAlt));
     break;
 
   case MACRO_ALT_F4:
     return MACRODOWN(D(LeftAlt), T(F4), U(LeftAlt));
-    break;
-
-  case MACRO_ALT_F6:
-    return MACRODOWN(D(LeftAlt), T(F6), U(LeftAlt));
     break;
 
   case MACRO_ALT_F7:
@@ -1120,17 +1321,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(RightAlt), T(Q), U(RightAlt));
     break;
 
-  case MACRO_ALT_GR_COMMA:
-     return MACRODOWN(D(RightAlt), T(G), U(RightAlt));
-     break;
-
   case MACRO_ALT_GR_DOLLAR:
     return MACRODOWN(D(RightAlt), T(Backtick), U(RightAlt));
     break;
-
-  case MACRO_ALT_GR_DOT:
-     return MACRODOWN(D(RightAlt), T(V), U(RightAlt));
-     break;
 
   case MACRO_ALT_GR_E:
      return MACRODOWN(D(RightAlt), T(F), U(RightAlt));
@@ -1138,10 +1331,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_ALT_GR_E_AIGU:
      return MACRODOWN(D(RightAlt), T(W), U(RightAlt));
-     break;
-
-  case MACRO_ALT_GR_E_CIRC:
-     return MACRODOWN(D(RightAlt), T(NonUsBackslashAndPipe), U(RightAlt));
      break;
 
   case MACRO_ALT_GR_E_GRAVE:
@@ -1181,10 +1370,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
      return MACRODOWN(D(RightAlt), T(S), U(RightAlt));
      break;
 
-  case MACRO_ALT_GR_W:
-    return MACRODOWN(D(RightAlt), T(Backtick), U(RightAlt));
-    break;
-
   case MACRO_ALT_GR_X:
      return MACRODOWN(D(RightAlt), T(C), U(RightAlt));
      break;
@@ -1213,108 +1398,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftAlt), T(Space), U(LeftAlt));
     break;
 
-  case MACRO_ALT_SHIFT_TAB:
-    return MACRODOWN(D(LeftAlt), D(LeftShift), T(Tab), U(LeftShift), U(LeftAlt));
-    break;
-
-  case MACRO_ALT_TAB:
-    return MACRODOWN(D(LeftAlt), T(Tab), U(LeftAlt));
-    break;
-
-  case MACRO_ALT_TAB_DOWN:
-    return MACRODOWN(D(LeftAlt), T(Tab));
-    break;
-
   case MACRO_COLON:
     return MACRODOWN(D(LeftShift), T(V), U(LeftShift));
     break;
 
-  case MACRO_COLON_Q_EXCLAMATION_POINT:
-    return MACRODOWN(D(LeftShift), T(V), U(LeftShift), T(M), D(LeftShift), T(Y), U(LeftShift), T(Enter));
-    break;
-
-  case MACRO_COLON_W_EXCLAMATION_POINT:
-    return MACRODOWN(D(LeftShift), T(V), U(LeftShift), T(RightBracket), D(LeftShift), T(Y), U(LeftShift), T(Enter));
-    break;
-
   case MACRO_CTRL_A:
     return MACRODOWN(D(LeftControl), T(A), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_ALT_B:
-    return MACRODOWN(D(LeftControl), D(LeftAlt), T(Q), U(LeftAlt), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_ALT_GR_3:
-    return MACRODOWN(D(LeftControl), D(RightAlt), T(3), U(RightAlt), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_ALT_GR_4:
-    return MACRODOWN(D(LeftControl), D(RightAlt), T(4), U(RightAlt), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_ALT_SHIFT_T:
-    return MACRODOWN(D(LeftControl), D(LeftAlt), D(LeftShift), T(J), U(LeftShift), U(LeftAlt), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_B:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_B_AMPERSAND:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(E), U(RightAlt));
-    break;
-
-  case MACRO_CTRL_B_C:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(H));
-    break;
-
-  case MACRO_CTRL_B_COMMA:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(G));
-    break;
-
-  case MACRO_CTRL_B_F:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(Slash));
-    break;
-
-  case MACRO_CTRL_B_LEFT_BRACKET:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(4), U(RightAlt));
-    break;
-
-  case MACRO_CTRL_B_LEFT_CURLY_BRACKET:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(X), U(RightAlt));
-    break;
-
-  case MACRO_CTRL_B_N:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(Semicolon));
-    break;
-
-  case MACRO_CTRL_B_O:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(R));
-    break;
-
-  case MACRO_CTRL_B_P:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(E));
-    break;
-
-  case MACRO_CTRL_B_QUOTE:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl),  T(1));
-    break;
-
-  case MACRO_CTRL_B_RIGHT_CURLY_BRACKET:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), D(RightAlt), T(C), U(RightAlt));
-    break;
-
-  case MACRO_CTRL_B_PERCENT:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(Equals));
-    break;
-
-  case MACRO_CTRL_B_W:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(RightBracket));
-    break;
-
-  case MACRO_CTRL_B_X:
-    return MACRODOWN(D(LeftControl), T(Q), U(LeftControl), T(C));
     break;
 
   case MACRO_CTRL_C:
@@ -1357,10 +1446,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(F3), U(LeftControl));
     break;
 
-  case MACRO_CTRL_F4:
-    return MACRODOWN(D(LeftControl), T(F4), U(LeftControl));
-    break;
-
   case MACRO_CTRL_G:
     return MACRODOWN(D(LeftControl), T(Comma), U(LeftControl));
     break;
@@ -1385,10 +1470,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(Home), U(LeftControl));
     break;
 
-  case MACRO_CTRL_K:
-     return MACRODOWN(D(LeftControl), T(B), U(LeftControl));
-     break;
-
   case MACRO_CTRL_LEFT:
     if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         Macros.play(MACRODOWN(D(LeftShift)));
@@ -1403,26 +1484,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
         Macros.play(MACRODOWN(D(LeftGui)));
     }
     return MACRODOWN(D(LeftControl), T(LeftArrow), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_LEFT_BRACKET:
-    return MACRODOWN(D(LeftControl), D(RightAlt), T(4), U(RightAlt), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_LEFT_LEFT:
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
-        Macros.play(MACRODOWN(D(LeftShift)));
-    }
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
-        Macros.play(MACRODOWN(D(LeftAlt)));
-    }
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
-        Macros.play(MACRODOWN(D(RightAlt)));
-    }
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
-        Macros.play(MACRODOWN(D(LeftGui)));
-    }
-    return MACRODOWN(D(LeftControl), T(LeftArrow), T(LeftArrow), U(LeftControl));
     break;
 
   case MACRO_CTRL_LEFT_LEFT_LEFT_LEFT:
@@ -1445,44 +1506,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(4), U(LeftControl));
     break;
 
-  case MACRO_CTRL_L:
-    return MACRODOWN(D(LeftControl), T(O), U(LeftControl));
-    break;
-
   case MACRO_CTRL_N:
     return MACRODOWN(D(LeftControl), T(Semicolon), U(LeftControl));
     break;
 
-  case MACRO_CTRL_O:
-    return MACRODOWN(D(LeftControl), T(R), U(LeftControl));
-    break;
-
   case MACRO_CTRL_P:
     return MACRODOWN(D(LeftControl), T(E), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_Q:
-    return MACRODOWN(D(LeftControl), T(M), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_PAGE_DOWN:
-    return MACRODOWN(D(LeftControl), T(PageDown), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_PAGE_DOWN_ALT_PERIOD:
-    return MACRODOWN(D(LeftControl), T(PageDown), U(LeftControl), D(LeftAlt), T(V), U(LeftAlt));
-    break;
-
-  case MACRO_CTRL_PAGE_UP:
-    return MACRODOWN(D(LeftControl), T(PageUp), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_PAGE_UP_ALT_COMMA:
-    return MACRODOWN(D(LeftControl), T(PageUp), U(LeftControl), D(LeftAlt), T(G), U(LeftAlt));
-    break;
-
-  case MACRO_CTRL_R:
-    return MACRODOWN(D(LeftControl), T(L), U(LeftControl));
     break;
 
   case MACRO_CTRL_U:
@@ -1509,28 +1538,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(RightArrow), U(LeftControl));
     break;
 
-  case MACRO_CTRL_RIGHT_BRACKET:
-    return MACRODOWN(D(LeftControl), D(RightAlt), T(5), U(RightAlt), U(LeftControl));
-    break;
 
   case MACRO_CTRL_RIGHT_PARENTHESIS:
     return MACRODOWN(D(LeftControl), T(5), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_RIGHT_RIGHT:
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
-        Macros.play(MACRODOWN(D(LeftShift)));
-    }
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftAlt)) {
-        Macros.play(MACRODOWN(D(LeftAlt)));
-    }
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightAlt)) {
-        Macros.play(MACRODOWN(D(RightAlt)));
-    }
-    if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftGui) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightGui)) {
-        Macros.play(MACRODOWN(D(LeftGui)));
-    }
-    return MACRODOWN(D(LeftControl), T(RightArrow), T(RightArrow), U(LeftControl));
     break;
 
   case MACRO_CTRL_RIGHT_RIGHT_RIGHT_RIGHT:
@@ -1561,24 +1571,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), D(LeftShift), T(Space), U(LeftShift), U(LeftControl));
     break;
 
-  case MACRO_CTRL_SHIFT_W:
-    return MACRODOWN(D(LeftControl), D(LeftShift), T(RightBracket), U(LeftShift), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_SHIFT_Z:
-    return MACRODOWN(D(LeftControl), D(LeftShift), T(LeftBracket), U(LeftShift), U(LeftControl));
-    break;
-
   case MACRO_CTRL_T:
     return MACRODOWN(D(LeftControl), T(J), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_TAB:
-    return MACRODOWN(D(LeftControl), T(Tab), U(LeftControl));
-    break;
-
-  case MACRO_CTRL_SHIFT_TAB:
-    return MACRODOWN(D(LeftControl), D(LeftShift), T(Tab), U(LeftShift), U(LeftControl));
     break;
 
   case MACRO_CTRL_V:
@@ -1593,28 +1587,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftControl), T(C), U(LeftControl));
     break;
 
-  case MACRO_CTRL_Y:
-    return MACRODOWN(D(LeftControl), T(X), U(LeftControl));
-    break;
-
   case MACRO_CTRL_Z:
     return MACRODOWN(D(LeftControl), T(LeftBracket), U(LeftControl));
     break;
 
-  case MACRO_END_SEMICOLON:
-    return MACRODOWN(T(End), D(LeftShift), T(G), D(LeftShift));
-    break;
-
-  case MACRO_END_SEMICOLON_ENTER:
-    return MACRODOWN(T(End), D(LeftShift), T(G), D(LeftShift), T(Enter));
-    break;
-
   case MACRO_EXCLAMATION_POINT:
     return MACRODOWN(D(LeftShift), T(Y), U(LeftShift));
-    break;
-
-  case MACRO_LEFT_CURLY_BRACKET:
-    return MACRODOWN(D(RightAlt), T(X), U(RightAlt));
     break;
 
   case MACRO_SEMICOLON:
@@ -1637,20 +1615,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftShift), D(LeftControl), T(LeftArrow), U(LeftControl), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
     break;
 
-  case MACRO_SHIFT_CTRL_LEFT_LEFT_X:
-    return MACRODOWN(D(LeftShift), D(LeftControl), T(LeftArrow), T(LeftArrow), U(LeftControl), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
-    break;
-
   case MACRO_SHIFT_CTRL_LEFT_LEFT_LEFT_LEFT_X:
     return MACRODOWN(D(LeftShift), D(LeftControl), T(LeftArrow), T(LeftArrow), T(LeftArrow), T(LeftArrow), U(LeftControl), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
     break;
 
   case MACRO_SHIFT_CTRL_RIGHT_X:
     return MACRODOWN(D(LeftShift), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
-    break;
-
-  case MACRO_SHIFT_CTRL_RIGHT_RIGHT_X:
-    return MACRODOWN(D(LeftShift), D(LeftControl), T(RightArrow), T(RightArrow), U(LeftControl), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
     break;
 
   case MACRO_SHIFT_CTRL_RIGHT_RIGHT_RIGHT_RIGHT_X:
@@ -1673,24 +1643,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftShift), T(Home), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
     break;
 
-  case MACRO_SHIFT_INSERT:
-    return MACRODOWN(D(LeftShift), T(Insert), U(LeftControl));
-    break;
-
-  case MACRO_SHIFT_LEFT_CTRL_X:
-    return MACRODOWN(D(LeftShift), T(LeftArrow), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
-    break;
-
   case MACRO_SHIFT_PG_DOWN_CTRL_X:
     return MACRODOWN(D(LeftShift), T(PageDown), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
     break;
 
   case MACRO_SHIFT_PG_UP_CTRL_X:
     return MACRODOWN(D(LeftShift), T(PageUp), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
-    break;
-
-  case MACRO_SHIFT_RIGHT_CTRL_X:
-    return MACRODOWN(D(LeftShift), T(RightArrow), U(LeftShift), D(LeftControl), T(C), U(LeftControl));
     break;
 
   case MACRO_SHIFT_UP_CTRL_X:
@@ -1701,20 +1659,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftShift), D(LeftGui), T(LeftBracket), U(LeftGui), U(LeftShift));
     break;
 
-  case MACRO_SHIFT_TAB:
-    return MACRODOWN(D(LeftShift), T(Tab), U(LeftShift));
-    break;
-
   case MACRO_SPACE:
     if (Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_LeftShift) || Kaleidoscope.hid().keyboard().wasModifierKeyActive(Key_RightShift)) {
         return MACRODOWN(U(LeftShift), D(RightAlt), T(Space), U(RightAlt), D(LeftShift));
     } else {
         return MACRODOWN(T(Spacebar));
     }
-    break;
-
-  case MACRO_SPACE_EQUALS_SPACE:
-    return MACRODOWN(T(Spacebar), T(Minus), T(Spacebar));
     break;
 
   case MACRO_SUPER_CTRL_DOWN:
@@ -1797,30 +1747,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftGui), D(LeftControl), T(UpArrow), U(LeftControl), U(LeftGui));
     break;
 
-  case MACRO_SUPER_DOWN:
-    return MACRODOWN(D(LeftGui), D(DownArrow), U(DownArrow), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_LEFT:
-    return MACRODOWN(D(LeftGui), D(LeftArrow), U(LeftArrow), U(LeftGui), W(50), T(Esc), W(50), T(Esc));
-    break;
-
-  case MACRO_SUPER_M:
-    return MACRODOWN(D(LeftGui), T(Quote), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_RIGHT:
-    return MACRODOWN(D(LeftGui), D(RightArrow), U(RightArrow), U(LeftGui), W(50), T(Esc), W(50), T(Esc));
-    break;
-
-  case MACRO_SUPER_TAB:
-    return MACRODOWN(D(LeftGui), T(Tab), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_UP:
-    return MACRODOWN(D(LeftGui), D(UpArrow), U(UpArrow), U(LeftGui));
-    break;
-
   }
   return MACRO_NONE;
 }
@@ -1829,7 +1755,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 // These 'solid' color effect definitions define a rainbow of
 // LED color modes calibrated to draw 500mA or less on the
 // Keyboardio Model 01.
-
 
 static kaleidoscope::plugin::LEDSolidColor solidRed(160, 0, 0);
 static kaleidoscope::plugin::LEDSolidColor solidOrange(140, 70, 0);
@@ -2023,6 +1948,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
  */
 void setup() {
 
+  //Qukeys
   QUKEYS(
        kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), ShiftToLayer(NUMPAD)),
        kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(ALTGR)),
