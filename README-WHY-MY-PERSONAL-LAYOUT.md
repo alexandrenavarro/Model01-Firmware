@@ -18,21 +18,21 @@ I used bépo layout (equivalent of dvorak for french) but tiny changes because m
 ### Special keys
 * Led is mapped to Enter (needed sometimes with left hand).
 * Menu is mapped to launch my windows selector (launch rofi under linux with only my windows, switcheroo on windows).
-* Return is mapped to :
-* Any is not yet mapped (to define)
+* Return is mapped to : (to have it directly, mainly for vi)
+* Any is mapped to ! (to have it directly)
 * Prog is mapped to Ins
 
 ### Palm keys
-* Right Palm keys (fn1) is mapped Shift+Super+Z to launch my launcher (launch rofi under linux and executor.dk on windows).
-* Left Palm keys (fn2) is mapped to activate Leader key on my Vi mode.
+* Left Palm keys (fn1) is mapped to activate Leader key on my Vi mode.
+* Right Palm keys (fn2) is mapped Shift+Super+Z to launch my launcher (launch rofi under linux and executor.dk on windows).
 
 ### Left side
-Shift, Backspace, Ctrl, Alt.
+Shift, Backspace, Ctrl, Alt (instead of Ctrl, BackSpace, Cmd, Shift). 
 
 #### Shift
 Shift on the left of backspace and the right of to be better accessible than the original place.
 
-I prefer to let 2 keys because : 
+I prefer to let 2 keys for Shift because : 
 * We need to let on the 2 sides because some shortcuts are like Ctrl+Shift notably in Intellij.
 * Alternate the shift use (use left shift to capitalize right letters keys and use right shift to capitalize right letters keys).
 
@@ -46,13 +46,13 @@ I have quasi no shortcut with Ctrl+Alt+something or have an alternative to use t
 Alt on the left to be able to do the Alt+Tab only with the left hand.
 
 ### Right side
-Super, Return, Space, Shift.
+Super, Enter, Space, Shift (instead of Shift, Alt, Space, Ctrl).
 
-Return on the left of Space to be better accessible than the default place.
+Enter on the left of Space to be better accessible than the default place.
 
 The space is a macro, if Shift is press, the space is mapped to _ (useful when you type some constants in Java/Kotlin).
 
-Super on the left of Return.
+Super on the left of Enter (not really used anymore).
 
 ## Fn Layer (activated by holding the left palm key)
 
@@ -67,11 +67,15 @@ All the shortcuts to navigate really quickly in a editor.
 * On the homerow right, you have home, left, down, up, right, end (as vi k,j,l but shift on the right to have it on the real homerow keys), clearly better than a inverse T when you are used to.
 * On the row below the homerow right, you have the same but with Ctrl+ (except where home / end replace by Ctrl+Left/Right*4)
 * On the row above the homerow right, you have Ctrl+Home (start of a file), Ctrl+\( (code block start), PgDown, PgUp, Ctrl+](code block start), Ctrl+End (end of a file). 
+* Return is mapped to Ctrl + : (used to go to commandline/terminal mode in the different when it exists like Intellij, micro ...)
 
-### Palm Keys
-* Right Palm key is mapped to Alt+1 to go quick to project dock in Intellij and back to the main editor dock through Esc.
+### Right Palm Keys
+* A tap on Right Palm key is mapped to Alt+1 to go quick to project dock in Intellij and back to the main editor dock through Esc.
+* Fn+Space is mapped to Ctrl+Shift+Space (for Intellij)
++ Fn+Enter is mapped to Ctrl+Return (for Intellij)
 
-### Cut Layer (activated by holding the right palm key)
+
+## Cut Layer (activated by holding the right palm key)
 
 ### Left side keys
 All the shortcuts are used to manipulate windows (on linux, I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md because some weird behaviour on Super+Left / Super+Right and to have 1/4 or 1/8 windows):
@@ -98,6 +102,11 @@ All digits are set on the homerow (some x position as there are on the top row).
 On first key on homerow left is mapped to Ctrl+G (go to line), generally use before typing number.
 
 The key at the right of 0 is mapped to point.
+
+Numpad+Led is mapped to Alt+Enter .
+Numpad+Space is mapped to _ .
+Numpad+Alt is mapped to Alt+Enter . 
+
 
 ## Vi Mode
 Tap first fn1, then tap the number (like numpad + digit but without numpad hold but it is optional, by default it is 1), then tap the movement on the right side (like fn + right keys but without fn).

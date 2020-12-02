@@ -374,7 +374,7 @@ KEYMAPS(
    OSM(LeftShift),                         Key_Backspace,                                  OSM(LeftControl),                       OSM(LeftAlt),
    LEAD(0),
 
-   ___,                                    Key_6,                                          Key_7,                                  Key_8,                                  Key_9,                                  Key_0,                                       Key_Equals,
+   M(MACRO_EXCLAMATION_POINT),             Key_6,                                          Key_7,                                  Key_8,                                  Key_9,                                  Key_0,                                       Key_Equals,
    M(MACRO_COLON),                         Key_Y,                                          Key_U,                                  Key_I,                                  Key_O,                                  Key_P,                                       Key_LeftBracket,
                                            Key_H,                                          Key_J,                                  Key_K,                                  Key_L,                                  Key_Semicolon,                               Key_Quote,
    M(MACRO_ALT_SPACE),                     Key_N,                                          Key_M,                                  Key_Comma,                              Key_Period,                             Key_Slash,                                   Key_Backslash,
@@ -914,7 +914,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
 
     // 2 keys sequences
 
-// Commented because of memory usage and not really useful in real life
+// Commented because of memory usage and not really useful in real life and when I tapped fn1 23 down, the keyboard does not work after (I don't know why)
 //     // moveNPagesBefore
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_O), move1PagesBefore},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_O), move2PagesBefore},
@@ -1003,7 +1003,7 @@ static void moveCodeBlockEnd(uint8_t seq_index) {
     { LEADER_SEQ(LEAD(0), Key_K, Key_K), move8LinesAfter},
     { LEADER_SEQ(LEAD(0), Key_L, Key_K), move9LinesAfter},
 
-// Commented because of memory usage and not really useful in real life
+// Commented because of memory usage and not really useful in real life and when I tapped fn1 23 down, the keyboard does not work after (I don't know why)
 //     // moveNParagraphsAfter
 //     { LEADER_SEQ(LEAD(0), Key_A, Key_Comma), move1ParagraphsAfter},
 //     { LEADER_SEQ(LEAD(0), Key_S, Key_Comma), move2ParagraphsAfter},
