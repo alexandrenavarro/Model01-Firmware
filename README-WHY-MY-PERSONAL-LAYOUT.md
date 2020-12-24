@@ -4,7 +4,7 @@
 See on http://www.keyboard-layout-editor.com/#/gists/831524ae41aec20a65ff519557db7f50
 
 # My Layers
-There are 5 layers (primary, fn, cut, numpad, altgr)
+There are 5 layers (primary, fn, wm, numpad, altgr)
 
 ## Primary layer (activated by default)
 
@@ -16,7 +16,7 @@ I used bépo layout (equivalent of dvorak for french) but tiny changes because m
 * $ is on the first key on the left of the row above the homerow left.
 
 ### Special keys
-* Led is mapped to Enter (needed sometimes with left hand).
+* Led is mapped to Enter (needed many with left hand, notably if you copy/paste with mouse and need to tap enter to launch a find).
 * Menu is mapped to launch my windows selector (launch rofi under linux with only my windows, switcheroo on windows).
 * Return is mapped to : (to have it directly, mainly for vi)
 * Any is mapped to ! (to have it directly)
@@ -75,14 +75,31 @@ All the shortcuts to navigate really quickly in a editor.
 + Fn+Enter is mapped to Ctrl+Return (for Intellij)
 
 
-## Cut Layer (activated by holding the right palm key)
+## Window Layer (activated by holding the right palm key)
 
 ### Left side keys
-All the shortcuts are used to manipulate windows (on linux, I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md because some weird behaviour on Super+Left / Super+Right and to have 1/4 or 1/8 windows):
-* On the homerow right, you have : move to left-left pane on [4x1], move to left pane on [2x1] (like Super+Left on Windows or Gnome), minimize (like Super+Down on Windows or Gnome), maximize (like Super+Up on Windows or Gnome), move right pane on [2x1] (like Super+Right on Windows or Gnome), move to right-right pane [4x1].
-* On the row below the homerow right, move to left-left-down pane on [4x2], move to left-down pane on [2x2], move to left-down pane on [4x2], move to right-down pane on [4x2], move to right-down pane on [2x2], move to right-right-down pane on [4x2]
-* On the row above the homerow right, move to left-left-up pane on [4x2], move to left-up pane on [2x2], move to left pane on [4x1], move to right pane on [4x1], move to right-up pane on [2x2], move to right-right-up pane on [4x2] 
-* On the first row right, nothing, nothing,  move to left-up pane on [4x2], move to right-up pane on [4x2] 
+#### With a floating window manager (like openbox or windows 10, but can be use with any floating windows manager on linux or on windows)
+All the shortcuts are used to manipulate windows (on linux I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md because some weird behaviour on Super+Left / Super+Right and to have 1/4 or 1/8 windows):
+* On the homerow left, you have : move to left-left pane on [4x1], move to left pane on [2x1] (like Super+Left on Windows or Gnome), minimize (like Super+Down on Windows or Gnome), maximize (like Super+Up on Windows or Gnome), move right pane on [2x1] (like Super+Right on Windows or Gnome), move to right-right pane [4x1].
+* On the row below the homerow left, move to left-left-down pane on [4x2], move to left-down pane on [2x2], move to left-down pane on [4x2], move to right-down pane on [4x2], move to right-down pane on [2x2], move to right-right-down pane on [4x2]
+* On the row above the homerow felt, move to left-left-up pane on [4x2], move to left-up pane on [2x2], move to left pane on [4x1], move to right pane on [4x1], move to right-up pane on [2x2], move to right-right-up pane on [4x2] 
+* On the first row right, nothing, nothing,  move to left-up pane on [4x2], move to right-up pane on [4x2]
+ 
+#### With a floating window manager (bspwn the best tiling windows manager on linux)
+* On the homerow left, you have : move to left, minimize (set hidden=on), maximize (monocle), move right.
+* On the row below the homerow left, you have : move to down, move to up.
+* On the row above the homerow felt, you have : set status to tiled, set status to fullscreen. 
+
+### Right side keys (mainly use with bspwn)
+It is used mainly with bspwn or any tiling window manager.
+* On the homerow right, you have : super + left (select the window on the left), super + down (select the window on the down), super + up (select the window on the up), super + right (select the window on the right). 
+
+## Altgr Layer (activated by Holding Space)
+
+### Left side keys
+It is the equivalent of altgr (right alt) for bépo but with some customization (easy to do customization like that).
+* < and > are accessible directly instead « of »
+* : ¨ was inverse.
 
 ### Right side keys
 All the shortcuts to cut/delete really quickly in a editor or a terminal (customize your terminal shortcuts). There are totally equivalent of Fn layer
@@ -90,11 +107,6 @@ All the shortcuts to cut/delete really quickly in a editor or a terminal (custom
 * On the row below the homerow right, you have the same to cut/delete but with Ctrl+ (except where home / end replace by Ctrl+Left/Right*4)
 * On the row above the homerow right, you have to cut/delete Ctrl+Home (start of a file), Ctrl+\( (code block start), PgDown, PgUp, Ctrl+](code block start), Ctrl+End (end of a file). 
 
-
-## Altgr Layer (activated by Holding Space)
-It is the equivalent of altgr (right alt) for bépo but with some customization (easy to do customization like that).
-* < and > are accessible directly instead « of »
-* : ¨ was inverse.
 
 ## Numpad Layer  
 All digits are set on the homerow (some x position as there are on the top row).
@@ -129,7 +141,7 @@ In vi you do number + command + movement, here you do number + movement, it will
 * Delete/Cut a letter / word / line are really easy, useful also in a terminal (don't forget to customize your shortcuts of your terminal). 
 
 ### Numpad layer 
-* Numbre are really accessible through Backspace + homerow keys.
+* Number are really accessible through Backspace + homerow keys.
 
 ### Altgr layer 
 * Altgr keys are really accessible through Space + left keys with some potential customizations.
@@ -147,7 +159,7 @@ In vi you do number + command + movement, here you do number + movement, it will
 * You can have a kind vi mode like with leader plugin.
 
 ## Cons 
-* Can't let backspace or space pushed to type multiple times, you have to use fn+backspace or cut+left to do it or fn2+space, but prefered because of the need to have quick access to numpad, altgr layer and _.
+* Can't let backspace or space pushed to type multiple times, you have to use fn+backspace or cut+left to do it or fn2+space, but preferred because of the need to have quick access to numpad, altgr layer and _.
 * Alt + Tab is not accessible as I want (nevertheless accessible only with left hand, better than a classical placement) but I don't find better solution or a way to it.
 * Need to unpress backspace (or use cut + left) to fix an error when you type number.
 * Windows manipulations are not accessible with only the left hand.
@@ -197,7 +209,7 @@ I'm interested if some vi gurus what kind of command they often use they can't d
 * I don't used a lot the Ctrl+Home/End (move to start/end file), Ctrl+Left/Right *4 (move to previous/next 4 words), Ctrl+(move to Code Block start/end).
 * I don't used anymore Super key.
 * I used more Ctrl+F I expected.
-* With this layout I used quasi never Ctrl or Alt directly, except Alt+Tab and some IDE shortcuts (Alt+f12 or Ctrl+Shift+F10 mainly).
+* With this layout I used quasi never Ctrl or Alt directly, except Alt+Tab on windows and some IDE shortcuts (Alt+f12 or Ctrl+Shift+F10 mainly).
 * Use palm key + something for one action (because it is really quick to tap) but not something in your flow of typing like an altgr (because the position of your hands are not well positioned).
 * You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the characters are typed are really different, use `showkey -a` to understand how your terminal understand what you type, it can be really different between the terminals. 
 * Don't map Left Palm Key (fn1) with a launcher or something similar because you will use a lot and sometimes for editing and sometime you will tap it by accident (you tapped and untapped quickly because you changed what you want to do). Personnaly, it is mapped to Vi mode and works well in real life.
