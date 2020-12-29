@@ -142,6 +142,7 @@ enum { MACRO_0,
        MACRO_ALT_DOWN,
        MACRO_ALT_LEFT,
        MACRO_ALT_RIGHT,
+       MACRO_ALT_TAB,
        MACRO_ALT_UP,
        MACRO_ALT_SPACE,
        MACRO_COLON,
@@ -411,8 +412,8 @@ KEYMAPS(
    M(MACRO_ALT_1)),
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         M(MACRO_ALT_ENTER),
-   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
+  (M(MACRO_ALT_INSERT),                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         M(MACRO_ALT_ENTER),
+   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         M(MACRO_ALT_TAB),
    M(MACRO_CTRL_G),                        M(MACRO_1),                                     M(MACRO_2),                             M(MACRO_3),                             M(MACRO_4),                             M(MACRO_5),
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    ___, ___, ___, ___,
@@ -426,7 +427,7 @@ KEYMAPS(
    ___),
 
   [ALTGR] =  KEYMAP_STACKED
-  (M(MACRO_ALT_INSERT),                    M(MACRO_ALT_GR_1),                              Key_2,                                  Key_3,                                  M(MACRO_ALT_GR_4),                      M(MACRO_ALT_GR_5),                           ___,
+  (___,                                    M(MACRO_ALT_GR_1),                              Key_2,                                  Key_3,                                  M(MACRO_ALT_GR_4),                      M(MACRO_ALT_GR_5),                           ___,
    M(MACRO_ALT_GR_DOLLAR),                 M(MACRO_ALT_GR_B),                              M(MACRO_ALT_GR_E_AIGU),                 M(MACRO_ALT_GR_P),                      M(MACRO_ALT_GR_O),                      M(MACRO_ALT_GR_E_GRAVE),                     ___,
    M(MACRO_EXCLAMATION_POINT),             M(MACRO_ALT_GR_A),                              M(MACRO_ALT_GR_U),                      M(MACRO_COLON),                         M(MACRO_SEMICOLON),                     M(MACRO_ALT_GR_E),
    M(MACRO_ALT_GR_EQUALS),                 M(MACRO_ALT_GR_A_AIGU),                         M(MACRO_ALT_GR_Y),                      M(MACRO_ALT_GR_X),                      M(MACRO_ALT_GR_I),                      M(MACRO_ALT_GR_K),                           ___,
@@ -1404,12 +1405,16 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftAlt), T(RightArrow), U(LeftAlt));
     break;
 
-  case MACRO_ALT_UP:
-    return MACRODOWN(D(LeftAlt), T(UpArrow), U(LeftAlt));
-    break;
-
   case MACRO_ALT_SPACE:
     return MACRODOWN(D(LeftAlt), T(Space), U(LeftAlt));
+    break;
+
+  case MACRO_ALT_TAB:
+    return MACRODOWN(D(LeftAlt), T(Tab), U(LeftAlt));
+    break;
+
+  case MACRO_ALT_UP:
+    return MACRODOWN(D(LeftAlt), T(UpArrow), U(LeftAlt));
     break;
 
   case MACRO_COLON:
