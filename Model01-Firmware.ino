@@ -115,6 +115,7 @@ enum { MACRO_0,
        MACRO_9,
        MACRO_ALT_1,
        MACRO_ALT_ENTER,
+       MACRO_ALT_INSERT,
        MACRO_ALT_F4,
        MACRO_ALT_F7,
        MACRO_ALT_GR_1,
@@ -192,28 +193,29 @@ enum { MACRO_0,
        MACRO_SHIFT_UP_CTRL_X,
        MACRO_SHIFT_SUPER_Z,
        MACRO_SPACE,
-       MACRO_SUPER_CTRL_DOWN,
-       MACRO_SUPER_CTRL_END,
-       MACRO_SUPER_CTRL_HOME,
-       MACRO_SUPER_CTRL_LEFT,
-       MACRO_SUPER_CTRL_PAGE_DOWN,
-       MACRO_SUPER_CTRL_PAGE_UP,
-       MACRO_SUPER_CTRL_SHIFT_ALT_DOWN,
-       MACRO_SUPER_CTRL_SHIFT_ALT_LEFT,
-       MACRO_SUPER_CTRL_SHIFT_ALT_RIGHT,
-       MACRO_SUPER_CTRL_SHIFT_ALT_UP,
-       MACRO_SUPER_CTRL_SHIFT_DOWN,
-       MACRO_SUPER_CTRL_SHIFT_END,
-       MACRO_SUPER_CTRL_SHIFT_HOME,
-       MACRO_SUPER_CTRL_SHIFT_LEFT,
-       MACRO_SUPER_CTRL_SHIFT_RIGHT,
-       MACRO_SUPER_CTRL_SHIFT_PAGE_DOWN,
-       MACRO_SUPER_CTRL_SHIFT_PAGE_UP,
-       MACRO_SUPER_CTRL_SHIFT_UP,
-       MACRO_SUPER_CTRL_RIGHT,
-       MACRO_SUPER_CTRL_UP,
+       MACRO_SUPER_1,
+       MACRO_SUPER_2,
+       MACRO_SUPER_3,
+       MACRO_SUPER_4,
+       MACRO_SUPER_5,
+       MACRO_SUPER_A,
+       MACRO_SUPER_ALT_1,
+       MACRO_SUPER_ALT_2,
+       MACRO_SUPER_ALT_3,
+       MACRO_SUPER_ALT_4,
+       MACRO_SUPER_ALT_5,
+       MACRO_SUPER_ALT_SHIFT_DOWN,
+       MACRO_SUPER_ALT_SHIFT_UP,
+       MACRO_SUPER_B,
        MACRO_SUPER_DOWN,
+       MACRO_SUPER_END,
        MACRO_SUPER_LEFT,
+       MACRO_SUPER_SHIFT_DOWN,
+       MACRO_SUPER_SHIFT_LEFT,
+       MACRO_SUPER_SHIFT_PAGE_DOWN,
+       MACRO_SUPER_SHIFT_PAGE_UP,
+       MACRO_SUPER_SHIFT_RIGHT,
+       MACRO_SUPER_SHIFT_UP,
        MACRO_SUPER_RIGHT,
        MACRO_SUPER_TAB,
        MACRO_SUPER_UP,
@@ -384,8 +386,8 @@ KEYMAPS(
    M(MACRO_EXCLAMATION_POINT),             Key_6,                                          Key_7,                                  Key_8,                                  Key_9,                                  Key_0,                                       Key_Equals,
    M(MACRO_COLON),                         Key_Y,                                          Key_U,                                  Key_I,                                  Key_O,                                  Key_P,                                       Key_LeftBracket,
                                            Key_H,                                          Key_J,                                  Key_K,                                  Key_L,                                  Key_Semicolon,                               Key_Quote,
-   M(MACRO_SUPER_TAB),                     Key_N,                                          Key_M,                                  Key_Comma,                              Key_Period,                             Key_Slash,                                   Key_Backslash,
-   Key_LeftGui,                            Key_Enter,                                      M(MACRO_SPACE),                         OSM(LeftShift),
+   M(MACRO_ALT_SPACE),                     Key_N,                                          Key_M,                                  Key_Comma,                              Key_Period,                             Key_Slash,                                   Key_Backslash,
+   OSM(LeftGui),                           Key_Enter,                                      M(MACRO_SPACE),                        OSM(LeftShift),
    M(MACRO_SHIFT_SUPER_Z)),
 
 #else
@@ -404,7 +406,7 @@ KEYMAPS(
    Key_F12,                                Key_F6,                                         Key_F7,                                 Key_F8,                                 Key_F9,                                 Key_F10,                                     Key_F11,
    M(MACRO_CTRL_E),                        M(MACRO_CTRL_HOME),                             M(MACRO_CTRL_LEFT_PARENTHESIS),         Key_PageDown,                           Key_PageUp,                             M(MACRO_CTRL_RIGHT_PARENTHESIS),             M(MACRO_CTRL_END),
                                            Key_Home,                                       Key_LeftArrow,                          Key_DownArrow,                          Key_UpArrow,                            Key_RightArrow,                              Key_End,
-   M(MACRO_ALT_SPACE),                     M(MACRO_CTRL_LEFT_LEFT_LEFT_LEFT),              M(MACRO_CTRL_LEFT),                     M(MACRO_CTRL_DOWN),                     M(MACRO_CTRL_UP),                       M(MACRO_CTRL_RIGHT),                         M(MACRO_CTRL_RIGHT_RIGHT_RIGHT_RIGHT),
+   M(MACRO_SUPER_TAB),                     M(MACRO_CTRL_LEFT_LEFT_LEFT_LEFT),              M(MACRO_CTRL_LEFT),                     M(MACRO_CTRL_DOWN),                     M(MACRO_CTRL_UP),                       M(MACRO_CTRL_RIGHT),                         M(MACRO_CTRL_RIGHT_RIGHT_RIGHT_RIGHT),
    ___,                                    M(MACRO_CTRL_SHIFT_ENTER),                      M(MACRO_CTRL_SHIFT_SPACE),              ___,
    M(MACRO_ALT_1)),
 
@@ -420,36 +422,36 @@ KEYMAPS(
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
                                            M(MACRO_6),                                     M(MACRO_7),                             M(MACRO_8),                             M(MACRO_9),                             M(MACRO_0),                                  Key_V,
    Key_PcApplication,                      ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
-   ___,                                    M(MACRO_ALT_ENTER),                             M(MACRO_ALT_GR_SPACE),                  ___,
+   ___,                                    M(MACRO_ALT_ENTER),                             Key_Space,                              ___,
    ___),
 
   [ALTGR] =  KEYMAP_STACKED
-  (___,                                    M(MACRO_ALT_GR_1),                              Key_2,                                  Key_3,                                  M(MACRO_ALT_GR_4),                      M(MACRO_ALT_GR_5),                           ___,
+  (M(MACRO_ALT_INSERT),                    M(MACRO_ALT_GR_1),                              Key_2,                                  Key_3,                                  M(MACRO_ALT_GR_4),                      M(MACRO_ALT_GR_5),                           ___,
    M(MACRO_ALT_GR_DOLLAR),                 M(MACRO_ALT_GR_B),                              M(MACRO_ALT_GR_E_AIGU),                 M(MACRO_ALT_GR_P),                      M(MACRO_ALT_GR_O),                      M(MACRO_ALT_GR_E_GRAVE),                     ___,
    M(MACRO_EXCLAMATION_POINT),             M(MACRO_ALT_GR_A),                              M(MACRO_ALT_GR_U),                      M(MACRO_COLON),                         M(MACRO_SEMICOLON),                     M(MACRO_ALT_GR_E),
    M(MACRO_ALT_GR_EQUALS),                 M(MACRO_ALT_GR_A_AIGU),                         M(MACRO_ALT_GR_Y),                      M(MACRO_ALT_GR_X),                      M(MACRO_ALT_GR_I),                      M(MACRO_ALT_GR_K),                           ___,
-   ___, ___, ___, ___,
+   ___,                                    Key_Backspace,                                  ___,                                    ___,
    ___,
 
    M(MACRO_CTRL_COLON),                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    ___,                                    M(MACRO_SHIFT_CTRL_HOME_X),                     ___,                                    M(MACRO_SHIFT_PG_DOWN_CTRL_X),          M(MACRO_SHIFT_PG_UP_CTRL_X),            ___,                                         M(MACRO_SHIFT_CTRL_END_X),
                                            M(MACRO_SHIFT_HOME_CTRL_X),                     Key_Backspace,                          M(MACRO_SHIFT_DOWN_CTRL_X),             M(MACRO_SHIFT_UP_CTRL_X),               Key_Delete,                                  M(MACRO_SHIFT_END_CTRL_X),
    ___,                                    M(MACRO_SHIFT_CTRL_LEFT_LEFT_LEFT_LEFT_X),      M(MACRO_SHIFT_CTRL_LEFT_X),             M(MACRO_SHIFT_CTRL_DOWN_X),             M(MACRO_SHIFT_CTRL_UP_X),               M(MACRO_SHIFT_CTRL_RIGHT_X),                 M(MACRO_SHIFT_CTRL_RIGHT_RIGHT_RIGHT_RIGHT_X),
-   ___,                                    ___,                                            Key_Spacebar,                           ___,
+   ___,                                    ___,                                            ___,                                    ___,
    ___),
 
   [WM] =  KEYMAP_STACKED
-  (Key_PrintScreen,                        ___,                                            M(MACRO_SUPER_CTRL_SHIFT_ALT_DOWN),     M(MACRO_SUPER_CTRL_SHIFT_ALT_UP),       ___,                                    ___,                                         ___,
-   M(MACRO_SUPER_CTRL_SHIFT_HOME),         M(MACRO_SUPER_CTRL_HOME),                       M(MACRO_SUPER_CTRL_SHIFT_DOWN),         M(MACRO_SUPER_CTRL_SHIFT_UP),           M(MACRO_SUPER_CTRL_PAGE_UP),            M(MACRO_SUPER_CTRL_SHIFT_PAGE_UP),           ___,
-   M(MACRO_SUPER_CTRL_SHIFT_LEFT),         M(MACRO_SUPER_CTRL_LEFT),                       M(MACRO_SUPER_CTRL_DOWN),               M(MACRO_SUPER_CTRL_UP),                 M(MACRO_SUPER_CTRL_RIGHT),              M(MACRO_SUPER_CTRL_SHIFT_RIGHT),
-   M(MACRO_SUPER_CTRL_SHIFT_END),          M(MACRO_SUPER_CTRL_END),                        M(MACRO_SUPER_CTRL_SHIFT_ALT_LEFT),     M(MACRO_SUPER_CTRL_SHIFT_ALT_RIGHT),    M(MACRO_SUPER_CTRL_PAGE_DOWN),          M(MACRO_SUPER_CTRL_SHIFT_PAGE_DOWN),         ___,
+  (Key_PrintScreen,                        ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
+   ___,                                    M(MACRO_SUPER_ALT_1),                           M(MACRO_SUPER_ALT_2),                   M(MACRO_SUPER_ALT_3),                   M(MACRO_SUPER_ALT_4),                   M(MACRO_SUPER_ALT_5),                        ___,
+   ___,                                    M(MACRO_SUPER_1),                               M(MACRO_SUPER_2),                       M(MACRO_SUPER_3),                       M(MACRO_SUPER_4),                       M(MACRO_SUPER_5),
+   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    ___, ___, ___, ___,
    ___,
 
-   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
-   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
-                                           ___,                                            M(MACRO_SUPER_LEFT),                    M(MACRO_SUPER_DOWN),                    M(MACRO_SUPER_UP),                      M(MACRO_SUPER_RIGHT),                        ___,
-   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
+   ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         M(MACRO_SUPER_B),
+   ___,                                    ___,                                            M(MACRO_SUPER_SHIFT_PAGE_DOWN),         M(MACRO_SUPER_ALT_SHIFT_DOWN),          M(MACRO_SUPER_ALT_SHIFT_UP),            M(MACRO_SUPER_END),                          M(MACRO_ALT_F4),
+                                           ___,                                            M(MACRO_SUPER_SHIFT_LEFT),              M(MACRO_SUPER_SHIFT_DOWN),              M(MACRO_SUPER_SHIFT_UP),                M(MACRO_SUPER_SHIFT_RIGHT),                  M(MACRO_SUPER_SHIFT_PAGE_UP),
+   ___,                                    ___,                                            M(MACRO_SUPER_LEFT),                    M(MACRO_SUPER_DOWN),                    M(MACRO_SUPER_UP),                      M(MACRO_SUPER_RIGHT),                        M(MACRO_SUPER_A),
    ___,                                    ___,                                            ___,                                    ___,
 
    ___)
@@ -1289,6 +1291,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     return MACRODOWN(D(LeftAlt), T(Enter), U(LeftAlt));
     break;
 
+  case MACRO_ALT_INSERT:
+    return MACRODOWN(D(LeftAlt), T(Insert), U(LeftAlt));
+    break;
+
   case MACRO_ALT_F4:
     return MACRODOWN(D(LeftAlt), T(F4), U(LeftAlt));
     break;
@@ -1680,84 +1686,60 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     }
     break;
 
-  case MACRO_SUPER_CTRL_DOWN:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(DownArrow), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_1:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(1), U(LeftShift), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_END:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(End), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_2:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(2), U(LeftShift), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_HOME:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(Home), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_3:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(3), U(LeftShift), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_LEFT:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(LeftArrow), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_4:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(4), U(LeftShift), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_PAGE_DOWN:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(PageDown), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_5:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(5), U(LeftShift), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_PAGE_UP:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(PageUp), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_A:
+    return MACRODOWN(D(LeftGui), T(A), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_ALT_DOWN:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), D(LeftAlt), T(DownArrow), U(LeftAlt), U(LeftShift), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_ALT_1:
+    return MACRODOWN(D(LeftGui), D(LeftAlt), D(LeftShift), T(1), U(LeftShift), U(LeftAlt), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_ALT_LEFT:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), D(LeftAlt), T(LeftArrow), U(LeftAlt), U(LeftShift), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_ALT_2:
+    return MACRODOWN(D(LeftGui), D(LeftAlt), D(LeftShift), T(2), U(LeftShift), U(LeftAlt), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_ALT_RIGHT:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), D(LeftAlt), T(RightArrow), U(LeftAlt), U(LeftShift), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_ALT_3:
+    return MACRODOWN(D(LeftGui), D(LeftAlt), D(LeftShift), T(3), U(LeftShift), U(LeftAlt), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_ALT_UP:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), D(LeftAlt), T(UpArrow), U(LeftAlt), U(LeftShift), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_ALT_4:
+    return MACRODOWN(D(LeftGui), D(LeftAlt), D(LeftShift), T(4), U(LeftShift), U(LeftAlt), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_DOWN:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(DownArrow), U(LeftShift), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_ALT_5:
+    return MACRODOWN(D(LeftGui), D(LeftAlt), D(LeftShift), T(5), U(LeftShift), U(LeftAlt), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_END:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(End), U(LeftShift), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_ALT_SHIFT_DOWN:
+    return MACRODOWN(D(LeftGui), D(LeftAlt), D(LeftShift), T(DownArrow), U(LeftShift), U(LeftAlt), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_HOME:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(Home), U(LeftShift), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_ALT_SHIFT_UP:
+    return MACRODOWN(D(LeftGui), D(LeftAlt), D(LeftShift), T(UpArrow), U(LeftShift), U(LeftAlt), U(LeftGui));
     break;
 
-  case MACRO_SUPER_CTRL_SHIFT_LEFT:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(LeftArrow), U(LeftShift), U(LeftControl), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_CTRL_SHIFT_PAGE_DOWN:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(PageDown), U(LeftShift), U(LeftControl), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_CTRL_SHIFT_PAGE_UP:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(PageUp), U(LeftShift), U(LeftControl), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_CTRL_SHIFT_RIGHT:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(RightArrow), U(LeftShift), U(LeftControl), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_CTRL_SHIFT_UP:
-    return MACRODOWN(D(LeftGui), D(LeftControl), D(LeftShift), T(UpArrow), U(LeftShift), U(LeftControl), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_CTRL_RIGHT:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(RightArrow), U(LeftControl), U(LeftGui));
-    break;
-
-  case MACRO_SUPER_CTRL_UP:
-    return MACRODOWN(D(LeftGui), D(LeftControl), T(UpArrow), U(LeftControl), U(LeftGui));
+  case MACRO_SUPER_B:
+    return MACRODOWN(D(LeftGui), T(Q), U(LeftGui));
     break;
 
   case MACRO_SUPER_DOWN:
@@ -1766,6 +1748,34 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_SUPER_LEFT:
     return MACRODOWN(D(LeftGui), T(LeftArrow), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_SHIFT_DOWN:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(DownArrow), U(LeftShift), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_END:
+    return MACRODOWN(D(LeftGui), T(End), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_SHIFT_LEFT:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(LeftArrow), U(LeftShift), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_SHIFT_PAGE_DOWN:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(PageDown), U(LeftShift), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_SHIFT_PAGE_UP:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(PageUp), U(LeftShift), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_SHIFT_RIGHT:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(RightArrow), U(LeftShift), U(LeftGui));
+    break;
+
+  case MACRO_SUPER_SHIFT_UP:
+    return MACRODOWN(D(LeftGui), D(LeftShift), T(UpArrow), U(LeftShift), U(LeftGui));
     break;
 
   case MACRO_SUPER_RIGHT:
