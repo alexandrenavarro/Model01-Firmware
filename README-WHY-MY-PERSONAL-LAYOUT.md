@@ -4,7 +4,7 @@
 See on http://www.keyboard-layout-editor.com/#/gists/831524ae41aec20a65ff519557db7f50
 
 # My Layers
-There are 5 layers (primary, fn, wm, numpad, altgr)
+There are 5 layers : Primary, Fn (Function), WM (Window Manager), NumPad and AltGr.
 
 ## Primary layer (activated by default)
 
@@ -18,13 +18,17 @@ I used bépo layout (equivalent of dvorak for french) but tiny changes because m
 ### Special keys
 * Led is mapped to Enter (needed many with left hand, notably if you copy/paste with mouse and need to tap enter to launch a find).
 * Menu is mapped to launch my windows selector (launch rofi under linux with only my windows, switcheroo on windows).
-* Return is mapped to : (to have it directly, mainly for vi)
-* Any is mapped to ! (to have it directly)
-* Prog is mapped to Ins
+* Return is mapped to : (to have it directly, mainly for vi).
+* Any is mapped to ! (to have it directly).
+* Prog is mapped to Ins.
 
 ### Palm keys
-* Left Palm keys (fn1) is mapped to activate Leader key on my Vi mode.
-* Right Palm keys (fn2) is mapped Shift+Super+Z to launch my launcher (launch rofi under linux and executor.dk on windows).
+* Left Palm key (fn1) is mapped to :
+  - Tapped : to activate Leader key on my Vi mode.
+  - Hold : to activate the Fn (Function) Layer.
+* Right Palm keys (fn2) is mapped :
+  - Tapped : Shift+Super+Z to launch my launcher (launch rofi under linux and executor.dk on windows).
+  - Hold : to activate the WM (Window Manager) Layer.
 
 ### Left side
 Shift, Backspace, Ctrl, Alt (instead of Ctrl, BackSpace, Cmd, Shift). 
@@ -36,10 +40,10 @@ I prefer to let 2 keys for Shift because :
 * We need to let on the 2 sides because some shortcuts are like Ctrl+Shift notably in Intellij.
 * Alternate the shift use (use left shift to capitalize right letters keys and use right shift to capitalize right letters keys).
 
-It is use with OneShot plugin (no need to press simultaneously modifier + key, you can do modifier then key)
+It is use with OneShot plugin (no need to press simultaneously modifier + key, you can tap the modifier then the key).
 
 #### Ctrl / Alt
-Let only Ctrl and Alt on the left with OneShot plugin (no need to press simultaneously modifier + key, you can do modifier then key) to have more notably return.
+Let only Ctrl and Alt on the left with OneShot plugin (no need to press simultaneously modifier + key, you can do tap the modifier then the key) to have more notably return.
 
 I have quasi no shortcut with Ctrl+Alt+something or have an alternative to use this shortcut.
 
@@ -50,7 +54,7 @@ Super, Enter, Space, Shift (instead of Shift, Alt, Space, Ctrl).
 
 Enter on the left of Space to be better accessible than the default place.
 
-The space is a macro, if Shift is press, the space is mapped to _ (useful when you type some constants in Java/Kotlin).
+The space is a macro, if Shift is press, the space is mapped to _ (useful when you type some constants in Java/Kotlin, generally the only case I have to type _).
 
 Super on the left of Enter (not really used anymore).
 
@@ -60,14 +64,14 @@ Super on the left of Enter (not really used anymore).
 All the common shortcuts available in File / Edit menu are available, can be used with the mouse on the right side if needed.
 * On the row below the homerow left, you have global shortcuts the file menu shortcuts (Ctrl+S, Ctrl+N, Ctrl+T, Ctrl+F3, Ctrl+W, Alt+F4, Ctrl+A)
 * On the homerow left, you have global shortcuts the file menu shortcuts (delete, Ctrl+Z, Ctrl+X, Ctrl+C, Ctrl+V, Ctrl+F, Ctrl+H)
-* On the row below the homerow left, you have shorcuts for navigate between files mainly in Intellij with some customizations : Ctrl+/ (comment), Alt+Left (previous file), Alt+Down, Alt+Up (go to parent directory), Alt+Right (next file), F4 (go to declaraton), Alt+F7 (find usages)
+* On the row below the homerow left, you have shortcuts for navigate between files mainly in Intellij with some customizations : Ctrl+/ (comment), Alt+Left (previous file), Alt+Down, Alt+Up (go to parent directory), Alt+Right (next file), F4 (go to declaraton), Alt+F7 (find usages)
  
 ### Right side keys
 All the shortcuts to navigate really quickly in a editor.
-* On the homerow right, you have home, left, down, up, right, end (as vi k,j,l but shift on the right to have it on the real homerow keys), clearly better than a inverse T when you are used to.
+* On the homerow right, you have home, left, down, up, right, end (as vi k,j,l but shift on the right to have it on the real homerow keys), clearly better than an inverse T when you are used to.
 * On the row below the homerow right, you have the same but with Ctrl+ (except where home / end replace by Ctrl+Left/Right*4)
 * On the row above the homerow right, you have Ctrl+Home (start of a file), Ctrl+\( (code block start), PgDown, PgUp, Ctrl+](code block start), Ctrl+End (end of a file). 
-* Return is mapped to Ctrl + : (used to go to commandline/terminal mode in the different when it exists like Intellij, micro ...)
+* Return is mapped to Ctrl+E : (used to go to commandline/terminal mode in the different when it exists like Intellij, micro ...)
 
 ### Right Palm Keys
 * A tap on Right Palm key is mapped to Alt+1 to go quick to project dock in Intellij and back to the main editor dock through Esc.
@@ -75,29 +79,23 @@ All the shortcuts to navigate really quickly in a editor.
 + Fn+Enter is mapped to Ctrl+Return (for Intellij)
 
 
-## Window Layer (activated by holding the right palm key)
+## Window Manager Layer (activated by holding the right palm key)
 
-### Left side keys
-#### With a floating window manager (like openbox or windows 10, but can be use with any floating windows manager on linux or on windows)
-All the shortcuts are used to manipulate windows (on linux I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md because some weird behaviour on Super+Left / Super+Right and to have 1/4 or 1/8 windows):
-* On the homerow left, you have : move to left-left pane on [4x1], move to left pane on [2x1] (like Super+Left on Windows or Gnome), minimize (like Super+Down on Windows or Gnome), maximize (like Super+Up on Windows or Gnome), move right pane on [2x1] (like Super+Right on Windows or Gnome), move to right-right pane [4x1].
-* On the row below the homerow left, move to left-left-down pane on [4x2], move to left-down pane on [2x2], move to left-down pane on [4x2], move to right-down pane on [4x2], move to right-down pane on [2x2], move to right-right-down pane on [4x2]
-* On the row above the homerow felt, move to left-left-up pane on [4x2], move to left-up pane on [2x2], move to left pane on [4x1], move to right pane on [4x1], move to right-up pane on [2x2], move to right-right-up pane on [4x2] 
-* On the first row right, nothing, nothing,  move to left-up pane on [4x2], move to right-up pane on [4x2]
+### Left side keys (mainly use with bspwn or custom AutoHotKeys on Windows)
+All the shortcuts are used to manipulate desktops (on linux I used bspc / sxhkd with generally used shortcuts for this window manager on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/bspwm/bspwmrc and https://github.com/alexandrenavarro/dotfiles/blob/master/.config/sxhkd/sxhkdrc, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md):
+* On the homerow left, you have : move you current selected window to Desktop 1, 2, 3, 4 and 5 (Super+Alt+Shift+Number). 
+* On the row above the homerow left, you have : go to Desktop 1, 2, 3, 4 and 5 (Super+Shift+Number). 
  
-#### With a floating window manager (bspwn the best tiling windows manager on linux)
-* On the homerow left, you have : move to left, minimize (set hidden=on), maximize (monocle), move right.
-* On the row below the homerow left, you have : move to down, move to up.
-* On the row above the homerow felt, you have : set status to tiled, set status to fullscreen. 
+### Right side keys (mainly use with bspwn or custom AutoHotKeys on Windows)
+All the shortcuts are used to manipulate windows (on linux I used bspc / sxhkd with generally used shortcuts for this window manager on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/bspwm/bspwmrc and https://github.com/alexandrenavarro/dotfiles/blob/master/.config/sxhkd/sxhkdrc, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md):
+* On the homerow right, you have : move the window to left (Super+Shift+Left), move the window to down (Super+Shift+Down), move the window to up (Super+Shift+Up), move the window right (Super+Shift+Right), use monocole mode, always maximized window (Super+Shift+PageUp).
+* On the row below the homerow right, you have : select the window to left (Super+Left), select the window to down (Super+Down), select the window to up (Super+Up), select the window right (Super+Right), Super+A.
+* On the row above the homerow right, you have : set status to floating (Super+Alt+Shift+PageDown), set status to tiled (Super+Alt+Shift+Down), set status to fullscreen (Super+Alt+Shift+Up), rotate clockwise (Super+End), close window (Alt+F4), Super+B. 
 
-### Right side keys (mainly use with bspwn)
-It is used mainly with bspwn or any tiling window manager.
-* On the homerow right, you have : super + left (select the window on the left), super + down (select the window on the down), super + up (select the window on the up), super + right (select the window on the right). 
-
-## Altgr Layer (activated by Holding Space)
+## AltGr Layer (activated by Holding Space)
 
 ### Left side keys
-It is the equivalent of altgr (right alt) for bépo but with some customization (easy to do customization like that).
+It is the equivalent of AltGr (right alt) for bépo but with some customization (easy to do customization like that).
 * < and > are accessible directly instead « of »
 * : ¨ was inverse.
 
@@ -108,16 +106,16 @@ All the shortcuts to cut/delete really quickly in a editor or a terminal (custom
 * On the row above the homerow right, you have to cut/delete Ctrl+Home (start of a file), Ctrl+\( (code block start), PgDown, PgUp, Ctrl+](code block start), Ctrl+End (end of a file). 
 
 
-## Numpad Layer  
+## NumPad Layer  
 All digits are set on the homerow (some x position as there are on the top row).
 
 On first key on homerow left is mapped to Ctrl+G (go to line), generally use before typing number.
 
 The key at the right of 0 is mapped to point.
 
-Numpad+Led is mapped to Alt+Enter .
-Numpad+Space is mapped to _ .
-Numpad+Alt is mapped to Alt+Enter . 
+NumPad+Led is mapped to Alt+Enter.
+NumPad+Prog is mapped to Alt+Ins.
+NumPad+Alt is mapped to Alt+Enter. 
 
 
 ## Vi Mode
@@ -159,8 +157,8 @@ In vi you do number + command + movement, here you do number + movement, it will
 * You can have a kind vi mode like with leader plugin.
 
 ## Cons 
-* Can't let backspace or space pushed to type multiple times, you have to use fn+backspace or cut+left to do it or fn2+space, but preferred because of the need to have quick access to numpad, altgr layer and _.
-* Alt + Tab is not accessible as I want (nevertheless accessible only with left hand, better than a classical placement) but I don't find better solution or a way to it.
+* Can't let backspace or space pushed to type multiple times, you have to use cut+left to do it or NumPad+space, but preferred because of the need to have quick access to NumPad and altGr layer.
+* Alt+Tab is not accessible as I want (nevertheless accessible only with left hand, better than a classical placement) but I don't find better solution or a way to it.
 * Need to unpress backspace (or use cut + left) to fix an error when you type number.
 * Windows manipulations are not accessible with only the left hand.
 * Find no real solution for the pointer through a plugin keyboard (the official mouse plugin is not really useable for real life) or the add trackpoint/trackpad on the keyboard.
@@ -175,10 +173,10 @@ You see the letter of the keys of the homerow appears when you untapped, not whe
 I used QuKeys only on backspace / spacebar because I can't really notice this problem on these special keys.
  
 ## Use a macro to type several letters
-I tried some stuffs like ". ", ", " or ". "+Shift letter but at the end, I did not use it.
+I tried some stuffs like combination of multiple letters in on one key like ". ", ", " or ". "+Shift letter but at the end, I did not use it.
 
 ## Use fn when typing a word
-When you hold the fn, you change the position of your hands which is not really problematic when type on key on the same hand or multiple on the other hand but not really easy when you type some keys on the same hand.
+When you hold the fn1 or fn2, you change the position of your hands which is not really problematic when type on key on the same hand or multiple on the other hand but not really easy when you type some keys on the same hand.
 So use fn for shortcuts one time or move your cursor.  
  
 ## Having a numpad only on a side
@@ -208,16 +206,25 @@ I'm interested if some vi gurus what kind of command they often use they can't d
 * I used really few Ctrl+S (my IDE for programming in Intellij which save automatically), Ctrl+O, Ctrl+N.
 * I don't used a lot the Ctrl+Home/End (move to start/end file), Ctrl+Left/Right *4 (move to previous/next 4 words), Ctrl+(move to Code Block start/end).
 * I don't used anymore Super key.
-* I used more Ctrl+F I expected.
 * With this layout I used quasi never Ctrl or Alt directly, except Alt+Tab on windows and some IDE shortcuts (Alt+f12 or Ctrl+Shift+F10 mainly).
-* Use palm key + something for one action (because it is really quick to tap) but not something in your flow of typing like an altgr (because the position of your hands are not well positioned).
+* I used more Ctrl+F I expected.
+* Use palm key + something for one action (because it is really quick to tap) but not something in your flow of typing like an AltGr (because the position of your hands are not well positioned).
 * You can customize shortcuts in a terminal in order not to have emacs, but depending of your terminals, the ways how the characters are typed are really different, use `showkey -a` to understand how your terminal understand what you type, it can be really different between the terminals. 
-* Don't map Left Palm Key (fn1) with a launcher or something similar because you will use a lot and sometimes for editing and sometime you will tap it by accident (you tapped and untapped quickly because you changed what you want to do). Personnaly, it is mapped to Vi mode and works well in real life.
-* Don't try optimize everything, focus on the one the need to keep your "flow" like when you are programming or stuffs you do regularly and you want to be productive as possible. 
+* Don't map Left Palm Key (fn1) with a launcher or something similar because you will use a lot and sometimes for editing and sometimes you will tap it by accident (you tapped and untapped quickly because you changed what you want to do). Personnally, it is mapped to Vi mode and works well in real life.
+* Don't try optimize everything, focus on the one the need to keep your "flow" like when you are programming or stuffs you do regularly and you want to be productive as much as possible. 
 Example : Don't care the shortcuts when you navigate on a browser because generally, you are not in your flow but you are just searching / reading something maybe using the mouse. 
 
 ## Some others ideos not tested
-* Having a layout for tmux, I'm not a heavy user of tmux but clearly, if your are, create a layout for that makes sense and easy to do. 
+* Having a layout for tmux, I'm not a heavy user of tmux but clearly, if your are, create a layout for that makes sense and easy to do.
+* If you used a really big screen like 49 inches or 2x27 inches and you use a floating window manager, you can configure it to have your screen divided by 4 or 8 with some shortcuts.
+
+Example of my previous configuration (not used anymore because I use a Bspwm Tiling Window Manager and also because my main screen is only 34 inches) :
+
+All the shortcuts are used to manipulate windows (on linux I used openbox with on linux see my dotfiles https://github.com/alexandrenavarro/dotfiles/blob/master/.config/openbox/rc.xml, on windows I used some scripts in AutoHotKeys see https://github.com/alexandrenavarro/wiki/blob/master/windows-10/Configuration.md because some weird behaviour on Super+Left / Super+Right and to have 1/4 or 1/8 windows):
+* On the homerow left, you have : move to left-left pane on [4x1], move to left pane on [2x1] (like Super+Left on Windows or Gnome), minimize (like Super+Down on Windows or Gnome), maximize (like Super+Up on Windows or Gnome), move right pane on [2x1] (like Super+Right on Windows or Gnome), move to right-right pane [4x1].
+* On the row below the homerow left, move to left-left-down pane on [4x2], move to left-down pane on [2x2], move to left-down pane on [4x2], move to right-down pane on [4x2], move to right-down pane on [2x2], move to right-right-down pane on [4x2]
+* On the row above the homerow felt, move to left-left-up pane on [4x2], move to left-up pane on [2x2], move to left pane on [4x1], move to right pane on [4x1], move to right-up pane on [2x2], move to right-right-up pane on [4x2] 
+* On the first row right, nothing, nothing,  move to left-up pane on [4x2], move to right-up pane on [4x2] 
   
 # Conclusion
 I really think customizing my layout help me to be more productive on the different common tasks notably when I'm programming (reading or writing code).
