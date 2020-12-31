@@ -163,6 +163,8 @@ enum { MACRO_0,
        MACRO_CTRL_LEFT_PARENTHESIS,
        MACRO_CTRL_N,
        MACRO_CTRL_P,
+       MACRO_CTRL_PAGE_DOWN,
+       MACRO_CTRL_PAGE_UP,
        MACRO_CTRL_U,
        MACRO_CTRL_UP,
        MACRO_CTRL_RIGHT,
@@ -405,7 +407,7 @@ KEYMAPS(
    ___,
 
    Key_F12,                                Key_F6,                                         Key_F7,                                 Key_F8,                                 Key_F9,                                 Key_F10,                                     Key_F11,
-   M(MACRO_CTRL_E),                        M(MACRO_CTRL_HOME),                             M(MACRO_CTRL_LEFT_PARENTHESIS),         Key_PageDown,                           Key_PageUp,                             M(MACRO_CTRL_RIGHT_PARENTHESIS),             M(MACRO_CTRL_END),
+   M(MACRO_CTRL_E),                        M(MACRO_CTRL_HOME),                             M(MACRO_CTRL_PAGE_UP),                  Key_PageDown,                           Key_PageUp,                             M(MACRO_CTRL_PAGE_DOWN),             M(MACRO_CTRL_END),
                                            Key_Home,                                       Key_LeftArrow,                          Key_DownArrow,                          Key_UpArrow,                            Key_RightArrow,                              Key_End,
    M(MACRO_SUPER_TAB),                     M(MACRO_CTRL_LEFT_LEFT_LEFT_LEFT),              M(MACRO_CTRL_LEFT),                     M(MACRO_CTRL_DOWN),                     M(MACRO_CTRL_UP),                       M(MACRO_CTRL_RIGHT),                         M(MACRO_CTRL_RIGHT_RIGHT_RIGHT_RIGHT),
    ___,                                    M(MACRO_CTRL_SHIFT_ENTER),                      M(MACRO_CTRL_SHIFT_SPACE),              ___,
@@ -1537,6 +1539,15 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_CTRL_P:
     return MACRODOWN(D(LeftControl), T(E), U(LeftControl));
     break;
+
+  case MACRO_CTRL_PAGE_DOWN:
+    return MACRODOWN(D(LeftControl), T(PageDown), U(LeftControl));
+    break;
+
+  case MACRO_CTRL_PAGE_UP:
+    return MACRODOWN(D(LeftControl), T(PageUp), U(LeftControl));
+    break;
+
 
   case MACRO_CTRL_U:
     return MACRODOWN(D(LeftControl), T(S), U(LeftControl));
