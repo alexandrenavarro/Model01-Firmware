@@ -457,7 +457,7 @@ KEYMAPS(
    ___),
 
   [ALTGR] =  KEYMAP_STACKED
-  (___,                                    Key_F1,                                         Key_F2,                                 Key_F3,                                 Key_F4,                                 Key_F5,                                      ___,
+  (___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    M(MACRO_ALT_GR_DOLLAR),                 M(MACRO_ALT_GR_B),                              M(MACRO_ALT_GR_2),                      M(MACRO_ALT_GR_3),                      Key_1,                                  ___,                                         ___,
    ___,                                    M(MACRO_ALT_GR_P),                              M(MACRO_ALT_GR_U),                      M(MACRO_COLON),                         M(MACRO_SEMICOLON),                     M(MACRO_ALT_GR_K),
    M(MACRO_ALT_GR_EQUALS),                 M(MACRO_ALT_GR_A_AIGU),                         M(MACRO_ALT_GR_Y),                      M(MACRO_ALT_GR_X),                      M(MACRO_ALT_GR_4),                      M(MACRO_ALT_GR_5),                           ___,
@@ -472,14 +472,14 @@ KEYMAPS(
    ___),
 
   [WM] =  KEYMAP_STACKED
-  (Key_PrintScreen,                        Key_F1,                                         ___,                                    ___,                                    ___,                                    ___,                                         ___,
+  (___,                                    ___,                                            Key_F2,                                 Key_F3,                                 ___,                                    ___,                                         ___,
    ___,                                    M(MACRO_SUPER_ALT_1),                           M(MACRO_SUPER_ALT_2),                   M(MACRO_SUPER_ALT_3),                   M(MACRO_SUPER_ALT_4),                   M(MACRO_SUPER_ALT_5),                        ___,
    ___,                                    M(MACRO_SUPER_1),                               M(MACRO_SUPER_2),                       M(MACRO_SUPER_3),                       M(MACRO_SUPER_4),                       M(MACRO_SUPER_5),
    ___,                                    ___,                                            ___,                                    ___,                                    ___,                                    ___,                                         ___,
    ___, ___, ___, ___,
    ___,
 
-   Key_F12,                                Key_F6,                                         Key_7,                                  Key_8,                                  Key_F9,                                 Key_F10,                                     Key_F11,
+   Key_F12,                                ___,                                            ___,                                    Key_F8,                                 Key_F9,                                 ___,                                         ___,
    ___,                                    M(MACRO_SUPER_SHIFT_PAGE_DOWN),                 M(MACRO_SUPER_PAGE_DOWN),               M(MACRO_SUPER_ALT_SHIFT_DOWN),          M(MACRO_SUPER_ALT_SHIFT_UP),            M(MACRO_SUPER_END),                          M(MACRO_ALT_F4),
                                            M(MACRO_SUPER_EQUALS),                          M(MACRO_SUPER_SHIFT_LEFT),              M(MACRO_SUPER_SHIFT_DOWN),              M(MACRO_SUPER_SHIFT_UP),                M(MACRO_SUPER_SHIFT_RIGHT),                  M(MACRO_SUPER_SHIFT_PAGE_UP),
    ___,                                    ___,                                            M(MACRO_SUPER_LEFT),                    M(MACRO_SUPER_DOWN),                    M(MACRO_SUPER_UP),                      M(MACRO_SUPER_RIGHT),                        M(MACRO_SUPER_A),
